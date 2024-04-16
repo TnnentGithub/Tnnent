@@ -4,10 +4,10 @@ import './style.css';
 function Analytics() {
   
   const [buttonStyle, setButtonStyle] = useState({
-    // Initial button styles
+
     position: 'absolute',
     left: '65%',
-    // Add other non-responsive styles here
+
   });
 
   
