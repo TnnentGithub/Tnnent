@@ -28,7 +28,9 @@ import StoreUPI from './pages/Storeupi';
 import Otpverify from './pages/Otpverify';
 import SelectCategory from './pages/Selectcategory';
 import Highlights from './pages/Highlights';
-
+import CreateProductPage from './pages/Createpage';
+import CreateProductPage2 from './pages/Createcategory';
+import SelectDefaultOptional from './pages/Defaultoptional';
 
 function App() {
   return (
@@ -63,7 +65,9 @@ function App() {
           <Route path='/otpverify' element={<Otpverify/>}/>
           <Route path='/selectcategory' element={<SelectCategory/>}/>
           <Route path='/highlights' element={<Highlights/>}/>
-          
+          <Route path='/createpage' element={<CreateProductPage/>}/>
+          <Route path='/createcategory' element={<CreateProductPage2/>}/>
+          <Route path='/defaultoptional' element={<SelectDefaultOptional/>}/>
         </Routes>
       </Router>
     </div>
