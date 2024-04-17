@@ -1,7 +1,5 @@
 import React from 'react';
-import './style.css'; // Import CSS file
-
-// Import images
+import './style.css';
 import bigIllustration from '../images/images2/mobile icons/big illustration.png';
 import smallIllustration from '../images/images2/mobile icons/small illustrtion.png';
 import logo from '../images/images2/desktop icons/logo.png';
