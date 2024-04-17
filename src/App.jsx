@@ -31,11 +31,13 @@ import Highlights from './pages/Highlights';
 import CreateProductPage from './pages/Createpage';
 import CreateProductPage2 from './pages/Createcategory';
 import SelectDefaultOptional from './pages/Defaultoptional';
+import AddPriceToOptionals from './pages/Addprice';
 
 function App() {
   return (
     <div className='App'>
       <Router>
+
         <Routes>
           <Route path='/analytics' element={<Analytics/>}/>
           <Route path='/storeprofile' element={<Storeprofile/>}/>
@@ -52,9 +54,9 @@ function App() {
           <Route path='/shipment' element={<ShipmentDetailsPage/>}/>
           <Route path='/verification' element={<VerifyDetailsPage/>}/>
           <Route path='/galleryins' element={<MiddlemanGroup/>}/>
+          <Route path='/' element={<Store/>}/>
           <Route path='/gallery' element={<Gallery/>}/>
           <Route path='/gallerymiddle' element={<Gallerymiddle/>}/>
-          <Route path='/' element={<Store/>}/>
           <Route path='/registration' element={<RegistrationPage/>}/>
           <Route path='/storeemail' element={<SelectEmailPage/>}/>
           <Route path='/storedomain' element={<SelectStoreDomainPage/>}/>
@@ -68,7 +70,9 @@ function App() {
           <Route path='/createpage' element={<CreateProductPage/>}/>
           <Route path='/createcategory' element={<CreateProductPage2/>}/>
           <Route path='/defaultoptional' element={<SelectDefaultOptional/>}/>
+          <Route path='/addprice' element={<AddPriceToOptionals/>}/>
         </Routes>
+
       </Router>
     </div>
   )

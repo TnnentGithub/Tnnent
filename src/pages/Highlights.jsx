@@ -16,7 +16,7 @@ function Highlights() {
             subheading: 'Posted 5 mins ago',
             profileImage: 'https://upload.wikimedia.org/wikipedia/commons/9/99/Elon_Musk_Colorado_2022_%28cropped2%29.jpg'
         },
-        // Added a class to the image in the story object
+        
         className: 'my-custom-class'
     }];
 

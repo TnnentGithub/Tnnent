@@ -20,11 +20,7 @@ import Rectangle2487Image from '../images/images2/mobile icons/Rectangle 2487.sv
 import Rectangle2488Image from '../images/images2/mobile icons/Rectangle 2488.svg';
 import Rectangle1856 from '../images/Rectangle 1856.svg';
 import Rectangle2267Image from '../images/images2/mobile icons/Rectangle 2267 (1).svg';
-import HomeIcon from '../images/images2/mobile icons/home.png';
-import CatalogIcon from '../images/images2/mobile icons/catalog.png';
-import StoreIcon from '../images/images2/mobile icons/store.png';
-import GalleryIcon from '../images/images2/mobile icons/gallery.png';
-import CommunityIcon from '../images/images2/mobile icons/community.png';
+import Navbar from '../components/Navbar.jsx';
 
 function Store() {
   const [todaysDate, setTodaysDate] = useState('');
@@ -62,7 +58,7 @@ function Store() {
 
       <div className="mt-7 p-3 relative">
         
-        <div className="w-14 h-14 bg-[#DDDDDD] rounded-full absolute top-7 left-0  ml-6 flex items-center justify-center">
+        <div className="w-12 h-12 bg-[#DDDDDD] rounded-full absolute top-5 left-5 flex items-center justify-center">
           <img src={image4} alt="" className="w-8" />
         </div>
         <input type="text" className="input-field px-6 py-4 pl-16 border-2  border-black rounded-full w-full text-lg focus:outline-none" placeholder="Search Products & Store" />
@@ -461,25 +457,7 @@ function Store() {
           </div>
         </div>
       </div>
-      
-      <div className="fixed bottom-4 left-0 right-0 flex mx-auto mb-1 bg-[#2D332F] rounded-full text-xl p-2 w-[350px] text-white justify-around items-center z-50">
-        <a href="store.html" className="icon p-4 bg-white rounded-full w-14 h-14 flex items-center justify-center">
-          <img src={HomeIcon} alt="" className="w-8" />
-        </a>
-        <a href="catalog.html" className="icon flex items-center justify-center bg-[#2D332F] rounded-full p-4 w-14 h-14">
-          <img src={CatalogIcon} alt="" className="w-8" />
-        </a>
-        <a href="rent.html" className="icon flex items-center justify-center bg-[#2D332F] rounded-full p-4 w-14 h-14">
-          <img src={StoreIcon} alt="" className="w-8" />
-        </a>
-        <a href="gallery.html" className="icon flex items-center justify-center bg-[#2D332F] rounded-full p-4 w-14 h-14">
-          <img src={GalleryIcon} alt="" className="w-5" />
-        </a>
-        <a href="#" className="icon flex items-center justify-center bg-[#2D332F] rounded-full p-4 w-14 h-14">
-          <img src={CommunityIcon} alt="" className="w-5" />
-        </a>
-      </div>
-    
+      <Navbar color="white" color2= "#2D332F" color3= "#2D332F" color4= "#2D332F"/>
       </section>
       </div>
     </>
