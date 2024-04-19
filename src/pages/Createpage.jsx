@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import backIcon from '../images/images3/back.png';
 import frame401 from '../images/images3/Frame 401.png';
 import frame402 from '../images/images3/Frame 402.png';
@@ -10,6 +10,17 @@ import frame406 from '../images/images3/Frame 406.png';
 import frame408 from '../images/images3/Frame 408.png';
 
 function CreateProductPage() {
+
+const [categoryname, setcategoryname] = useState('')
+
+useEffect(() => {
+    const timerid = setTimeout(() => {
+        console.log(categoryname)
+    }, 1000);
+    return () => {
+        clearTimeout(timerid)
+    }
+}, [categoryname])
 
     const [selectedParcel, setSelectedParcel] = useState(null);
 
@@ -44,7 +55,7 @@ function CreateProductPage() {
 
             <p className="mx-5 font-extrabold text-xl">Category Name</p>
             <div className="mx-5 my-3 px-4 py-3  border-dotted border-[2px] rounded-[15px] border-[#848484] flex justifu-right mb-[30px]">
-                <input type="text" id="phone-input" className="text-[#636363] text-[13px] w-[100%] border-0 border-[#000000] px-0.5 py-1 outline-none bg-[#ffffff]" placeholder="Write your Category Name" />
+                <input type="text" id="phone-input" className="text-[#636363] text-[13px] w-[100%] border-0 border-[#000000] px-0.5 py-1 outline-none bg-[#ffffff]" placeholder="Write your Category Name" onChange={(e) => setcategoryname(e.target.value)}/>
             </div>
 
             <p className="mx-5 font-extrabold text-xl">Item Name</p>

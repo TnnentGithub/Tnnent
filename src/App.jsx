@@ -32,6 +32,24 @@ import CreateProductPage from './pages/Createpage';
 import CreateProductPage2 from './pages/Createcategory';
 import SelectDefaultOptional from './pages/Defaultoptional';
 import AddPriceToOptionals from './pages/Addprice';
+import Community from './pages/Community';
+import Communitypost from './pages/Createcommunity';
+import UploadDocuments from './Auth/Aadhar';
+import LocationPage from './Auth/Location';
+import Name from './Auth/Name';
+import ProfilePictureadded from './Auth/Profilepictureadded';
+import AddProfilePicture from './Auth/Profilepicture';
+import ResetPassword from './Auth/Resetpass';
+import SignIn from './Auth/Signin';
+import Signup from './Auth/Signup';
+import Verify from './Auth/Verify';
+import Createpass from './Auth/Createpass';
+import Passport from './Auth/Passport';
+import OptionalsVolume from './pages/Optionalsvolume';
+import Optionalsweight from './pages/Optionalsweight';
+import Optionalsbakery from './pages/Optionalsbakery';
+import Optionalssize from './pages/Optionalssize';
+import Optionalsstorage from './pages/Optionalstorage';
 
 function App() {
   return (
@@ -71,8 +89,25 @@ function App() {
           <Route path='/createcategory' element={<CreateProductPage2/>}/>
           <Route path='/defaultoptional' element={<SelectDefaultOptional/>}/>
           <Route path='/addprice' element={<AddPriceToOptionals/>}/>
+          <Route path='/community' element={<Community/>}/>
+          <Route path='/communitypost' element={<Communitypost/>}/>
+          <Route path='/aadhardetails' element={<UploadDocuments/>}/>
+          <Route path='/location' element={<LocationPage/>}/>
+          <Route path='/name' element={<Name/>}/>
+          <Route path='/profilepictureadded' element={<ProfilePictureadded/>}/>
+          <Route path='/addprofilepicture' element={<AddProfilePicture/>}/>
+          <Route path='/resetpass' element={<ResetPassword/>}/>
+          <Route path='/signin' element={<SignIn/>}/>
+          <Route path='/signup' element={<Signup/>}/>
+          <Route path='/verify' element={<Verify/>}/>
+          <Route path='/createpass' element={<Createpass/>}/>
+          <Route path='/passport' element={<Passport/>}/>
+          <Route path='/optionalvolume' element={<OptionalsVolume/>}/>
+          <Route path='/optionalweight' element={<Optionalsweight/>}/>
+          <Route path='/optionalbakery' element={<Optionalsbakery/>}/>
+          <Route path='/optionalsize' element={<Optionalssize/>}/>
+          <Route path='/optionalstorage' element={<Optionalsstorage/>}/>
         </Routes>
-
       </Router>
     </div>
   )
