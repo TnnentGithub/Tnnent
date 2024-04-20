@@ -12,15 +12,20 @@ import frame408 from '../images/images3/Frame 408.png';
 function CreateProductPage() {
 
 const [categoryname, setcategoryname] = useState('')
+const [item, setitem] = useState('')
+const [Discount, setDiscount] = useState('')
+const [mrpprice, setmrpprice] = useState('')
+const [itemprice, setitemprice] = useState('')
+const [caption, setcaption] = useState('')
 
 useEffect(() => {
     const timerid = setTimeout(() => {
-        console.log(categoryname)
+        console.log(caption)
     }, 1000);
     return () => {
         clearTimeout(timerid)
     }
-}, [categoryname])
+}, [caption])
 
     const [selectedParcel, setSelectedParcel] = useState(null);
 
@@ -60,7 +65,7 @@ useEffect(() => {
 
             <p className="mx-5 font-extrabold text-xl">Item Name</p>
             <div className="mx-5 my-3 px-4 py-3  border-dotted border-[2px] rounded-[15px] border-[#848484] flex justifu-right mb-[30px]">
-                <input type="text" id="phone-input" className="text-[#636363] text-[13px] w-[100%] border-0 border-[#000000] px-0.5 py-1 outline-none bg-[#ffffff]" placeholder="Write your Product Name" />
+                <input type="text" id="phone-input" className="text-[#636363] text-[13px] w-[100%] border-0 border-[#000000] px-0.5 py-1 outline-none bg-[#ffffff]" placeholder="Write your Product Name" onChange={(e) => setitem(e.target.value)}/>
             </div>
 
             <p className="mx-5 font-extrabold text-xl">Item Price</p>
@@ -68,15 +73,15 @@ useEffect(() => {
             <div className="flex flex-row items-center justify-center gap-1 my-2">
                 <div className="my-3 px-3 py-2  border-dotted border-[2px] rounded-[10px] border-[#848484] flex justify-right mb-[30px]  flex-row gap-1">
                     <img className="h-5" src={frame403} alt="" />
-                    <input type="text" id="phone-input" className="text-[#989898] w-[60px] text-[11px] font-bold border-0 border-[#000000]  outline-none bg-[#ffffff]" maxLength="6" placeholder="Discount" onInput="this.value=this.value.replace(/[^0-9]/g,'');" />
+                    <input type="text" id="phone-input" className="text-[#989898] w-[60px] text-[11px] font-bold border-0 border-[#000000]  outline-none bg-[#ffffff]" maxLength="6" placeholder="Discount" onInput="this.value=this.value.replace(/[^0-9]/g,'');" onChange={(e) => setDiscount(e.target.value)}/>
                 </div>
                 <div className="my-3 px-3 py-2  border-dotted border-[2px] rounded-[10px] border-[#848484] flex justify-right mb-[30px]  flex-row gap-1">
                     <img className="h-3" src={frame402} alt="" />
-                    <input type="text" id="phone-input" className="text-[#989898] w-[60px] text-[11px] font-bold border-0 border-[#000000]  outline-none bg-[#ffffff]" maxLength="6" placeholder="MRP Price" onInput="this.value=this.value.replace(/[^0-9]/g,'');" />
+                    <input type="text" id="phone-input" className="text-[#989898] w-[60px] text-[11px] font-bold border-0 border-[#000000]  outline-none bg-[#ffffff]" maxLength="6" placeholder="MRP Price" onInput="this.value=this.value.replace(/[^0-9]/g,'');" onChange={(e) => setmrpprice(e.target.value)} />
                 </div>
                 <div className="my-3 px-3 py-2  border-dotted border-[2px] rounded-[10px] border-[#848484] flex mb-[30px]  flex-row gap-1 items-center justify-center">
                     <img className="h-5" src={frame405} alt="" />
-                    <input type="text" id="phone-input" className="text-[#989898] w-[60px] text-[11px] font-bold border-0 border-[#000000]  outline-none bg-[#ffffff]" maxLength="6" placeholder="Item Price" onInput="this.value=this.value.replace(/[^0-9]/g,'');" />
+                    <input type="text" id="phone-input" className="text-[#989898] w-[60px] text-[11px] font-bold border-0 border-[#000000]  outline-none bg-[#ffffff]" maxLength="6" placeholder="Item Price" onInput="this.value=this.value.replace(/[^0-9]/g,'');" onChange={(e) => setitemprice(e.target.value)} />
                 </div>
             </div>
 
@@ -108,7 +113,7 @@ useEffect(() => {
             <img className="w-4 h-4 mt-1" src={frame408} alt="" />
         </div>
         <div>
-            <textarea className="text-[#989898] w-[100%] text-[13px] font-bold border-0 border-[#000000]  outline-none bg-[#ffffff]" name="" maxLength="700" id="" cols="38" rows="4" placeholder="Write Your Caption"></textarea>
+            <textarea className="text-[#989898] w-[100%] text-[13px] font-bold border-0 border-[#000000]  outline-none bg-[#ffffff]" name="" maxLength="700" id="" cols="38" rows="4" placeholder="Write Your Caption" onChange={(e) => setcaption(e.target.value)}></textarea>
         </div>
     </div>
 </div>
