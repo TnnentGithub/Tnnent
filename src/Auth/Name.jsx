@@ -8,63 +8,14 @@ import Slideshow from '../components/Slideshow.jsx';
 function Name() {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    const [buttonVisible, setButtonVisible] = useState(false);
+  
 
-    const handleFirstNameChange = (e) => {
-        setFirstName(e.target.value);
-        toggleButtons(e.target.value, lastName);
-    };
 
-    const handleLastNameChange = (e) => {
-        setLastName(e.target.value);
-        toggleButtons(firstName, e.target.value);
-    };
 
-    const toggleButtons = (first, last) => {
-        if (last.length >= 3) {
-            setButtonVisible(true);
-        } else {
-            setButtonVisible(false);
-        }
 
-        if (first === "" || last === "") {
-            document.getElementById("button1").style.display = "block";
-        } else {
-            document.getElementById("button1").style.display = "none";
-        }
-    };
+ 
 
-    const clearInputs = () => {
-        setFirstName('');
-        setLastName('');
-        toggleButtons('', '');
-    };
-
-    const expandLabel = (labelId) => {
-        const input = document.getElementById(labelId.replace("Label", ""));
-        if (input.value === "") {
-            document.getElementById(labelId).classList.add("text-xs", "top-0", "text-[#636363]");
-        }
-        toggleButtons(firstName, lastName);
-    };
-
-    const collapseLabel = (labelId) => {
-        const input = document.getElementById(labelId.replace("Label", ""));
-        if (input.value === "") {
-            document.getElementById(labelId).classList.remove("text-xs", "top-0", "text-[#636363]");
-        }
-        toggleButtons(firstName, lastName);
-    };
-
-    const moveLabel = (labelId) => {
-        const input = document.getElementById(labelId.replace("Label", ""));
-        if (input.value === "") {
-            document.getElementById(labelId).classList.add("text-xs", "top-1");
-        } else {
-            document.getElementById(labelId).classList.remove("text-xs", "top-0");
-        }
-        toggleButtons(firstName, lastName);
-    };
+  
 
     return (
         <section>
@@ -90,27 +41,27 @@ function Name() {
                 <div className="container mx-10 md:mx-10 mt-10 flex flex-col space-y-4">
                     <div className="relative">
                         {/* <label htmlFor="FirstName" className="text-[#545454] transition-all transform absolute -top-[-15px] left-2 cursor-text" id="FirstNameLabel" onClick={() => moveLabel('FirstNameLabel')}>First Name</label> */}
-                        <input placeholder='First Name' type="text" id="FirstName" name="FirstName" className="border w-full p-2 py-4 border-dotted border-[#848484] rounded-xl focus:outline-none" value={firstName} onFocus={() => expandLabel('FirstNameLabel')} onBlur={() => collapseLabel('FirstNameLabel')} onChange={handleFirstNameChange} />
+                        <input placeholder='First Name' type="text" id="FirstName" name="FirstName" className="border w-full p-2 py-4 border-dotted border-[#848484] rounded-xl focus:outline-none" />
                     </div>
                     <div className="relative">
                         {/* <label htmlFor="LastName" className="text-[#545454] transition-all transform absolute -top-[-15px] left-2 cursor-text" id="LastNameLabel" onClick={() => moveLabel('LastNameLabel')}>Last Name</label> */}
-                        <input placeholder='Last Name' type="text" id="LastName" name="LastName" className="border w-full p-2 py-4 border-dotted border-[#ffffff] rounded-xl focus:outline-none" value={lastName} onFocus={() => expandLabel('LastNameLabel')} onBlur={() => collapseLabel('LastNameLabel')} onChange={handleLastNameChange} />
+                        <input placeholder='Last Name' type="text" id="LastName" name="LastName" className="border w-full p-2 py-4 border-dotted border-[#848484] rounded-xl focus:outline-none" />
                     </div>
                 </div>
             </div>
 
             <div className="justify-center flex">
                 <div className="flex justify-center mt-10 mb-3 mx-auto" id="button1">
-                    <button className="bg-[#C7C7C7] px-6 py-3 text-white rounded-lg text-center text-xl font-bold" onClick={clearInputs}><p className="text-[#AAAAAA]">Continue</p></button>
+                    <button className="bg-[#094446] px-6 py-3 text-white rounded-lg text-center text-xl font-bold">Continue</button>
                 </div>
 
-                {buttonVisible && (
+                {/* {buttonVisible && (
                     <div className="flex justify-center mt-10 mx-auto" id="button2">
                         <a href="location.html">
                             <button className="bg-[#094446] px-6 py-3 text-white rounded-xl text-center text-xl font-bold">Continue</button>
                         </a>
                     </div>
-                )}
+                )} */}
             </div>
         </section>
         <section className="hidden lg:block">
@@ -127,7 +78,7 @@ function Name() {
                     <div className="input-group">
                         <label className="label">First Name</label>
                         <div className="input-container relative">
-                            <input autoComplete="off" type="text" required className="input border w-full px-14 py-3 border-dotted bg-[#e3e3e3] border-[#848484] rounded-xl focus:outline-none" value={firstName} onFocus={() => expandLabel('FirstNameLabel')} onBlur={() => collapseLabel('FirstNameLabel')} onChange={handleFirstNameChange}/>  
+                            <input autoComplete="off" type="text" required className="input border w-full px-4 py-3 border-dotted bg-[#e3e3e3] border-[#848484] rounded-xl focus:outline-none" />  
                         </div>
                     </div>
                 </div>
@@ -136,7 +87,7 @@ function Name() {
                     <div className="input-group">
                         <label className="label">Last Name</label>
                         <div className="input-container relative">
-                            <input autoComplete="off" required className="input border w-full px-14 py-3 border-dotted bg-[#e3e3e3] border-[#848484] rounded-xl focus:outline-none" value={lastName} onFocus={() => expandLabel('LastNameLabel')} onBlur={() => collapseLabel('LastNameLabel')} onChange={handleLastNameChange}/>
+                            <input autoComplete="off" required className="input border w-full px-4 py-3 border-dotted bg-[#e3e3e3] border-[#848484] rounded-xl focus:outline-none" />
                             
                         </div>
                     </div>
@@ -145,16 +96,16 @@ function Name() {
 
                 <a href="location.html">
                     <div className="flex justify-center mt-10 absolute ml-32 2xl:ml-44" id="button1">
-                        <button className="bg-[#C7C7C7] px-6 py-3 text-white mx-auto rounded-xl text-center text-xl font-bold"onClick={clearInputs} ><p className="text-[#AAAAAA]">Continue</p></button>
+                        <button className="bg-[#094446] px-6 py-3 text-white mx-auto rounded-xl text-center text-xl font-bold"  >Continue</button>
                     </div>
                 </a>
-                {buttonVisible && (
+                {/* {buttonVisible && (
                 <a href="location.html">
                     <div className="flex justify-center mt-10 absolute ml-32 2xl:ml-44" id="button2">
                         <button className="bg-[#094446] px-6 py-3 text-white mx-auto rounded-xl text-center text-xl font-bold">Continue</button>
                     </div>
                 </a>
-                )}
+                )} */}
             </div>
         </div>
         <div className="footer bottom-0 mt-10 left-0 right-0 md:relative md:flex ml-10 2xl:mt-28 text-[12px] form-container">

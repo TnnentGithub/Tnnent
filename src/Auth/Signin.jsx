@@ -11,34 +11,7 @@ import Slideshow from '../components/Slideshow.jsx';
 
 function SignIn() {
 
-    function handleFocus(labelId, inputId) {
-        const label = document.getElementById(labelId);
-        const input = document.getElementById(inputId);
-        if (label && input) {
-            label.classList.add('hidden');
-        }
-    }
-    
-    function handleBlur(labelId, inputId) {
-        const label = document.getElementById(labelId);
-        const input = document.getElementById(inputId);
-        if (label && input && input.value === '') {
-            label.classList.remove('hidden');
-        }
-    }
-
-
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
-    const handleEmailChange = (event) => {
-        setEmail(event.target.value);
-    };
-
-    const handlePasswordChange = (event) => {
-        setPassword(event.target.value);
-    };
-
+  
     return (
         <div>
             <nav className="sticky z-50">
@@ -59,18 +32,12 @@ function SignIn() {
                 <div className="container mx-6 md:mx-10 mt-10 flex flex-col space-y-4 relative">
                     <div className="relative">
                         <input placeholder="Email" type="email" id="email" name="email" className="border w-full p-3 py-4 border-dotted bg-[#e3e3e3] border-[#848484] rounded-xl focus:outline-none border-spacing-x-1 border-spacing-y-4"
-                        onFocus={() => handleFocus('emailLabel', 'email')}
-                        onBlur={() => handleBlur('emailLabel', 'email')}
-                        value={email}
-                        onChange={handleEmailChange}/>
+/>
                         <img src={emailIcon} className="absolute right-3 top-[22px] h-3 w-4" alt="icon"/>
                     </div>
                     <div className="relative">
                         <input placeholder="Password" type="password" id="password" name="password" className="border w-full p-2 py-4 border-dotted bg-[#e3e3e3] border-[#848484] rounded-xl focus:outline-none"
-                        onFocus={() => handleFocus('passwordLabel', 'password')}
-                        onBlur={() => handleBlur('passwordLabel', 'password')}
-                        value={password}
-                        onChange={handlePasswordChange}/>
+                    />
                         <img src={passwordIcon} className="absolute right-[15px] top-5 h-4 w-3" alt="icon"/>
                     </div>
                     <a href="reset_pass.html" className="text-xs text-[#636363] font-poppins font-medium tracking-wide">Forgot your password?</a>
@@ -116,11 +83,9 @@ function SignIn() {
                                             type="email"
                                             id="email"
                                             name="email"
-                                            value={email}
-                                            onChange={handleEmailChange}
-                                            className="input border w-full px-14 py-3 border-dotted bg-[#e3e3e3] border-[#848484] rounded-xl focus:outline-none"
-                                            onFocus={() => handleFocus('emailLabel', 'email')}
-                                            onBlur={() => handleBlur('emailLabel', 'email')}
+                                      
+                                            className="input border w-full px-4 py-3 border-dotted bg-[#e3e3e3] border-[#848484] rounded-xl focus:outline-none"
+                                     
                                         />
                                         <img src={emailIcon} className="absolute right-3 top-5 h-3 w-4" alt="icon" />
                                     </div>
@@ -136,11 +101,9 @@ function SignIn() {
                                             type="password"
                                             id="password"
                                             name="password"
-                                            value={password}
-                                            onChange={handlePasswordChange}
-                                            className="input border w-full px-14 py-3 border-dotted bg-[#e3e3e3] border-[#848484] rounded-xl focus:outline-none"
-                                            onFocus={() => handleFocus('passwordLabel', 'password')}
-                                            onBlur={() => handleBlur('passwordLabel', 'password')}
+                                   
+                                            className="input border w-full px-4 py-3 border-dotted bg-[#e3e3e3] border-[#848484] rounded-xl focus:outline-none"
+                                      
                                         />
                                         <img src={passwordIcon} className="absolute right-3 top-3 h-5 w-4" alt="icon" />
                                     </div>

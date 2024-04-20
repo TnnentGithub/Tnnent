@@ -22,10 +22,13 @@ function CreateProductPage2() {
     const [selectedCategory, setSelectedCategory] = useState(null);
     const [newCategoryName, setNewCategoryName] = useState('');
     const [categories, setCategories] = useState([]);
+    const [inputcategory, setinputcategory] = useState('')
 
     const handleCategoryClick = (index) => {
         setSelectedCategory(index);
     };
+
+
 
     const handleInputChange = (e) => {
         setNewCategoryName(e.target.value);

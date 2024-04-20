@@ -80,7 +80,7 @@
         }
 
         .form-container {
-            z-index: 99;
+            z-index: 99999;
         }
         .containers{
             max-width: 1400px;
