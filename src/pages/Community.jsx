@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import movieEditIcon from '../images/movie_edit.svg';
 import profileImage from '../images/kate-trysh-Dnkr_lmdKi8-unsplash 1.png';
 import iosshare from '../images/ios_share (1).svg'
+import Navbar from '../components/Navbar';
 import './Heart.css';
 
 function Community() {
@@ -21,6 +22,7 @@ function Community() {
 
   return (
     <>
+    <section className='lg:hidden'>
      <div className="fixed bg-white z-40 w-full top-0">
       <div className="flex justify-between p-3 mt-4">
         <h2 className="font-bold text-[5vw] ml-2 mt-5">COMMUNITY<span className="text-red-500"> &bull;</span></h2>
@@ -88,8 +90,11 @@ function Community() {
             
         </div>
       </div>
+     
     </div>
-
+    
+    <Navbar color="#2D332F" color2= "white" color3= "#2D332F" color4= "#2D332F"/>
+    </section>
     </>
   )
 }
