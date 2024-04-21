@@ -50,6 +50,8 @@ import Optionalsweight from './pages/Optionalsweight';
 import Optionalsbakery from './pages/Optionalsbakery';
 import Optionalssize from './pages/Optionalssize';
 import Optionalsstorage from './pages/Optionalstorage';
+import Notification from './pages/Notification';
+import Storenotification from './pages/Storenotification';
 
 function App() {
   return (
@@ -107,6 +109,8 @@ function App() {
           <Route path='/optionalbakery' element={<Optionalsbakery/>}/>
           <Route path='/optionalsize' element={<Optionalssize/>}/>
           <Route path='/optionalstorage' element={<Optionalsstorage/>}/>
+          <Route path='/notification' element={<Notification/>}/>
+          <Route path='/storenotification' element={<Storenotification/>}/>
         </Routes>
       </Router>
     </div>
