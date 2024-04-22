@@ -52,6 +52,11 @@ import Optionalssize from './pages/Optionalssize';
 import Optionalsstorage from './pages/Optionalstorage';
 import Notification from './pages/Notification';
 import Storenotification from './pages/Storenotification';
+import Orderandpays from './pages/Orderandpays';
+import Payments from './pages/Payments';
+import Ongoingorders from './pages/Ongoingorders';
+import Deliveredorders from './pages/Deliveredorders';
+import Cancelledorders from './pages/Cancelledorders';
 
 function App() {
   return (
@@ -111,6 +116,11 @@ function App() {
           <Route path='/optionalstorage' element={<Optionalsstorage/>}/>
           <Route path='/notification' element={<Notification/>}/>
           <Route path='/storenotification' element={<Storenotification/>}/>
+          <Route path='/orderandpays' element={<Orderandpays/>}/>
+          <Route path='/payments' element={<Payments/>}/>
+          <Route path='/ongoingorders' element={<Ongoingorders/>}/>
+          <Route path='/deliveredorders' element={<Deliveredorders/>}/>
+          <Route path='/cancelledorders' element={<Cancelledorders/>}/>
         </Routes>
       </Router>
     </div>
