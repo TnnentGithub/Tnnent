@@ -57,6 +57,11 @@ import Payments from './pages/Payments';
 import Ongoingorders from './pages/Ongoingorders';
 import Deliveredorders from './pages/Deliveredorders';
 import Cancelledorders from './pages/Cancelledorders';
+import Couponprice from './pages/Couponprice';
+import Couponpercent from './pages/Couponpercent';
+import CreateCoupon from './pages/Createcoupon';
+import Details from './pages/Details';
+import Checkoutaddress from './pages/Checkoutaddress';
 
 function App() {
   return (
@@ -121,6 +126,11 @@ function App() {
           <Route path='/ongoingorders' element={<Ongoingorders/>}/>
           <Route path='/deliveredorders' element={<Deliveredorders/>}/>
           <Route path='/cancelledorders' element={<Cancelledorders/>}/>
+          <Route path='/couponprice' element={<Couponprice/>}/>
+          <Route path='/couponpercent' element={<Couponpercent/>}/>
+          <Route path='/createcoupon' element={<CreateCoupon/>}/>
+          <Route path='/details' element={<Details/>}/>
+          <Route path='/checkoutaddress' element={<Checkoutaddress/>}/>
         </Routes>
       </Router>
     </div>
