@@ -1,6 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import Checkoutcards from '../components/Checkoutcards.jsx';
 
 function Checkoutaddress() {
+  const [quantity, setQuantity] = useState(1);
+
+  const incrementQuantity = () => {
+    setQuantity(prevQuantity => prevQuantity + 1);
+  };
+
+  const decrementQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(prevQuantity => prevQuantity - 1);
+    }
+  };
+
   return (
   <>
   <section className='lg:hidden'>
@@ -43,37 +57,13 @@ function Checkoutaddress() {
       </div>
     </div>
     <div className='flex justify-center'>
-        <div className='bg-red-200 w-[93vw] mt-6 rounded-3xl shadow-xl h-[45vw]'>
-          <div className='flex justify-between items-center'>
-            <div className='flex justify-between items-center gap-4'>
-                <div className='ml-4 mt-6 w-[27vw] h-[31vw] bg-green-200 rounded-md'></div>
-                <div className='flex flex-col mt-7'>
-                    <h2 className='font-bold text-[3.8vw]'>Nikon Camera</h2>
-                    <button className='px-8 py-1 absolute text-[3vw] border-[1px] border-[#D0D0D0] mt-7 '>XS</button>
-                    <div className='flex justify-between gap-3 items-center mt-12'>
-                        <div className='flex gap-1'>
-                        <h2 className='font-bold text-[5vw]'>₹</h2>
-                        <h2 className='font-bold text-[5vw]'>200</h2>
-                        </div>
-                        <h2 className='font-bold text-[3.3vw] text-red-600 mt-1'>40% Discount</h2>
-                    
-                    </div>
-
-                        <h2 className='font-bold text-[3.2vw] opacity-50 line-through'>M.R.P ₹700</h2>
-
-                </div>
-            </div>
-            <div className='flex flex-col'>
-                <h2 className='mr-4 font-bold text-[2.9vw]'>QUANTITY</h2>
-                <div className='flex justify-around border-2'>
-                    <h2>+</h2>
-                    <h2>1</h2>
-                    <h2>-</h2>
-                </div>
-            </div>
-          </div>
-        </div>
+       <Checkoutcards/>
     </div>
+    <div className="fixed bottom-4 left-0 right-0 flex justify-center items-center">
+                                <Link to="" className="flex bg-[#2D332F] rounded-full text-xl p-4 w-72 md:hidden text-white justify-center items-center">
+                                Continue
+                                </Link>
+                            </div>
   </section>
   </> 
   )

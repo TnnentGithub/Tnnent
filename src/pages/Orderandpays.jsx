@@ -43,7 +43,7 @@ function Orderandpays() {
                       </div>
                       <div className='flex flex-col mr-5 gap-1'>
                         <h2 className='text-[3.2vw] font-bold '>Coupons</h2>
-                        <p className='text-[2.3vw] text-[#838383]leading-[0.05rem]'>Orders, payments &<br/>cupons</p>
+                        <p className='text-[2.3vw] text-[#838383] leading-[0.05rem]'>Orders, payments &<br/>cupons</p>
                       </div>
                     </div>
                     </div>

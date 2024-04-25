@@ -62,6 +62,8 @@ import Couponpercent from './pages/Couponpercent';
 import CreateCoupon from './pages/Createcoupon';
 import Details from './pages/Details';
 import Checkoutaddress from './pages/Checkoutaddress';
+import Checkoutinfo from './pages/Checkoutinfo';
+import Checkoutmain1 from './pages/Checkoutmain1';
 
 function App() {
   return (
@@ -131,6 +133,8 @@ function App() {
           <Route path='/createcoupon' element={<CreateCoupon/>}/>
           <Route path='/details' element={<Details/>}/>
           <Route path='/checkoutaddress' element={<Checkoutaddress/>}/>
+          <Route path='/checkoutinfo' element={<Checkoutinfo/>}/>
+          <Route path='/checkoutmain1' element={<Checkoutmain1/>}/>
         </Routes>
       </Router>
     </div>
