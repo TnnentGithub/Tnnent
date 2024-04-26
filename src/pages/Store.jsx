@@ -25,10 +25,16 @@ import CatalogIcon from '../images/images2/mobile icons/catalog.png';
 import StoreIcon from '../images/images2/mobile icons/store.png';
 import GalleryIcon from '../images/images2/mobile icons/gallery.png';
 import CommunityIcon from '../images/images2/mobile icons/community.png';
+import { db } from "../../firebase.js";
+import { doc, setDoc, arrayUnion } from "firebase/firestore";
+
+
 
 function Store() {
   const [todaysDate, setTodaysDate] = useState('');
 
+  const userID = "Customer-0002";
+  const storeID = "Store-0001";
   useEffect(() => {
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -45,9 +51,36 @@ function Store() {
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
   };
+
+
+  const handleClick = async (e) =>{
+      e.preventDefault();
+      try {
+        console.log("Adding Data to Users - Connect List -");
+        const userDocRef = doc(db, `Users/${userID}`);
+        await setDoc(userDocRef,{
+          ConnectList: arrayUnion(storeID)
+        });
+        console.log('--Success--');
+        
+        console.log("Adding Data to Store/CommunityPost -Following List -");
+        const storeDocRef = doc(db,`Store/${storeID}`);
+        await setDoc(storeDocRef,{
+          FollowingList: arrayUnion(userID)
+        });
+        console.log('--Success--');
+      
+      } catch (error) {
+        console.log("Failed: ",error);
+      }
+      
+
+  }
+
   return (
     <>
     <div className='forscroll'>
+      <div className='follow-btn'><button onClick={handleClick}>follow store</button></div>
     <section className='lg:hidden'>
       <div className="flex justify-between items-center">
         <div className="mt-7 ml-4">
@@ -76,15 +109,15 @@ function Store() {
           <h2 className="absolute bottom-2 left-0 text-white ml-6 mb-4 leading-[1.2] text-[4vw]" style={{ bottom: '29%', left: '74%' }}>Tnennt<br />Store<span className="text-red-500"> &bull;</span></h2>
           <div className="absolute bottom-9 left-5 w-[38vw]" id="carousel" data-auto="true">
           <div id="scene">
-          <img class="carousel_item" src={Rectangle1856} alt=""/>
-          <img class="carousel_item" src={Rectangle1856} alt=""/>
-          <img class="carousel_item" src={Rectangle1856} alt=""/>
-          <img class="carousel_item" src={Rectangle1856} alt=""/>
-          <img class="carousel_item" src={Rectangle1856} alt=""/>
-          <img class="carousel_item" src={Rectangle1856} alt=""/>
-          <img class="carousel_item" src={Rectangle1856} alt=""/>
-          <img class="carousel_item" src={Rectangle1856} alt=""/>
-          <img class="carousel_item" src={Rectangle1856} alt=""/>
+          <img className="carousel_item" src={Rectangle1856} alt=""/>
+          <img className="carousel_item" src={Rectangle1856} alt=""/>
+          <img className="carousel_item" src={Rectangle1856} alt=""/>
+          <img className="carousel_item" src={Rectangle1856} alt=""/>
+          <img className="carousel_item" src={Rectangle1856} alt=""/>
+          <img className="carousel_item" src={Rectangle1856} alt=""/>
+          <img className="carousel_item" src={Rectangle1856} alt=""/>
+          <img className="carousel_item" src={Rectangle1856} alt=""/>
+          <img className="carousel_item" src={Rectangle1856} alt=""/>
           
     </div>
           </div>
