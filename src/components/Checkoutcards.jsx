@@ -15,6 +15,7 @@ function Checkoutcards() {
   
   return (
     <>
+    <div className='flex justify-center'>
      <div className='bg-[#ffffff] w-[93vw] mt-6 rounded-3xl shadow-md relative'>
           <div className='flex justify-between items-center mb-6'>
             <div className='flex justify-between items-center gap-4'>
@@ -45,6 +46,7 @@ function Checkoutcards() {
                 </div>
             </div>
           </div>
+        </div>
         </div>
     </>
   )
