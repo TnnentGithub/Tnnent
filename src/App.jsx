@@ -66,6 +66,7 @@ import Checkoutinfo from './pages/Checkoutinfo';
 import Checkoutmain1 from './pages/Checkoutmain1';
 import Checkoutmain2 from './pages/Checkoutmain2';
 import Receiptsuccess from './pages/Receiptsuccess';
+import Productpage from './pages/Productpage';
 
 function App() {
   return (
@@ -139,6 +140,7 @@ function App() {
           <Route path='/checkoutmain1' element={<Checkoutmain1/>}/>
           <Route path='/checkoutmain2' element={<Checkoutmain2/>}/>
           <Route path='/receiptsuccess' element={<Receiptsuccess/>}/>
+          <Route path='/product' element={<Productpage/>}/>
         </Routes>
       </Router>
     </div>
