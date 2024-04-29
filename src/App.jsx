@@ -67,6 +67,11 @@ import Checkoutmain1 from './pages/Checkoutmain1';
 import Checkoutmain2 from './pages/Checkoutmain2';
 import Receiptsuccess from './pages/Receiptsuccess';
 import Productpage from './pages/Productpage';
+import Purchases from './pages/Purchases';
+import Couponcreated from './pages/Couponcreated';
+import Storeregistrationstarting from './pages/Storeregistrationstarting';
+import Settingslocation from './pages/Settingslocation';
+import Settingsupi from './pages/Settingsupi';
 
 function App() {
   return (
@@ -141,6 +146,11 @@ function App() {
           <Route path='/checkoutmain2' element={<Checkoutmain2/>}/>
           <Route path='/receiptsuccess' element={<Receiptsuccess/>}/>
           <Route path='/product' element={<Productpage/>}/>
+          <Route path='/purchases' element={<Purchases/>}/>
+          <Route path='/couponcreated' element={<Couponcreated/>}/>
+          <Route path='/storestarting' element={<Storeregistrationstarting/>}/>
+          <Route path='/settingslocation' element={<Settingslocation/>}/>
+          <Route path='/settingsupi' element={<Settingsupi/>}/>
         </Routes>
       </Router>
     </div>

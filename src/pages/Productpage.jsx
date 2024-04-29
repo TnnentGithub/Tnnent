@@ -1,12 +1,67 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import ratingIcon from '../images/Vector (17).svg';
 import shareIcon from '../images/ios_share (2).svg';
+import mapIcon from '../images/images2/mobile icons/map.png';
+import storeIcon from '../images/images2/mobile icons/store.png'
+import logo from '../images/images2/desktop icons/logo.png';
 import './style.css';
 
 import 'swiper/css';
+import ThingCards from '../components/ThingCards.jsx';
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "../components/ui/drawer.jsx"
+
 
 function Productpage() {
+      // State to track whether the full description is visible
+  const [showFullDescription, setShowFullDescription] = useState(false);
+
+  // Function to handle click event on "See full description" link
+  const handleShowMore = () => {
+    // Update the state to show the full description
+    setShowFullDescription(true);
+  };
+  const [reviewText, setReviewText] = useState('');
+  const [reviews, setReviews] = useState([]);
+  const [displayedReviews, setDisplayedReviews] = useState(5);
+    const [showAll, setShowAll] = useState(false);
+
+    const toggleShowMore = () => {
+        setShowAll(!showAll); // Toggle the state to show/hide additional reviews
+    };
+
+  const handleReviewInput = (event) => {
+    setReviewText(event.target.value);
+  };
+
+  const displayReview = () => {
+    const text = reviewText.trim();
+    if (text) {
+      const newReview = {
+        text,
+        author: 'Kunal Deb', // You can replace this with dynamic author name if needed
+      };
+      setReviews([...reviews, newReview]);
+      setReviewText('');
+    }
+  };
+
+  const showMoreReviews = () => {
+    setDisplayedReviews(reviews.length);
+  };
+
+  const seeLessReviews = () => {
+    setDisplayedReviews(reviews.length);
+  };
   return (
    <>
    <div className='forscroll'>
@@ -61,9 +116,24 @@ function Productpage() {
             </div>
 
             <div className="flex ml-32 gap-3 mt-[-3px] justify-end right-0">
-                <div className="w-10 h-10 mt-3 bg-[#F5F5F5] rounded-full flex justify-center items-center">
+            <Drawer>
+               <DrawerTrigger><div className="w-10 h-10 mt-3 bg-[#F5F5F5] rounded-full flex justify-center items-center">
                     <img src={ratingIcon} alt="" className="w-5" />
-                </div>
+                </div></DrawerTrigger> 
+                
+
+             <DrawerContent className="h-[70vw]">
+    
+ 
+                 <DrawerClose>
+   
+                </DrawerClose>
+  
+           </DrawerContent>
+              </Drawer>
+
+              
+
                 <div className="w-10 h-10 mt-3 bg-[#F5F5F5] rounded-full flex justify-center items-center">
                     <img src={shareIcon} alt="" className="w-4" />
                 </div>
@@ -93,7 +163,108 @@ function Productpage() {
                 </div>
             </div>
         </div>
+        <div className="mt-4 ml-6">
+      <h2 className="font-black text-lg">Canon XYZ Camera</h2>
+      {/* <p className="text-[#9C9C9C]">Assam, Karimganj, Shyamaprasad Road- house no.3</p> */}
+      
+      <div className="flex  mt-5 gap-4">
+        {/* <img src={mapIcon} alt="" className="w-20" /> */}
+        <div className="w-full bg-[#F5F5F5] p-4 py-2 rounded-xl flex justify-between mr-4 items-center">
+          <div>
+            <div className="flex">
+              <h2 className="text-2xl font-extrabold mt-2">&#x20b9; 2000</h2>
+              <p className="text-red-600 font-black ml-2 mt-4">40% Discount</p>
+            </div>
+            <p className="text-[#A9A9A9] font-extrabold mt-[-5px] ml-5 text-md line-through">
+              MRP ₹700
+            </p>
+          </div>
+          <div className="bg-[#094446] p-2 py-2 w-14 h-14 mt-1 rounded-lg ml-12 flex justify-center items-center">
+            <img src={storeIcon} alt="" className="w-7" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div className="ml-6 mt-7">
+      <h2 className="text-2xl font-extrabold font-gotham-black">Description <span className="text-red-600"> &bull;</span></h2>
+      <p className={`mt-4 mr-4 text-[14px] ${showFullDescription ? '' : 'overflow-hidden line-clamp-3'}`}>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo adipisci itaque enim dolorem atque labore dignissimos, ratione explicabo repellat totam id earum a alias impedit consequuntur tempore suscipit consequatur eveniet?
+      </p>
+      {!showFullDescription && (
+        <p className="mt-2">
+          <a href="#" className="text-[#094446] mt-[-5px]" onClick={handleShowMore}>See full description</a>
+        </p>
+      )}
+    </div>
+    <div className="mt-14 ml-6">
+      <h2 className="text-2xl font-extrabold font-gotham-black">Related Products<span className="text-green-600"> &bull;</span></h2>
+    </div>
+    <Swiper
+          className="mySwiper mr-2 ml-4 mt-7"
+          spaceBetween={10}
+          slidesPerView={2.2}
+         
+        >
+            <SwiperSlide>
+                <ThingCards/>
+            </SwiperSlide>
+            <SwiperSlide>
+                <ThingCards/>
+            </SwiperSlide>
+            <SwiperSlide>
+                <ThingCards/>
+            </SwiperSlide>
+            <SwiperSlide>
+                <ThingCards/>
+            </SwiperSlide>
+            <SwiperSlide>
+                <ThingCards/>
+            </SwiperSlide>
+        </Swiper>
+        
+        <div className="ml-6 mt-9">
+      <h2 className="text-2xl font-gotham-black font-extrabold">Reviews <span className="text-red-600"> &bull;</span></h2>
+    </div>
+    <div className="m-4">
+      <div className="mt-7 p-3 relative">
+        <input
+          type="text"
+          placeholder="Add your review"
+          className="border border-black p-4 mb-4 w-full outline-none rounded-xl text-[18px]"
+          style={{ paddingLeft: '50px' }}
+          value={reviewText}
+          onChange={handleReviewInput}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter') {
+              displayReview();
+            }
+          }}
+        />
+        <div className="w-12 h-12 rounded-full absolute top-[-11px] left-[-10px] mt-7 ml-6 flex items-center justify-center">
+          <img src={logo} alt="" className="w-6" />
+        </div>
+      </div>
 
+        {reviews.slice(0, displayedReviews).map((review, index) => (
+          <div
+            key={index}
+            className={`review-item transform transition-all duration-500 px-4 delay-100 hover:translate-x- mt-2`}
+            
+          >
+            <div className="flex gap-2 mb-3">
+              <div className="w-8 h-8 mt-3 bg-[#616363] rounded-full"></div>
+              <p className=" font-semibold text-[#9C9C9C] mt-5">{review.author}</p>
+            </div>
+            <p className="break-all">{review.text}</p>
+          </div>
+        ))}
+
+{reviews.length > 5 && (
+                <button onClick={toggleShowMore} className="mt-4">
+                    {showAll ? 'Show Less' : 'Show More'}
+                </button>
+            )}
+    </div>
     </section>
    </div>
    </>

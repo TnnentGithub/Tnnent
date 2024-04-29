@@ -3,21 +3,32 @@ import tnnentLogo from '../images/Frame 397.png';
 import backButton from '../images/back.png';
 import vectorImage from '../images/Vector (18).svg';
 
-function SelectStoreLocation() {
-    return (
-        <>
-        <div className='forscroll'>
-        <section className="lg:hidden">
-            <div className="w-full h-[12vh] flex p-[20px] justify-between sticky z-50 mb-[12vh]">
-                <div className="flex justify-center items-center gap-2">
-                    <img src={tnnentLogo} alt="tnnent-logo" className="w-10" />
-                </div>
-                <div className="flex justify-center items-center gap-4">
-                    <img className="w-12" src={backButton} alt="" />
-                </div>
-            </div>
 
-            <div className="mx-5">
+function Settingslocation() {
+  return (
+    <>
+    <div className='forscroll'>
+        <section className="lg:hidden">
+        <div className="fixed bg-[#fff] z-60 tnennt">
+                
+                <div className="flex justify-between items-center px-3 mt-6">
+                <div className="flex flex-col">
+            <div className="flex gap-2 items-center">
+                <h2 className="font-bold text-[6vw]">SETTINGS</h2>
+                <div className="rounded-full bg-green-500 w-[1vh] h-[1vh]  mt-1"></div>
+            </div>
+            <p className="font-bold opacity-50 text-[3vw]">Store Settings</p>
+        </div>
+        <div className="rounded-full bg-[#F5F5F5] w-[12vw] h-[12vw] flex justify-center items-center absolute left-[85%]">
+            <svg width="40%" height="40%" viewBox="0 0 18 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="15.6315" y1="27.347" x2="1.96744" y2="13.6829" stroke="#272727" strokeWidth="4.09708"/>
+                <line x1="16.2493" y1="2.30791" x2="4.66085" y2="13.8964" stroke="#272727" strokeWidth="4.09708"/>
+                </svg>                
+        </div>
+                </div>
+                </div>
+
+            <div className="mx-5 mt-[50%]">
                 <p className="font-extrabold text-[7vw]">Enter Your Store Location</p>
                 <p className="text-[#636363] text-[4vw]">Search for area, street name</p>
             </div>
@@ -40,7 +51,8 @@ function SelectStoreLocation() {
         </section>
         </div>
         </>
-    );
+   
+  )
 }
 
-export default SelectStoreLocation;
+export default Settingslocation
