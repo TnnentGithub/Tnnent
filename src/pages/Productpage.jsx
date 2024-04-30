@@ -5,6 +5,12 @@ import shareIcon from '../images/ios_share (2).svg';
 import mapIcon from '../images/images2/mobile icons/map.png';
 import storeIcon from '../images/images2/mobile icons/store.png'
 import logo from '../images/images2/desktop icons/logo.png';
+import flags from '../images/Vector (19).svg';
+import greenflag from '../images/Vector (20).svg';
+import redflag from '../images/Vector (21).svg';
+import whatsapp from '../images/whatsapp.svg';
+import threedots from '../images/image 2.svg';
+import questionmark from '../images/Frame 372.svg';
 import './style.css';
 
 import 'swiper/css';
@@ -112,10 +118,29 @@ function Productpage() {
         <div className="flex justify-between items-center mt-6">
             <div className="flex gap-2 ml-4 items-center ">
                 <div className="w-8 h-8  bg-[#616363] rounded-full flex-shrink-0"></div>
-                <p className="font-semibold text-[#9C9C9C]  flex-shrink-0">Jain Brothers</p>
+                <p className="font-semibold text-[#9C9C9C] flex-shrink-0">Jain Brothers</p>
             </div>
 
-            <div className="flex ml-32 gap-3 mt-[-3px] justify-end right-0">
+            <div className="flex ml-20 gap-3 mt-[-3px] justify-end right-0">
+              <Drawer>
+                <DrawerTrigger>
+            <div className="w-10 h-10 mt-3 bg-[#F5F5F5] rounded-full flex justify-center items-center">
+                    <img src={threedots} alt="" className="w-5" />
+                </div>
+                <DrawerContent className="h-[50vw]">
+                   <div className='flex justify-center'>
+                    <DrawerClose>
+                    <div className='flex flex-col items-center'>
+                    <div className='mt-9 items-center flex justify-center h-[16vw] w-[16vw] bg-black rounded-full'>
+                      <img className='w-[7vw]' src={questionmark} alt="" />
+                    </div>
+                    <h2 className='font-bold text-[4.2vw] opacity-75'>Report</h2>
+                    </div>
+                    </DrawerClose>
+                   </div>
+                </DrawerContent>
+                </DrawerTrigger>
+                </Drawer>
             <Drawer>
                <DrawerTrigger><div className="w-10 h-10 mt-3 bg-[#F5F5F5] rounded-full flex justify-center items-center">
                     <img src={ratingIcon} alt="" className="w-5" />
@@ -123,20 +148,106 @@ function Productpage() {
                 
 
              <DrawerContent className="h-[70vw]">
-    
- 
-                 <DrawerClose>
-   
-                </DrawerClose>
+                <div className=' mt-5 flex justify-between items-center px-5'>
+                  <h2 className='font-bold text-[3.9vw]'>Add Your Rating</h2>
+                  <div className='flex gap-3 items-center'>
+                    <div className='bg-[#F5F5F5] flex justify-center items-center w-[8vw] h-[8vw] rounded-full'>
+                      <img className='w-[4vw]' src={flags} alt="" />
+                    </div>
+                    <h2 className='font-bold text-[4.1vw] text-[#094446]'>900</h2>
+                  </div>
+                </div>
+                
+                <div className='mt-9 px-14 flex justify-between items-center'>
+         
+                  <div className='flex flex-col items-center'>
+                    <DrawerClose>
+                  <div className='green justify-center items-center flex bg-[#F5F5F5] w-[20vw] h-[20vw] rounded-full'>
+                       <img className='w-[10vw]' src={greenflag} alt="" />
+                  </div>
+                  </DrawerClose>
+                  <h2 className='font-bold text-[5vw] opacity-80'>100</h2>
+                  </div>
+                  <div className='flex flex-col items-center'>
+                    <DrawerClose>
+                  <div className='red justify-center items-center flex bg-[#F5F5F5] w-[20vw] h-[20vw] rounded-full'>
+                       <img className='w-[10vw]' src={redflag} alt="" />
+                  </div>
+                  </DrawerClose>
+                  <h2 className='font-bold text-[5vw] opacity-80'>800</h2>
+                  </div>
+                
   
+                </div>
+ 
+
+   
+       
            </DrawerContent>
               </Drawer>
 
               
-
+          <Drawer>
+            <DrawerTrigger>
                 <div className="w-10 h-10 mt-3 bg-[#F5F5F5] rounded-full flex justify-center items-center">
                     <img src={shareIcon} alt="" className="w-4" />
                 </div>
+                </DrawerTrigger>
+                <DrawerContent className = "h-[70vw]">
+                   <div className='mt-8 justify-between flex px-9'>
+                   <div className="flex flex-col justify-center items-center">
+                <div className="py-4 px-4 border border-black rounded-full">
+                    <img className="w-[7vw]" src={whatsapp} alt=""/>
+                </div>
+                <p className='text-[3vw] font-medium mt-1'>Whatsapp</p>
+            </div>
+            <div className="flex flex-col justify-center items-center">
+                <div className="py-4 px-4 border border-black rounded-full">
+                    <img className="w-[7vw]" src={whatsapp} alt=""/>
+                </div>
+                <p className='text-[3vw] font-medium mt-1'>Whatsapp</p>
+            </div>
+            <div className="flex flex-col justify-center items-center">
+                <div className="py-4 px-4 border border-black rounded-full">
+                    <img className="w-[7vw]" src={whatsapp} alt=""/>
+                </div>
+                <p className='text-[3vw] font-medium mt-1'>Whatsapp</p>
+            </div>
+            <div className="flex flex-col justify-center items-center">
+                <div className="py-4 px-4 border border-black rounded-full">
+                    <img className="w-[7vw]" src={whatsapp} alt=""/>
+                </div>
+                <p className='text-[3vw] font-medium mt-1'>Whatsapp</p>
+            </div>
+                   </div>
+                   <div className='mt-4 justify-between flex px-9'>
+                   <div className="flex flex-col justify-center items-center">
+                <div className="py-4 px-4 border border-black rounded-full">
+                    <img className="w-[7vw]" src={whatsapp} alt=""/>
+                </div>
+                <p className='text-[3vw] font-medium mt-1'>Whatsapp</p>
+            </div>
+            <div className="flex flex-col justify-center items-center">
+                <div className="py-4 px-4 border border-black rounded-full">
+                    <img className="w-[7vw]" src={whatsapp} alt=""/>
+                </div>
+                <p className='text-[3vw] font-medium mt-1'>Whatsapp</p>
+            </div>
+            <div className="flex flex-col justify-center items-center">
+                <div className="py-4 px-4 border border-black rounded-full">
+                    <img className="w-[7vw]" src={whatsapp} alt=""/>
+                </div>
+                <p className='text-[3vw] font-medium mt-1'>Whatsapp</p>
+            </div>
+            <div className="flex flex-col justify-center items-center">
+                <div className="py-4 px-4 border border-black rounded-full">
+                    <img className="w-[7vw]" src={whatsapp} alt=""/>
+                </div>
+                <p className='text-[3vw] font-medium mt-1'>Whatsapp</p>
+            </div>
+                   </div>
+                </DrawerContent>
+                </Drawer>
 
                 <div className="w-10 h-10 mt-3 mr-3 bg-[#F5F5F5] rounded-full flex justify-center items-center">
                     <div className="heart-container" title="Like">

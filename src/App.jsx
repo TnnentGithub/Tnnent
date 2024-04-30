@@ -72,6 +72,7 @@ import Couponcreated from './pages/Couponcreated';
 import Storeregistrationstarting from './pages/Storeregistrationstarting';
 import Settingslocation from './pages/Settingslocation';
 import Settingsupi from './pages/Settingsupi';
+import MyCommunity from './pages/Mycommunity';
 
 function App() {
   return (
@@ -151,6 +152,7 @@ function App() {
           <Route path='/storestarting' element={<Storeregistrationstarting/>}/>
           <Route path='/settingslocation' element={<Settingslocation/>}/>
           <Route path='/settingsupi' element={<Settingsupi/>}/>
+          <Route path='/mycommunity' element={<MyCommunity/>}/>
         </Routes>
       </Router>
     </div>

@@ -1,5 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import './style.css';
+import xls from '../images/xls.svg';
+import pdf from '../images/pdf.svg';
+import jpg from '../images/jpg.svg';
+import doc from '../images/doc.svg';
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "../components/ui/drawer.jsx"
+
 
 function Analytics() {
   
@@ -124,9 +139,41 @@ function Analytics() {
                             <li className={selectedOption === 'Last Year' ? 'active' : ''} onClick={() => handleOptionSelect('Last Year')}>Last Year</li>
                         </ul>
                     </div>
-                    
-                    <button style={buttonStyle} className="printdata font-semibold px-6 py-2 bg-[#131312] text-white text-[4vw] rounded-lg absolute left-[65%] ">Print Data</button>
-                    
+                    <Drawer>
+                      <DrawerTrigger>
+                    <button style={buttonStyle} className="printdata font-semibold px-6 py-2 bg-[#131312] mt-[-5%] text-white text-[4vw] rounded-lg absolute left-[65%] ">Print Data</button>
+                    </DrawerTrigger>
+                    <DrawerContent className="h-[50vw]">
+                      <div className='flex justify-between px-12 mt-9'>
+                        <DrawerClose>
+                        <div className='flex flex-col gap-1 items-center'>
+                          <img className="w-[13vw]" src={xls} alt="" />
+                          <h2 className='font-medium text-[3.9vw]'>Excel</h2>
+                        </div>
+                        
+                        </DrawerClose>
+                        <DrawerClose>
+                        <div className='flex flex-col gap-1 items-center'>
+                          <img className='w-[13vw]' src={jpg} alt="" />
+                          <h2 className='font-medium text-[3.9vw]'>Image</h2>
+                        </div>
+                        
+                        </DrawerClose>
+                        <DrawerClose>
+                        <div className='flex flex-col gap-1 items-center'>
+                          <img className='w-[13vw]' src={doc} alt="" />
+                          <h2 className='font-medium text-[3.9vw]'>Doc</h2>
+                        </div>
+                        </DrawerClose>
+                        <DrawerClose>
+                        <div className='flex flex-col gap-1 items-center'>
+                          <img className='w-[13vw]' src={pdf} alt="" />
+                          <h2 className='font-medium text-[3.9vw]'>PDF</h2>
+                        </div>
+                        </DrawerClose>
+                      </div>
+                    </DrawerContent>
+                    </Drawer>
                 </div>
                 </div>
                 
