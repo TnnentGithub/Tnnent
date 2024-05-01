@@ -4,7 +4,33 @@ import profileImage from '../images/kate-trysh-Dnkr_lmdKi8-unsplash 1.png';
 import iosshare from '../images/ios_share (1).svg'
 import Navbar from '../components/Navbar';
 import threedots from '../images/image 2.svg';
+import edit from '../images/Vector (23).svg';
+import deleteicon from '../images/Vector (24).svg';
 import './Heart.css';
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { Button } from "@/components/ui/button"
+
+
 
 function MyCommunity() {
 
@@ -50,9 +76,54 @@ function MyCommunity() {
             <div className="w-[5vh] h-[5vh] rounded-full bg-[#343434]"></div>
             <h2 className="font-bold text-[5vw] mt-2">Kunal Deb</h2>
           </div>
+          <Drawer>
+            <DrawerTrigger>
           <div className="w-10 h-10 mt-3 bg-[#F5F5F5] rounded-full flex justify-center items-center">
                     <img src={threedots} alt="" className="w-5" />
                 </div>
+                </DrawerTrigger>
+                <DrawerContent className="h-[60vw]">
+                    <div className='mt-10'>
+                      <div className='flex justify-between px-20'>
+                        <DrawerClose>
+                        <div className='flex flex-col items-center gap-2'>
+                          <div className='w-[20vw] h-[20vw] flex justify-center items-center bg-black rounded-full'>
+                            <img className='w-[6vw]' src={edit} alt="" />
+                          </div>
+                          <h2 className='font-bold text-[4vw] opacity-55'>Edit</h2>
+                        </div>
+                        </DrawerClose>
+      
+                        <AlertDialog>
+                        <AlertDialogTrigger>
+                          <div>
+                        <div className='flex flex-col items-center gap-2'>
+                          <div className='w-[20vw] h-[20vw] flex justify-center items-center bg-black rounded-full'>
+                            <img className='w-[6vw]' src={deleteicon} alt="" />
+                          </div>
+                          <h2 className='font-bold text-[4vw] opacity-55'>Delete</h2>
+                        </div>
+                        </div>
+                        </AlertDialogTrigger>
+                        <AlertDialogContent className="w-[90vw] rounded-3xl">
+                        <AlertDialogHeader>
+               <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+      <AlertDialogDescription>
+        This action cannot be undone. This will permanently delete your account
+        and remove your data from our servers.
+      </AlertDialogDescription>
+    </AlertDialogHeader>
+    <AlertDialogFooter>
+      <AlertDialogCancel className="rounded-3xl">Cancel</AlertDialogCancel>
+      <AlertDialogAction className="rounded-3xl">Continue</AlertDialogAction>
+    </AlertDialogFooter>
+                        </AlertDialogContent>
+                        </AlertDialog>
+            
+                      </div>
+                    </div>
+                </DrawerContent>
+                </Drawer>
         </div>
         <div className="flex justify-center mt-4 px-2">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<span className='mt-4 text-[3.4vw] font-bold opacity-50'>&nbsp; 8h ago</span></p>

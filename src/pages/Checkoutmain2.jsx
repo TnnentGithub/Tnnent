@@ -1,11 +1,13 @@
 import React from 'react'
-import Checkoutcards from '../components/Checkoutcards.jsx'
 import car from '../images/Vector (16).svg';
 import globe from '../images/Vector (15).svg';
 import coupon from '../images/Vector (11).svg';
 import { Link } from 'react-router-dom';
+import Checkoutcardsdelete from '@/components/Checkoutcardswithdelete.jsx';
+import Checkoutstorecards from '@/components/Checkoutstorecards.jsx';
 
 function Checkoutmain2() {
+   
   return (
     <>
     <div className='forscroll'>
@@ -33,8 +35,8 @@ function Checkoutmain2() {
                 </div>
                 </div>
                 <div className='mt-[35%]'>
-                <Checkoutcards/>
-                <Checkoutcards/>
+                <Checkoutcardsdelete/>
+                <Checkoutcardsdelete/>
                 </div>
                 <div className='flex justify-center'>
                 <div className='mt-6 rounded-3xl shadow-md w-[93vw]  bg-[#ffffff] px-5 py-3'>
@@ -45,28 +47,8 @@ function Checkoutmain2() {
                         </div>
                         <div className='rounded-full w-[10.5vw] h-[10.5vw] bg-green-200'></div>
                     </div>
-                    <div className='flex gap-3 items-center mt-4'>
-                    <div className='w-[17vw] h-[17vw] bg-green-200 rounded-2xl'></div>
-                    <div className='flex flex-col'>
-                        <h2 className='font-bold text-[5vw]'>Jain Brothers</h2>
-                        <div className='flex gap-2'>
-                           <img className='w-[3.1vw]' src={globe} alt="" />
-                           <h2 className='text-[2.7vw] opacity-55'>jainbrothers.tnennt.store</h2>
-                        </div>
-                    </div>
-                    
-                </div>
-                <div className='flex gap-3 items-center mt-4'>
-                    <div className='w-[17vw] h-[17vw] bg-green-200 rounded-2xl'></div>
-                    <div className='flex flex-col'>
-                        <h2 className='font-bold text-[5vw]'>Jain Brothers</h2>
-                        <div className='flex gap-2'>
-                           <img className='w-[3.1vw]' src={globe} alt="" />
-                           <h2 className='text-[2.7vw] opacity-55'>jainbrothers.tnennt.store</h2>
-                        </div>
-                    </div>
-                    
-                </div>
+                    <Checkoutstorecards/>
+                    <Checkoutstorecards/>
                     <div className='flex gap-2 mt-6 items-center'>
                         <img className='w-[6vw]' src={car} alt="" />
                         <h2 className='text-[3.8vw] opacity-70'>Delivery in 45 Minutes</h2>

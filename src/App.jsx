@@ -73,6 +73,8 @@ import Storeregistrationstarting from './pages/Storeregistrationstarting';
 import Settingslocation from './pages/Settingslocation';
 import Settingsupi from './pages/Settingsupi';
 import MyCommunity from './pages/Mycommunity';
+import Editcommunity from './pages/Editcommunity';
+import Storesettings from './pages/Storesettings';
 
 function App() {
   return (
@@ -153,6 +155,8 @@ function App() {
           <Route path='/settingslocation' element={<Settingslocation/>}/>
           <Route path='/settingsupi' element={<Settingsupi/>}/>
           <Route path='/mycommunity' element={<MyCommunity/>}/>
+          <Route path='/editcommunity' element={<Editcommunity/>}/>
+          <Route path='/storesettings' element={<Storesettings/>}/>
         </Routes>
       </Router>
     </div>

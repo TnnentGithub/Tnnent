@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+
 import backIcon from '../images/images3/back.png';
 import frame401 from '../images/images3/Frame 401.png';
 import frame402 from '../images/images3/Frame 402.png';
@@ -8,8 +9,26 @@ import frame407 from '../images/images3/Frame 407.png';
 import frame404 from '../images/images3/Frame 404.png';
 import frame406 from '../images/images3/Frame 406.png';
 import frame408 from '../images/images3/Frame 408.png';
+import deleteicon from '../images/Vector (26).svg'
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+  } from "@/components/ui/alert-dialog";
+
+
 
 function CreateProductPage() {
+    
+    
+
+     
 
 const [categoryname, setcategoryname] = useState('')
 const [item, setitem] = useState('')
@@ -33,7 +52,46 @@ useEffect(() => {
     setSelectedParcel(parcel);
   };
 
-  const [showHello, setShowHello] = useState(true);
+  const [showHello, setShowHello] = useState(false);
+
+  const [uploadedImages, setUploadedImages] = useState([]);
+
+  const handleImageUpload1 = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const imageData = e.target.result;
+            // Generate a unique key for each image
+            const uniqueKey = Date.now(); // Using timestamp as a unique key
+            setUploadedImages(prevImages => [...prevImages, { id: uniqueKey, data: imageData }]);
+        };
+        reader.readAsDataURL(file);
+    }
+};
+
+
+
+const handleDeleteImage = (id) => {
+    setUploadedImages(prevImages => prevImages.filter(image => image.id !== id));
+};
+const [selectedOption, setSelectedOption] = useState('Product Type');
+const [menuOpen, setMenuOpen] = useState(false);
+
+const handleOptionSelect = (option) => {
+    setSelectedOption(option);
+    setMenuOpen(false);
+};
+
+const [selectedOption1, setSelectedOption1] = useState('Weight');
+const [menuOpen1, setMenuOpen1] = useState(false);
+
+const handleOptionSelect1 = (option) => {
+    setSelectedOption1(option);
+    setMenuOpen1(false);
+};
+
+
 
     return (
         <>
@@ -51,17 +109,61 @@ useEffect(() => {
             </div>
 
             <p className="mx-5 font-extrabold text-xl">Add Images</p>
-            <div className="mx-5 my-4 flex flex-row gap-4 items-center mb-[50px]">
-                <div className="p-4 border-dotted border-[2px] rounded-[15px] border-[#848484] ">
-                    <img className="w-8" src={frame401} alt="" />
-                </div>
-                <p className="text-[13px] text-[#636363]">(Add more than one image of the product)</p>
+            <div className="mx-5 my-4 flex flex-row gap-4 items-center ">
+            {uploadedImages.length < 5 && (
+                            <div className="p-4 border-dotted border-[2px] rounded-[15px] border-[#848484] ">
+                                <label htmlFor="imageUpload1" className="cursor-pointer">
+                                    <img src={frame401} alt="" className="w-[11vw]" />
+                                    <input id="imageUpload1" type="file" accept="image/*" className="hidden" onChange={handleImageUpload1} />
+                                </label>
+                            </div>
+                        )}
+                {uploadedImages.map((image) => (
+                            <div key={image.id} className='border-[1px] rounded-[15px] border-[#848484] w-[14vw] h-[14vw] bg-cover bg-center bg-no-repeat flex justify-center items-center' style={{ backgroundImage: `url(${image.data})` }}>
+                            <AlertDialog className="z-[99999]">
+                                <AlertDialogTrigger>
+                                <img className='w-[6vw]'  src={deleteicon}
+                                    alt=""
+                                     />
+                                    </AlertDialogTrigger>
+                                    <AlertDialogContent className="w-[90vw] rounded-3xl">
+                        <AlertDialogHeader>
+               <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+      <AlertDialogDescription>
+        This action cannot be undone. This will permanently delete your account
+        and remove your data from our servers.
+      </AlertDialogDescription>
+    </AlertDialogHeader>
+    <AlertDialogFooter>
+      <AlertDialogCancel className="rounded-3xl">Cancel</AlertDialogCancel>
+      <AlertDialogAction className="rounded-3xl" onClick={() => handleDeleteImage(image.id)} >Continue</AlertDialogAction>
+    </AlertDialogFooter>
+                        </AlertDialogContent>
+                                    </AlertDialog>
+                            </div>
+                        ))}
             </div>
 
-            <p className="mx-5 font-extrabold text-xl">Category Name</p>
-            <div className="mx-5 my-3 px-4 py-3  border-dotted border-[2px] rounded-[15px] border-[#848484] flex justifu-right mb-[30px]">
-                <input type="text" id="phone-input" className="text-[#636363] text-[13px] w-[100%] border-0 border-[#000000] px-0.5 py-1 outline-none bg-[#ffffff]" placeholder="Write your Category Name" onChange={(e) => setcategoryname(e.target.value)}/>
-            </div>
+    <div className='justify-between items-center flex px-4 mt-7 mb-4'>
+    <div className="dropdown ">
+                        <div className="select border-[1px] border-[#AFAFAF] rounded-3xl font-bold" onClick={() => setMenuOpen(!menuOpen)}>
+                            <span className="selected">{selectedOption}</span>
+                            <div className={`caret ${menuOpen ? 'caret-rotate' : ''}`}>
+                            <svg width="17" height="11" viewBox="0 0 17 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="15.9091" y1="1.63956" x2="7.7021" y2="9.84654" stroke="#272727" strokeWidth="2.4608"/>
+                    <line x1="0.870025" y1="1.26865" x2="7.83034" y2="8.22896" stroke="#272727" strokeWidth="2.4608"/>
+                    </svg> 
+                            </div>
+                        </div>
+                        <ul className={`menu font-bold ${menuOpen ? 'menu-open' : ''}`}>
+                            <li className={selectedOption === 'Today' ? 'active' : ''} onClick={() => handleOptionSelect('Today')}>Today</li>
+                            <li className={selectedOption === 'Yesterday' ? 'active' : ''} onClick={() => handleOptionSelect('Yesterday')}>Yesterday</li>
+                            <li className={selectedOption === 'Last Month' ? 'active' : ''} onClick={() => handleOptionSelect('Last Month')}>Last Month</li>
+                            <li className={selectedOption === 'Last Year' ? 'active' : ''} onClick={() => handleOptionSelect('Last Year')}>Last Year</li>
+                        </ul>
+                    </div>
+                    <h2 className='text-[3.4vw]'>Enter your product type</h2>
+    </div>
 
             <p className="mx-5 font-extrabold text-xl">Item Name</p>
             <div className="mx-5 my-3 px-4 py-3  border-dotted border-[2px] rounded-[15px] border-[#848484] flex justifu-right mb-[30px]">
@@ -100,7 +202,7 @@ useEffect(() => {
                     <img className="w-6" src={frame406} alt="" />
                     <p className="text-[#ffffff] text-[13px] font-bold">View Optional</p>
                 </div>
-                <img className="w-6" src={frame404} alt="" />
+                <img className="wow w-6" src={frame404} alt="" onClick={() => setShowHello(true)} />
             </div>
 
            )}
@@ -119,31 +221,30 @@ useEffect(() => {
 </div>
 
 <p className="mx-5 font-extrabold text-xl">Item Weight</p>
-
-<div className="flex mx-10 my-3 gap-8 mt-5">
-    <div className={`w-[40%] p-2 border-dotted border-[2px] rounded-[17px] border-[#848484] flex flex-col gap-1 ${selectedParcel === 'Small' ? 'bg-black text-white' : ''}`} onClick={() => handleParcelSelect('Small')}>
-        <span className="text-[13px] text-[#848484] font-bold">Small</span>
-        <span className="text-[13px] font-bold">Wt:0-500gm</span>
+<div className='justify-between items-center flex px-2 mt-7 mb-32'>
+    <div className="dropdown relative">
+                        <div className="select border-[1px] border-[#AFAFAF] rounded-3xl font-bold" onClick={() => setMenuOpen1(!menuOpen1)}>
+                            <span className="selected">{selectedOption1}</span>
+                            <div className={`caret ${menuOpen1 ? 'caret-rotate' : ''}`}>
+                            <svg width="17" height="11" viewBox="0 0 17 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="15.9091" y1="1.63956" x2="7.7021" y2="9.84654" stroke="#272727" strokeWidth="2.4608"/>
+                    <line x1="0.870025" y1="1.26865" x2="7.83034" y2="8.22896" stroke="#272727" strokeWidth="2.4608"/>
+                    </svg> 
+                            </div>
+                        </div>
+                        <ul className={`menu font-bold ${menuOpen1 ? 'menu-open' : ''} absolute top-[-54vw]`}>
+                            <li className={selectedOption1 === 'Today' ? 'active' : ''} onClick={() => handleOptionSelect1('Today')}>Today</li>
+                            <li className={selectedOption1 === 'Yesterday' ? 'active' : ''} onClick={() => handleOptionSelect1('Yesterday')}>Yesterday</li>
+                            <li className={selectedOption1 === 'Last Month' ? 'active' : ''} onClick={() => handleOptionSelect1('Last Month')}>Last Month</li>
+                            <li className={selectedOption1 === 'Last Year' ? 'active' : ''} onClick={() => handleOptionSelect1('Last Year')}>Last Year</li>
+                        </ul>
+                    </div>
+                    <h2 className='text-[3.3vw]'>Select the weight of your product</h2>
     </div>
-    <div className={`w-[40%] p-2  border-dotted border-[2px] rounded-[17px] border-[#848484] flex flex-col gap-1 ${selectedParcel === 'Medium' ? 'bg-black text-white' : ''}`} onClick={() => handleParcelSelect('Medium')} >
-        <span className="text-[13px] text-[#848484] font-bold">Medium</span>
-        <span className="text-[13px] font-bold">Wt:500gm-3kg</span>
-    </div>
-</div>
-
-<div className="flex mx-10 my-3 gap-8 mb-28">
-    <div className={`w-[40%] p-2  border-dotted border-[2px] rounded-[17px] border-[#848484] flex flex-col gap-1 ${selectedParcel === 'Large' ? 'bg-black text-white' : ''}`} onClick={() => handleParcelSelect('Large')}>
-        <span className="text-[13px] text-[#848484] font-bold">Large</span>
-        <span className="text-[13px] font-bold">Wt:3kg-7kg</span>
-    </div>
-    <div className={`w-[40%] p-2  border-dotted border-[2px] rounded-[17px] border-[#848484] flex flex-col gap-1 ${selectedParcel === 'Extra Large' ? 'bg-black text-white' : ''}`} onClick={() => handleParcelSelect('Extra Large')}>
-        <span className="text-[13px] text-[#848484] font-bold">Extra Large</span>
-        <span className="text-[13px] font-bold">7kg-14kg</span>
-    </div>
-</div>
 
 
-    <button className="text-[#ffffff] text-[4vw] py-3 px-20 bg-[#000000] border rounded-full font-bold fixed bottom-4 left-[23%]">
+
+    <button className="text-[#ffffff] z-[999] text-[4vw] py-3 px-20 bg-[#000000] border rounded-full font-bold fixed bottom-4 left-[23%]">
         List Item
     </button>
 

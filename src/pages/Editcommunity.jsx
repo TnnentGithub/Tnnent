@@ -3,6 +3,7 @@ import image1 from '../images/image 1.svg';
 import vector1 from '../images/Vector (1).svg';
 import vector2 from '../images/Vector (2).svg';
 import movieEdit from '../images/movie_edit (1).svg';
+import { Link } from 'react-router-dom';
 import './style.css';
 import {
     AlertDialog,
@@ -16,7 +17,7 @@ import {
     AlertDialogTrigger,
   } from "@/components/ui/alert-dialog";
 
-function CommunityPost() {
+function Editcommunity() {
     const [imagePreview1, setimagePreview1] = useState(vector1);
     const [description, setDescription] = useState('');
     const maxLength = 700;
@@ -86,11 +87,10 @@ function CommunityPost() {
             </div>
             </div>
             <AlertDialog>
-            <AlertDialogTrigger>
-            
+                <AlertDialogTrigger>
             <div className="fixed bottom-4 left-0 right-0 flex justify-center items-center">
                                 <div className="flex bg-[#2D332F] rounded-full text-xl p-4 w-72 md:hidden text-white justify-center items-center">
-                                    Post
+                                    Edit
                                 </div>
                             </div>
                             </AlertDialogTrigger>
@@ -112,5 +112,5 @@ function CommunityPost() {
     );
 }
 
-export default CommunityPost;
+export default Editcommunity;
 
