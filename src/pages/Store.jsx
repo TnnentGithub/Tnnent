@@ -20,21 +20,15 @@ import Rectangle2487Image from '../images/images2/mobile icons/Rectangle 2487.sv
 import Rectangle2488Image from '../images/images2/mobile icons/Rectangle 2488.svg';
 import Rectangle1856 from '../images/Rectangle 1856.svg';
 import Rectangle2267Image from '../images/images2/mobile icons/Rectangle 2267 (1).svg';
-import HomeIcon from '../images/images2/mobile icons/home.png';
-import CatalogIcon from '../images/images2/mobile icons/catalog.png';
-import StoreIcon from '../images/images2/mobile icons/store.png';
-import GalleryIcon from '../images/images2/mobile icons/gallery.png';
-import CommunityIcon from '../images/images2/mobile icons/community.png';
+import Navbar from '../components/Navbar.jsx';
 import { db } from "../../firebase.js";
 import { doc, setDoc, arrayUnion } from "firebase/firestore";
-
-
 
 function Store() {
   const [todaysDate, setTodaysDate] = useState('');
 
-  const userID = "Customer-0002";
-  const storeID = "Store-0001";
+  const userID = "Customer-1121";
+  const storeID = "Store-9819";
   useEffect(() => {
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -76,11 +70,10 @@ function Store() {
       
 
   }
-
   return (
     <>
     <div className='forscroll'>
-      <div className='follow-btn'><button onClick={handleClick}>follow store</button></div>
+    <div className='follow-btn'><button onClick={handleClick}>follow store</button></div>
     <section className='lg:hidden'>
       <div className="flex justify-between items-center">
         <div className="mt-7 ml-4">
@@ -95,7 +88,7 @@ function Store() {
 
       <div className="mt-7 p-3 relative">
         
-        <div className="w-14 h-14 bg-[#DDDDDD] rounded-full absolute top-7 left-0  ml-6 flex items-center justify-center">
+        <div className="w-12 h-12 bg-[#DDDDDD] rounded-full absolute top-5 left-5 flex items-center justify-center">
           <img src={image4} alt="" className="w-8" />
         </div>
         <input type="text" className="input-field px-6 py-4 pl-16 border-2  border-black rounded-full w-full text-lg focus:outline-none" placeholder="Search Products & Store" />
@@ -109,15 +102,15 @@ function Store() {
           <h2 className="absolute bottom-2 left-0 text-white ml-6 mb-4 leading-[1.2] text-[4vw]" style={{ bottom: '29%', left: '74%' }}>Tnennt<br />Store<span className="text-red-500"> &bull;</span></h2>
           <div className="absolute bottom-9 left-5 w-[38vw]" id="carousel" data-auto="true">
           <div id="scene">
-          <img className="carousel_item" src={Rectangle1856} alt=""/>
-          <img className="carousel_item" src={Rectangle1856} alt=""/>
-          <img className="carousel_item" src={Rectangle1856} alt=""/>
-          <img className="carousel_item" src={Rectangle1856} alt=""/>
-          <img className="carousel_item" src={Rectangle1856} alt=""/>
-          <img className="carousel_item" src={Rectangle1856} alt=""/>
-          <img className="carousel_item" src={Rectangle1856} alt=""/>
-          <img className="carousel_item" src={Rectangle1856} alt=""/>
-          <img className="carousel_item" src={Rectangle1856} alt=""/>
+          <img class="carousel_item" src={Rectangle1856} alt=""/>
+          <img class="carousel_item" src={Rectangle1856} alt=""/>
+          <img class="carousel_item" src={Rectangle1856} alt=""/>
+          <img class="carousel_item" src={Rectangle1856} alt=""/>
+          <img class="carousel_item" src={Rectangle1856} alt=""/>
+          <img class="carousel_item" src={Rectangle1856} alt=""/>
+          <img class="carousel_item" src={Rectangle1856} alt=""/>
+          <img class="carousel_item" src={Rectangle1856} alt=""/>
+          <img class="carousel_item" src={Rectangle1856} alt=""/>
           
     </div>
           </div>
@@ -494,25 +487,7 @@ function Store() {
           </div>
         </div>
       </div>
-      
-      <div className="fixed bottom-4 left-0 right-0 flex mx-auto mb-1 bg-[#2D332F] rounded-full text-xl p-2 w-[350px] text-white justify-around items-center z-50">
-        <a href="store.html" className="icon p-4 bg-white rounded-full w-14 h-14 flex items-center justify-center">
-          <img src={HomeIcon} alt="" className="w-8" />
-        </a>
-        <a href="catalog.html" className="icon flex items-center justify-center bg-[#2D332F] rounded-full p-4 w-14 h-14">
-          <img src={CatalogIcon} alt="" className="w-8" />
-        </a>
-        <a href="rent.html" className="icon flex items-center justify-center bg-[#2D332F] rounded-full p-4 w-14 h-14">
-          <img src={StoreIcon} alt="" className="w-8" />
-        </a>
-        <a href="gallery.html" className="icon flex items-center justify-center bg-[#2D332F] rounded-full p-4 w-14 h-14">
-          <img src={GalleryIcon} alt="" className="w-5" />
-        </a>
-        <a href="#" className="icon flex items-center justify-center bg-[#2D332F] rounded-full p-4 w-14 h-14">
-          <img src={CommunityIcon} alt="" className="w-5" />
-        </a>
-      </div>
-    
+      <Navbar color="white" color2= "#2D332F" color3= "#2D332F" color4= "#2D332F"/>
       </section>
       </div>
     </>

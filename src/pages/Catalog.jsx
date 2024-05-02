@@ -5,12 +5,8 @@ import notification from '../images/notfication00.png';
 import vector from '../images/Vector2.png';
 import cart from '../images/add_shopping_cart.png';
 import vector2 from '../images/Vector 3.png'
-import home from '../images/home.png';
-import catalog from '../images/catalog.png';
-import community from '../images/community.png';
-import store from '../images/store.png';
-import gallery from '../images/gallery.png';
 import pattern from '../images/Rectangle 2322.png';
+import Navbar from '../components/Navbar';
 
 function Catalog() {
 
@@ -57,23 +53,7 @@ function Catalog() {
             <img className="w-7 ml-[80%] mt-4" src={vector2} alt=""/>
         </div>        
       </div>
-      <div className="fixed bottom-4 left-0 right-0 flex mx-auto mb-1 bg-[#2D332F] rounded-full text-xl p-2 w-[350px] md:w-full md:hidden text-white justify-around items-center">
-        <Link className="icon flex items-center justify-center bg-[#2D332F] rounded-full p-4 w-14 h-14">
-            <img src={home} alt="" className="w-8"/>
-        </Link>
-        <Link className="icon flex items-center justify-center bg-white rounded-full p-4 w-14 h-14">
-            <img src={catalog} alt="" className="w-8"/>
-        </Link>
-        <Link  className="icon flex items-center justify-center bg-[#2D332F] rounded-full p-4 w-14 h-14">
-            <img src={store} alt="" className="w-8"/>
-        </Link>
-        <Link  className="icon flex items-center justify-center bg-[#2D332F] rounded-full p-4 w-14 h-14">
-            <img src={gallery} alt="" className="w-5"/>
-        </Link>
-        <Link  className="icon flex items-center justify-center bg-[#2D332F] rounded-full p-4 w-14 h-14">
-            <img src={community} alt="" className="w-5"/>
-       </Link>
-</div>
+      <Navbar color="#2D332F" color2= "#2D332F" color3= "#2D332F" color4= "white"/>
     </section>
     </div>
     </>

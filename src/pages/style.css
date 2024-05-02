@@ -99,7 +99,7 @@ hr{
     z-index: 99;
     background-color: #fff;
   }
-  .kutta {
+  .tnennt {
     position: fixed;
     top: 0;
     left: 0;
@@ -353,3 +353,5 @@ hr{
 .checkbox-wrapper-13 *:after {
   box-sizing: inherit;
 }
+
+
