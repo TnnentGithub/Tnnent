@@ -5,6 +5,7 @@ import frame397 from '../images/images3/Frame 397.png';
 import frame407 from '../images/images3/Frame 407.png';
 import frame400 from '../images/images3/Frame 400.png';
 import frame409 from '../images/images3/Frame 409.png';
+import back from '../images/images3/back.png'
 
 const getNextColor = (() => {
     const colors = ["#DDF1EF", "#EAE6F6", "#EFEFEF", "#EFF6E6", "#ffc8dd"];
@@ -21,10 +22,13 @@ function CreateProductPage2() {
     const [selectedCategory, setSelectedCategory] = useState(null);
     const [newCategoryName, setNewCategoryName] = useState('');
     const [categories, setCategories] = useState([]);
+    const [inputcategory, setinputcategory] = useState('')
 
     const handleCategoryClick = (index) => {
         setSelectedCategory(index);
     };
+
+
 
     const handleInputChange = (e) => {
         setNewCategoryName(e.target.value);

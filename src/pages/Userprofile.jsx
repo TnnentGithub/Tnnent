@@ -12,6 +12,17 @@ import circle5 from '../images/time-past (1).svg';
 import circle6 from '../images/Vector (8).svg';
 import circle7 from '../images/Vector (9).svg';
 import circle8 from '../images/Vector (10).svg';
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+  } from "@/components/ui/alert-dialog";
 
 
 function Userprofile() {
@@ -89,12 +100,29 @@ function Userprofile() {
         </div>
         <p className="font-bold text-[4vw] text-[#9B9B9B]">Change Password & Email</p>
     </div>
+    <AlertDialog>
+    <AlertDialogTrigger>
     <div className="flex gap-6 items-center mt-3">
         <div className="rounded-full w-[6vh] h-[6vh] bg-[#2B2B2B] flex justify-center">
             <img className="w-[44%]" src={circle6} alt=""/>
         </div>
         <p className="font-bold text-[4vw] text-[#9B9B9B]">Delete Account</p>
     </div>
+    </AlertDialogTrigger>
+    <AlertDialogContent className="w-[90vw] rounded-3xl">
+                        <AlertDialogHeader>
+               <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+      <AlertDialogDescription>
+        This action cannot be undone. This will permanently delete your account
+        and remove your data from our servers.
+      </AlertDialogDescription>
+    </AlertDialogHeader>
+    <AlertDialogFooter>
+      <AlertDialogCancel className="rounded-3xl">Cancel</AlertDialogCancel>
+      <AlertDialogAction className="rounded-3xl">Continue</AlertDialogAction>
+    </AlertDialogFooter>
+                        </AlertDialogContent>
+    </AlertDialog>
     <div className="flex gap-6 items-center mt-3">
         <div className="rounded-full w-[6vh] h-[6vh] bg-[#2B2B2B] flex justify-center">
             <img className="w-[44%]" src={circle7} alt=""/>
@@ -109,8 +137,24 @@ function Userprofile() {
     </div>
       </div>
     </div>
-   
+   <AlertDialog>
+    <AlertDialogTrigger>
     <button className="absolute bg-[#094446] font-bold text-white px-7 py-3 text-[3.7vw] ml-[37%] rounded-xl mt-7 bottom-[12px]">Sign Out</button>
+    </AlertDialogTrigger>
+    <AlertDialogContent className="w-[90vw] rounded-3xl">
+                        <AlertDialogHeader>
+               <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+      <AlertDialogDescription>
+        This action cannot be undone. This will permanently delete your account
+        and remove your data from our servers.
+      </AlertDialogDescription>
+    </AlertDialogHeader>
+    <AlertDialogFooter>
+      <AlertDialogCancel className="rounded-3xl">Cancel</AlertDialogCancel>
+      <AlertDialogAction className="rounded-3xl">Continue</AlertDialogAction>
+    </AlertDialogFooter>
+                        </AlertDialogContent>
+    </AlertDialog>
     
    </section>
    </div>

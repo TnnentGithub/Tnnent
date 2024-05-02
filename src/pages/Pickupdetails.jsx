@@ -1,7 +1,6 @@
 import React from 'react';
-import './style.css'; // Import CSS file
+import './style.css'; 
 import { Link } from 'react-router-dom';
-// Import images
 import logo from '../images/images2/desktop icons/logo.png';
 import userIcon from '../images/images2/mobile icons/user.png';
 import callIcon from '../images/images2/mobile icons/call.png';
