@@ -1,7 +1,7 @@
 import React from 'react';
 import tnnentLogo from '../images/Frame 397.png';
 import backButton from '../images/back.png';
-import vectorImage from '../images/Vector (18).svg';
+import vectorImage from '../images/Vector.png';
 
 function SelectStoreLocation() {
     return (
@@ -23,10 +23,10 @@ function SelectStoreLocation() {
             </div>
 
             <div className="mx-5 my-3 px-3 py-2 border border-[#848484] rounded-lg border-dotted bg-[#D9D9D9] mt-[3vh]">
-                <p className="text-[#094446] text-[3vw] font-extrabold">Location</p>
+                <p className="text-[#094446] text-[3vw] font-extrabold">Username</p>
                 <div className="flex items-center gap-2">
                     <img className="w-[4vw] h-[4vw]" src={vectorImage} alt="" />
-                    <input type="text" id="phone-input" className="text-[#636363] w-[70vw] text-[4vw] border-0 border-[#000000] px-0.5 py-1 outline-none bg-[#d9d9d9]" />
+                    <input type="text" id="phone-input" className="text-[#636363] text-[4vw] border-0 border-[#000000] px-0.5 py-1 outline-none bg-[#d9d9d9]" />
                 </div>
             </div>
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './style.css'; 
-import logo from '../images/images2/desktop icons/logo.png'; 
-import backOption from '../images/images2/mobile icons/BACK OPTION.png'; 
+import './style.css'; // Import your custom CSS file
+import logo from '../images/images2/desktop icons/logo.png'; // Import logo image
+import backOption from '../images/images2/mobile icons/BACK OPTION.png'; // Import back option image
 import deliveryIcon from '../images/images2/mobile icons/delivery.png'; 
-import confirmedIcon from '../images/images2/mobile icons/confirmed.png';
-import cancelIcon from '../images/images2/mobile icons/cancel.png'; 
+import confirmedIcon from '../images/images2/mobile icons/confirmed.png'; // Import confirmed icon image
+import cancelIcon from '../images/images2/mobile icons/cancel.png'; // Import delivery icon
 
 const DeliveryStatus = () => {
   return (
@@ -31,7 +31,7 @@ const DeliveryStatus = () => {
         <p className="text-[#6B6B6B] mt-4 ml-[-25px]">See all the deliveries you have sent</p>
       </div>
 
-      
+      {/* Delivery status cards */}
       <div className="border border-[#8F8F8F] p-10 m-5 rounded-lg relative">
         <div className="flex">
           <div className="flex-wrap">
@@ -56,7 +56,7 @@ const DeliveryStatus = () => {
         </div>
       </div>
       <div>
-      
+      {/* First delivery status card */}
       <div className="border border-[#8F8F8F] p-10 m-5 rounded-lg relative">
         <div className="flex">
           <div className="flex-wrap">
@@ -77,7 +77,7 @@ const DeliveryStatus = () => {
         </div>
       </div>
 
-  
+      {/* Second delivery status card */}
       <div className="border border-[#8F8F8F] p-10 m-5 rounded-lg relative">
         <div className="flex">
           <div className="flex-wrap">

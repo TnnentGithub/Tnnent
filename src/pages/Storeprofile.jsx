@@ -30,11 +30,11 @@ const Storeprofile = () => {
     await uploadBytes(storageRef,selectedFile);
     console.log('File uploaded succesfully');
   };
-  
+
   return (
     <>
     <div className='forscroll'>
-    <div className='add-story-btn'>
+      <div className='add-story-btn'>
         <input type="file" name="story" id="story" onChange={(e)=>{setSelectedFile(e.target.files[0])}} />
         <button onClick={handleAddStory}>Upload</button>
       </div>
@@ -156,48 +156,98 @@ const Storeprofile = () => {
               </div>
             </div>
             </div>
-            <div class="flex justify-center">
-                <div className='flex justify-between items-center mt-9 gap-5'>
-                  <div className='w-[45vw] h-[39vw] bg-[#F3F3F3]  rounded-3xl '>
-                    <div className='flex flex-col'>
-                      <div className='w-[41vw] h-[17vw] rounded-3xl bg-[#FFFFFF] mt-2 ml-2 flex flex-col'>
-                         <h2 className='font-bold text-[3.2vw] text-[#272822] ml-4 mt-2'>Store Engagement</h2>
-                         <h2 className='font-bold text-[6vw] text-[#094446] ml-4 m'>2500</h2>
-                      </div>
-                      <div className='flex justify-between ml-5 mt-5 relative'>
-                        <img className='w-[7vw] absolute mt-1 ml-2' src={flag} alt="" />
-                        <div className='flex flex-col ml-14'>
-                          <h2 className='font-bold text-[3.2vw]'>Total Reviews</h2>
-                          <p className='text-[3.4vw]'>800/900</p>
-                        </div>
-                      </div>
+            <div className="flex justify-center">
+                <div className="w-[95vw] h-[30vw] mt-5 flex gap-2">
+            <Swiper
+      spaceBetween={10}
+      slidesPerView={3}
+      onSlideChange={() => console.log('slide change')}
+      onSwiper={(swiper) => console.log(swiper)}
+    >
+      <SwiperSlide>
+      <div className="bg-transparent border-2 rounded-xl border-[#B5B5B5] h-[25vw] w-[29vw] p-2">
+                        <div className="flex gap-1 items-center">
+                            <h2 className="font-bold text-[3.2vw]">STORE</h2>
+                            <div className="bg-[#FF0000] h-[0.6vh] w-[0.6vh] rounded-full"></div>
+                           </div>
+                            <h2 className="font-bold text-[3.2vw]">ENGAGEMENT</h2>
+                            <div className="flex justify-between items-center">
+                            <div className="mt-3 flex flex-col">
+                                <h2 className="font-bold text-[3.2vw]">179</h2>
+                                <h3 className="text-[2.3vw] opacity-50 font-bold mt-[-2.7%]">CONNECTIONS</h3>
+                            </div>
+                            </div>
+                            
                     </div>
-                  </div>
-                  <div className='flex flex-col gap-4'>
-                     <div className='w-[45vw] h-[17vw] bg-[#F3F3F3] rounded-3xl flex justify-between items-center'>
-                      <div className='w-[14vw] h-[14vw] rounded-full bg-white ml-1 flex justify-center items-center'>
-                        <img className='w-[5vw]' src={contact} alt="" />
-                      </div>
-                      <div className='flex flex-col mr-5 gap-1'>
-                        <h2 className='text-[3.2vw] font-bold '>Orders & pays</h2>
-                        <p className='text-[2.3vw] text-[#838383]leading-[0.05rem]'>Orders, payments &<br/>cupons</p>
-                      </div>
-                     </div>
-                     <div className='w-[45vw] h-[17vw] bg-[#F3F3F3] rounded-3xl flex justify-between items-center'>
-                      <div className='w-[14vw] h-[14vw] rounded-full bg-white ml-1 flex justify-center items-center'>
-                      <img className='w-[5vw]' src={settings} alt="" />
-                      </div>
-                      <div className='flex flex-col mr-8 gap-1'>
-                        <h2 className='text-[3.2vw] font-bold '>My Settings</h2>
-                        <p className='text-[2.3vw] text-[#838383]leading-[0.05rem]'>Store Setting</p>
-                      </div>
-                     </div>
-                  </div>
-                </div>
+                    
+                    
+                    
+      </SwiperSlide>
+      <SwiperSlide>
+      <div className=" bg-transparent border-2 rounded-xl border-[#B5B5B5] h-[25vw] w-[29vw] p-2">
+                        <div className="flex gap-1 items-center">
+                            <h2 className="font-bold text-[3.2vw]">TOTAL</h2>
+                            <div className="bg-[#FF0000] h-[0.6vh] w-[0.6vh] rounded-full"></div>
+                           </div>
+                            <h2 className="font-bold text-[3.2vw]">REVIEWS</h2>
+                            <div className="flex-col flex">
+                            <div className="rounded-full w-[7vw] h-[7vw] border-[1px] border-[#CECECE] mt-1 flex justify-center items-center">
+                                <img className="w-[3vw]" src={flag} alt=""/>
+                            </div>
+                            <h3 className="font-bold opacity-50 text-[2.7vw]">800/700</h3>
+                            </div>
+                    </div>
+      </SwiperSlide>
+      <SwiperSlide>
+      <div className=" bg-transparent border-2 rounded-xl border-[#B5B5B5] h-[25vw] w-[29vw] p-2">
+                        <div className="flex gap-1 items-center">
+                            <h2 className="font-bold text-[3.2vw]">CUSTOMER</h2>
+                            <div className="bg-[#0D6A6D] h-[0.6vh] w-[0.6vh] rounded-full"></div>
+                           </div>
+                           <h2 className="font-bold text-[3.2vw]">ORDER</h2>
+                            <div className="flex justify-between mt-3 items-center">
+                             <img className="w-[6vw]" src={contact} alt=""/>
+                            <div className="bg-[#F5F5F5] h-[3vh] w-[3vh]  rounded-full flex justify-center items-center p-2">
+                              
+                                <svg width="12" height="12" viewBox="0 0 12 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <line x1="1.91914" y1="1.53789" x2="10.5895" y2="10.2082" stroke="#7E7E7E" strokeWidth="2.59973"/>
+                                    <line x1="1.52617" y1="17.4266" x2="8.87943" y2="10.0733" stroke="#7E7E7E" strokeWidth="2.59973"/>
+                                    </svg>
+                                    
+                                  
+                            </div>
+                          
+                        </div>
+                    </div> 
+      </SwiperSlide>
+      <SwiperSlide>
+      <div className="bg-transparent border-2 rounded-xl border-[#B5B5B5] h-[25vw] w-[29vw] p-2">
+                        <div className="flex gap-1 items-center">
+                            <h2 className="font-bold text-[3.2vw]">STORE</h2>
+                            <div className="bg-[#0D6A6D] h-[0.6vh] w-[0.6vh] rounded-full"></div>
+                           </div>
+                           <h2 className="font-bold text-[3.2vw]">SETTING</h2>
+                            <div className="flex justify-between mt-3 items-center">
+                             <img className="w-[6vw]" src={settings} alt=""/>
+                            <div className="bg-[#F5F5F5] h-[3vh] w-[3vh]  rounded-full flex justify-center items-center p-2">
+                              
+                                <svg width="12" height="12" viewBox="0 0 12 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <line x1="1.91914" y1="1.53789" x2="10.5895" y2="10.2082" stroke="#7E7E7E" strokeWidth="2.59973"/>
+                                    <line x1="1.52617" y1="17.4266" x2="8.87943" y2="10.0733" stroke="#7E7E7E" strokeWidth="2.59973"/>
+                                    </svg>
+                                    
+                                  
+                            </div>
+                          
+                        </div>
+                    </div> 
+      </SwiperSlide>
+      </Swiper>
       </div>
-      <h2 className="font-bold text-[5vw] ml-5 mt-6">Updates</h2>
-      <div class="flex justify-center">
-      <div class="w-[95vw] h-[40vw] mt-5 flex gap-2 ml-5 mr-3">
+      </div>
+      <h2 className="font-bold text-[5vw] ml-5 mt-3">Highlights</h2>
+      <div className="flex justify-center">
+      <div className="w-[95vw] h-[40vw] mt-5 flex gap-2 ml-5 mr-3">
       <Swiper
       spaceBetween={10}
       slidesPerView={2.5}
@@ -205,48 +255,48 @@ const Storeprofile = () => {
       onSwiper={(swiper) => console.log(swiper)}
     >
       <SwiperSlide>
-      <div class="border-[1px] border-[#B5B5B5] h-[30vw] w-[34vw] rounded-xl flex justify-center items-center swiper-slide">
+      <div className="border-[1px] border-[#B5B5B5] h-[30vw] w-[34vw] rounded-xl flex justify-center items-center swiper-slide">
                     
-                    <div class="bg-[#F5F5F5] h-[6vh] w-[6vh] rounded-full flex justify-center items-center">
+                    <div className="bg-[#F5F5F5] h-[6vh] w-[6vh] rounded-full flex justify-center items-center">
                         <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10.8828 1.71387L10.8828 19.2853" stroke="#B5B5B5" stroke-width="3" stroke-linecap="round"/>
-                            <path d="M19.2852 10.1182L1.71373 10.1182" stroke="#B5B5B5" stroke-width="3" stroke-linecap="round"/>
+                            <path d="M10.8828 1.71387L10.8828 19.2853" stroke="#B5B5B5" strokeWidth="3" strokeLinecap="round"/>
+                            <path d="M19.2852 10.1182L1.71373 10.1182" stroke="#B5B5B5" strokeWidth="3" strokeLinecap="round"/>
                             </svg>
                     </div>
                 
             </div>
       </SwiperSlide>
       <SwiperSlide>
-      <div class="border-[1px] border-[#B5B5B5] h-[30vw] w-[34vw] rounded-xl  flex justify-center items-center">
+      <div className="border-[1px] border-[#B5B5B5] h-[30vw] w-[34vw] rounded-xl  flex justify-center items-center">
                     
-                    <div class="bg-[#F5F5F5] h-[6vh] w-[6vh] rounded-full flex justify-center items-center">
+                    <div className="bg-[#F5F5F5] h-[6vh] w-[6vh] rounded-full flex justify-center items-center">
                         <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10.8828 1.71387L10.8828 19.2853" stroke="#B5B5B5" stroke-width="3" stroke-linecap="round"/>
-                            <path d="M19.2852 10.1182L1.71373 10.1182" stroke="#B5B5B5" stroke-width="3" stroke-linecap="round"/>
+                            <path d="M10.8828 1.71387L10.8828 19.2853" stroke="#B5B5B5" strokeWidth="3" strokeLinecap="round"/>
+                            <path d="M19.2852 10.1182L1.71373 10.1182" stroke="#B5B5B5" strokeWidth="3" strokeLinecap="round"/>
                             </svg>
                     </div>
                 
             </div>
       </SwiperSlide>
       <SwiperSlide>
-      <div class="border-[1px] border-[#B5B5B5] h-[30vw] w-[34vw] rounded-xl  flex justify-center items-center">
+      <div className="border-[1px] border-[#B5B5B5] h-[30vw] w-[34vw] rounded-xl  flex justify-center items-center">
                     
-                    <div class="bg-[#F5F5F5] h-[6vh] w-[6vh] rounded-full flex justify-center items-center">
+                    <div className="bg-[#F5F5F5] h-[6vh] w-[6vh] rounded-full flex justify-center items-center">
                         <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10.8828 1.71387L10.8828 19.2853" stroke="#B5B5B5" stroke-width="3" stroke-linecap="round"/>
-                            <path d="M19.2852 10.1182L1.71373 10.1182" stroke="#B5B5B5" stroke-width="3" stroke-linecap="round"/>
+                            <path d="M10.8828 1.71387L10.8828 19.2853" stroke="#B5B5B5" strokeWidth="3" strokeLinecap="round"/>
+                            <path d="M19.2852 10.1182L1.71373 10.1182" stroke="#B5B5B5" strokeWidth="3" strokeLinecap="round"/>
                             </svg>
                     </div>
                 
             </div>
       </SwiperSlide>
       <SwiperSlide>
-      <div class="border-[1px] border-[#B5B5B5] h-[30vw] w-[34vw] rounded-xl  flex justify-center items-center">
+      <div className="border-[1px] border-[#B5B5B5] h-[30vw] w-[34vw] rounded-xl  flex justify-center items-center">
                     
-                    <div class="bg-[#F5F5F5] h-[6vh] w-[6vh] rounded-full flex justify-center items-center">
+                    <div className="bg-[#F5F5F5] h-[6vh] w-[6vh] rounded-full flex justify-center items-center">
                         <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10.8828 1.71387L10.8828 19.2853" stroke="#B5B5B5" stroke-width="3" stroke-linecap="round"/>
-                            <path d="M19.2852 10.1182L1.71373 10.1182" stroke="#B5B5B5" stroke-width="3" stroke-linecap="round"/>
+                            <path d="M10.8828 1.71387L10.8828 19.2853" stroke="#B5B5B5" strokeWidth="3" strokeLinecap="round"/>
+                            <path d="M19.2852 10.1182L1.71373 10.1182" stroke="#B5B5B5" strokeWidth="3" strokeLinecap="round"/>
                             </svg>
                     </div>
                 
@@ -255,16 +305,16 @@ const Storeprofile = () => {
     </Swiper>
     </div>
     </div>
-    <div class="flex justify-between px-5 items-center">
-            <h2 class="font-bold text-[5vw]">Featured</h2>
-            <div class="bg-[#323232] h-[4vh] w-[4vh] rounded-xl flex justify-center items-center">
+    <div className="flex justify-between px-5 items-center">
+            <h2 className="font-bold text-[5vw]">Featured</h2>
+            <div className="bg-[#323232] h-[4vh] w-[4vh] rounded-xl flex justify-center items-center">
                 <svg width="18" height="18" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10.8828 1.71387L10.8828 19.2853" stroke="white" stroke-width="3" stroke-linecap="round"/>
-                    <path d="M19.2852 10.1182L1.71373 10.1182" stroke="white" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M10.8828 1.71387L10.8828 19.2853" stroke="white" strokeWidth="3" strokeLinecap="round"/>
+                    <path d="M19.2852 10.1182L1.71373 10.1182" stroke="white" strokeWidth="3" strokeLinecap="round"/>
                     </svg>
             </div>
         </div>
-        <div class="flex justify-center px-2 mt-7 mb-12">
+        <div className="flex justify-center px-2 mt-7 mb-12">
         <Swiper
       spaceBetween={10}
       slidesPerView={2.5}

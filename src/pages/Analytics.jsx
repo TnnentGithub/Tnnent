@@ -1,34 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import './style.css';
-import xls from '../images/xls.svg';
-import pdf from '../images/pdf.svg';
-import jpg from '../images/jpg.svg';
-import doc from '../images/doc.svg';
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "../components/ui/drawer.jsx"
-
 
 function Analytics() {
   
   const [buttonStyle, setButtonStyle] = useState({
-
+    // Initial button styles
     position: 'absolute',
     left: '65%',
-
+    // Add other non-responsive styles here
   });
 
   
 
   useEffect(() => {
     const handleResize = () => {
+      // Update button styles based on screen width
       if (window.innerWidth >= 799) {
         setButtonStyle(prevStyle => ({
           ...prevStyle,
@@ -47,22 +33,22 @@ function Analytics() {
       }
     };
 
-
+    // Add event listener for window resize
     window.addEventListener('resize', handleResize);
 
-
+    // Clean up the event listener on component unmount
     return () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
   const [windowmar, windowmar2] = useState({
-
-    marginTop: '56%' 
+     // Default left position
+    marginTop: '56%' // Default marginTop
   });
 
   useEffect(() => {
     const handleResize = () => {
-
+      // Define styles for different window widths
       if (window.innerWidth >= 799) {
         windowmar2({
           
@@ -74,7 +60,7 @@ function Analytics() {
           marginTop: '36%' 
         });
       } else {
-
+        // Default styles for smaller screens
         windowmar2({
           
           marginTop: '56%'
@@ -82,13 +68,13 @@ function Analytics() {
       }
     };
 
-
+    // Call the function once to set the initial style
     handleResize();
 
-
+    // Add event listener for subsequent window resize events
     window.addEventListener('resize', handleResize);
 
-
+    // Cleanup function to remove the event listener
     return () => window.removeEventListener('resize', handleResize);
   }, []);
     const [selectedOption, setSelectedOption] = useState('Today');
@@ -103,7 +89,7 @@ function Analytics() {
       <>
       <div className='forscroll'>
         <section className="lg:hidden">
-            <div className="fixed bg-[#fff] z-60 tnennt">
+            <div className="fixed bg-[#fff] z-60 kutta">
                 
                 <div className="flex justify-between items-center px-3 mt-6">
                 <div className="flex flex-col">
@@ -139,41 +125,9 @@ function Analytics() {
                             <li className={selectedOption === 'Last Year' ? 'active' : ''} onClick={() => handleOptionSelect('Last Year')}>Last Year</li>
                         </ul>
                     </div>
-                    <Drawer>
-                      <DrawerTrigger>
-                    <button style={buttonStyle} className="printdata font-semibold px-6 py-2 bg-[#131312] mt-[-5%] text-white text-[4vw] rounded-lg absolute left-[65%] ">Print Data</button>
-                    </DrawerTrigger>
-                    <DrawerContent className="h-[50vw]">
-                      <div className='flex justify-between px-12 mt-9'>
-                        <DrawerClose>
-                        <div className='flex flex-col gap-1 items-center'>
-                          <img className="w-[13vw]" src={xls} alt="" />
-                          <h2 className='font-medium text-[3.9vw]'>Excel</h2>
-                        </div>
-                        
-                        </DrawerClose>
-                        <DrawerClose>
-                        <div className='flex flex-col gap-1 items-center'>
-                          <img className='w-[13vw]' src={jpg} alt="" />
-                          <h2 className='font-medium text-[3.9vw]'>Image</h2>
-                        </div>
-                        
-                        </DrawerClose>
-                        <DrawerClose>
-                        <div className='flex flex-col gap-1 items-center'>
-                          <img className='w-[13vw]' src={doc} alt="" />
-                          <h2 className='font-medium text-[3.9vw]'>Doc</h2>
-                        </div>
-                        </DrawerClose>
-                        <DrawerClose>
-                        <div className='flex flex-col gap-1 items-center'>
-                          <img className='w-[13vw]' src={pdf} alt="" />
-                          <h2 className='font-medium text-[3.9vw]'>PDF</h2>
-                        </div>
-                        </DrawerClose>
-                      </div>
-                    </DrawerContent>
-                    </Drawer>
+                    
+                    <button style={buttonStyle} className="printdata font-semibold px-6 py-2 bg-[#131312] text-white text-[4vw] rounded-lg absolute left-[65%] ">Print Data</button>
+                    
                 </div>
                 </div>
                 
