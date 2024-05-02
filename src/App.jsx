@@ -75,6 +75,7 @@ import Settingsupi from './pages/Settingsupi';
 import MyCommunity from './pages/Mycommunity';
 import Editcommunity from './pages/Editcommunity';
 import Storesettings from './pages/Storesettings';
+import Checkoutfinal from './pages/Checkoutfinal';
 
 function App() {
   return (
@@ -157,6 +158,7 @@ function App() {
           <Route path='/mycommunity' element={<MyCommunity/>}/>
           <Route path='/editcommunity' element={<Editcommunity/>}/>
           <Route path='/storesettings' element={<Storesettings/>}/>
+          <Route path='/checkoutfinal' element={<Checkoutfinal/>}/>
         </Routes>
       </Router>
     </div>
