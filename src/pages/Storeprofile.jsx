@@ -9,15 +9,35 @@ import settings from '../images/settings.svg';
 import contact from '../images/Frame 416.svg';
 import flag from '../images/Vector (2).png';
 import camera from '../images/Rectangle 2267.svg';
+import { storage } from '../../firebase';
+import { ref, uploadBytes } from 'firebase/storage';
 
 
 const Storeprofile = () => {
   // Define state variables for dynamic content
-  const [Toggled, setToggled] = useState(false)
+  const storeID = 'STORE0001';
+  const [Toggled, setToggled] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
+  
+  const handleAddStory = async () => {
+
+    if(!selectedFile){
+      alert('Please select a file to upload as story');
+      return;
+    }
+
+    const storageRef = ref(storage, `${storeID}/story/${selectedFile.name}`);
+    await uploadBytes(storageRef,selectedFile);
+    console.log('File uploaded succesfully');
+  };
   
   return (
     <>
     <div className='forscroll'>
+    <div className='add-story-btn'>
+        <input type="file" name="story" id="story" onChange={(e)=>{setSelectedFile(e.target.files[0])}} />
+        <button onClick={handleAddStory}>Upload</button>
+      </div>
     <section className="lg:hidden">
       <div className="flex justify-center">
             <div className="w-[93vw] rounded-3xl mt-4 bg-[#2D332F] relative">

@@ -21,10 +21,14 @@ import Rectangle2488Image from '../images/images2/mobile icons/Rectangle 2488.sv
 import Rectangle1856 from '../images/Rectangle 1856.svg';
 import Rectangle2267Image from '../images/images2/mobile icons/Rectangle 2267 (1).svg';
 import Navbar from '../components/Navbar.jsx';
+import { db } from "../../firebase.js";
+import { doc, setDoc, arrayUnion } from "firebase/firestore";
 
 function Store() {
   const [todaysDate, setTodaysDate] = useState('');
 
+  const userID = "Customer-1121";
+  const storeID = "Store-9819";
   useEffect(() => {
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -41,9 +45,35 @@ function Store() {
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
   };
+
+
+  const handleClick = async (e) =>{
+      e.preventDefault();
+      try {
+        console.log("Adding Data to Users - Connect List -");
+        const userDocRef = doc(db, `Users/${userID}`);
+        await setDoc(userDocRef,{
+          ConnectList: arrayUnion(storeID)
+        });
+        console.log('--Success--');
+        
+        console.log("Adding Data to Store/CommunityPost -Following List -");
+        const storeDocRef = doc(db,`Store/${storeID}`);
+        await setDoc(storeDocRef,{
+          FollowingList: arrayUnion(userID)
+        });
+        console.log('--Success--');
+      
+      } catch (error) {
+        console.log("Failed: ",error);
+      }
+      
+
+  }
   return (
     <>
     <div className='forscroll'>
+    <div className='follow-btn'><button onClick={handleClick}>follow store</button></div>
     <section className='lg:hidden'>
       <div className="flex justify-between items-center">
         <div className="mt-7 ml-4">
