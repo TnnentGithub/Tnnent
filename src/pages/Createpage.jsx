@@ -30,14 +30,14 @@ function CreateProductPage() {
                     <div className="bg-red-400 h-[1vh] w-[1vh] rounded-full"></div>
                 </div>
                 <div className="flex justify-center items-center gap-4">
-                    <img className="w-12" src={backIcon} alt="" /> {/* Use imported image */}
+                    <img className="w-12" src={backIcon} alt="" />
                 </div>
             </div>
 
             <p className="mx-5 font-extrabold text-xl">Add Images</p>
             <div className="mx-5 my-4 flex flex-row gap-4 items-center mb-[50px]">
                 <div className="p-4 border-dotted border-[2px] rounded-[15px] border-[#848484] ">
-                    <img className="w-8" src={frame401} alt="" /> {/* Use imported image */}
+                    <img className="w-8" src={frame401} alt="" />
                 </div>
                 <p className="text-[13px] text-[#636363]">(Add more than one image of the product)</p>
             </div>
@@ -73,9 +73,9 @@ function CreateProductPage() {
             <p className="mx-5 text-[#636363] text-[12px]">(Use if your product has different size, weight & volume )</p>
         {showHello ? (
             <div className=" mx-5 my-3 p-3 flex flex-row border border-[#094446] rounded-lg items-center gap-2 w-[37%] mb-[30px]">
-                <a href="">
-                    <img className="w-6" src={frame407} alt="" />
-                </a>
+                
+                <img className="w-6" src={frame407} alt="" />
+                
                 <p className="text-[#094446] text-[13px] font-bold">Add Optional</p>
             </div>
           ) : (

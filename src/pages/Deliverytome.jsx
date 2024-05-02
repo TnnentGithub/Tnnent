@@ -54,7 +54,7 @@ const DeliveryToMe = () => {
         <p className="text-[#6B6B6B] mt-4 ml-[-25px]">See all the deliveries you have received </p>
       </div>
 
-      {/* Render delivery status cards */}
+    
       <div className="mt-10">
         {deliveries.map((delivery, index) => (
           <div key={index} className="border border-[#8F8F8F] p-10 m-5 rounded-lg relative">

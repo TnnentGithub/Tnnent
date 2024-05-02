@@ -14,7 +14,6 @@ function Analytics() {
 
   useEffect(() => {
     const handleResize = () => {
-      // Update button styles based on screen width
       if (window.innerWidth >= 799) {
         setButtonStyle(prevStyle => ({
           ...prevStyle,
@@ -33,22 +32,22 @@ function Analytics() {
       }
     };
 
-    // Add event listener for window resize
+
     window.addEventListener('resize', handleResize);
 
-    // Clean up the event listener on component unmount
+
     return () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
   const [windowmar, windowmar2] = useState({
-     // Default left position
-    marginTop: '56%' // Default marginTop
+
+    marginTop: '56%' 
   });
 
   useEffect(() => {
     const handleResize = () => {
-      // Define styles for different window widths
+
       if (window.innerWidth >= 799) {
         windowmar2({
           
@@ -60,7 +59,7 @@ function Analytics() {
           marginTop: '36%' 
         });
       } else {
-        // Default styles for smaller screens
+
         windowmar2({
           
           marginTop: '56%'
@@ -68,13 +67,13 @@ function Analytics() {
       }
     };
 
-    // Call the function once to set the initial style
+
     handleResize();
 
-    // Add event listener for subsequent window resize events
+
     window.addEventListener('resize', handleResize);
 
-    // Cleanup function to remove the event listener
+
     return () => window.removeEventListener('resize', handleResize);
   }, []);
     const [selectedOption, setSelectedOption] = useState('Today');
@@ -89,7 +88,7 @@ function Analytics() {
       <>
       <div className='forscroll'>
         <section className="lg:hidden">
-            <div className="fixed bg-[#fff] z-60 kutta">
+            <div className="fixed bg-[#fff] z-60 tnennt">
                 
                 <div className="flex justify-between items-center px-3 mt-6">
                 <div className="flex flex-col">

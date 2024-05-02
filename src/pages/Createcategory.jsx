@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './style.css';
+import { Link } from 'react-router-dom';
 import frame397 from '../images/images3/Frame 397.png';
 import frame407 from '../images/images3/Frame 407.png';
 import frame400 from '../images/images3/Frame 400.png';
@@ -56,7 +57,7 @@ function CreateProductPage2() {
                     <img className="w-12" src={frame397} alt="" />
                 </div>
                 <div className="flex justify-center items-center gap-4">
-                    <a href="/create-1.html"><img className="w-12" src="/images/back.png" alt="" /></a>
+                <Link to="/createpage"><img className="w-12" src={back} alt="" /></Link>
                 </div>
             </div>
 

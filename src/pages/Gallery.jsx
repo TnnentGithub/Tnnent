@@ -1,17 +1,12 @@
 import React, { useState } from 'react';
-import './style.css'; // Import CSS file
+import './style.css';
 import { Link } from 'react-router-dom';
-// Import images
 import vector5 from '../images/Vector (5).svg';
 import tnenntIcon from '../images/tnennt icon.png';
 import frame380 from '../images/Frame 380.png';
 import frame401 from '../images/Frame 401.png';
 import frame292 from '../images/Frame 292.png';
-import homeIcon from '../images/home.png';
-import catalogIcon from '../images/catalog.png';
-import storeIcon from '../images/store.png';
-import galleryIcon from '../images/gallery.png';
-import communityIcon from '../images/community.png';
+import Navbar from '../components/Navbar';
 
 function Gallery() {
     const [Toggled, setToggled] = useState(false)
@@ -82,23 +77,7 @@ function Gallery() {
                 <div className="flex left-0 right-0 justify-center items-center mt-6">
                     <p>------------<button className="bg-black px-4 py-3 rounded-lg text-white text-[3vw] mb-32">COMING SOON</button>------------</p>
                 </div>
-                <div className="fixed bottom-4 left-0 right-0 flex mx-auto mb-1 bg-[#2D332F] rounded-full text-xl p-2 w-[350px] md:w-full md:hidden text-white justify-around items-center">
-                    <Link href="#" className="icon flex items-center justify-center bg-[#2D332F] rounded-full p-4 w-14 h-14 focus:bg-white focus:outline-none">
-                        <img src={homeIcon} alt="" className="w-8" />
-                    </Link>
-                    <Link href="catalog.html" className="icon flex items-center justify-center bg-[#2D332F] rounded-full p-4 w-14 h-14 focus:bg-white focus:outline-none">
-                        <img src={catalogIcon} alt="" className="w-8" />
-                    </Link>
-                    <Link href="#" className="icon flex items-center justify-center bg-[#2D332F] rounded-full p-4 w-14 h-14 focus:bg-white focus:outline-none">
-                        <img src={storeIcon} alt="" className="w-8" />
-                    </Link>
-                    <Link href="gallery.html" className="icon flex items-center justify-center bg-[#2D332F] rounded-full p-4 w-14 h-14 focus:bg-white focus:outline-none">
-                        <img src={galleryIcon} alt="" className="w-5" />
-                    </Link>
-                    <Link href="#" className="icon flex items-center justify-center bg-[#2D332F] rounded-full p-4 w-14 h-14 focus:bg-white focus:outline-none">
-                        <img src={communityIcon} alt="" className="w-5" />
-                    </Link>
-                </div>
+                <Navbar color="#2D332F" color2= "#2D332F" color3= "white" color4= "#2D332F"/>
             </section>
             </div>
             </>
