@@ -13,7 +13,6 @@ import PropTypes from 'prop-types';
 import { auth } from "../../firebase.js";
 
 const AuthContext = createContext();
-
 export const AuthContextProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);

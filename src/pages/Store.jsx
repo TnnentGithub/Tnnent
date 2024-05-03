@@ -33,7 +33,7 @@ import { doc, setDoc, arrayUnion } from "firebase/firestore";
 function Store() {
   const [todaysDate, setTodaysDate] = useState('');
 
-  const userID = "Customer-0002";
+  const userID = "Customer-0003";
   const storeID = "Store-0001";
   useEffect(() => {
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
