@@ -1,17 +1,13 @@
 import React, { useState } from 'react';
-import './style.css'; // Import CSS file
+import './style.css';
 import { Link } from 'react-router-dom';
-// Import images
 import vector5 from '../images/Vector (5).svg';
 import tnenntIcon from '../images/tnennt icon.png';
 import frame380 from '../images/Frame 380.png';
 import frame401 from '../images/Frame 401.png';
 import frame292 from '../images/Frame 292.png';
-import homeIcon from '../images/home.png';
-import catalogIcon from '../images/catalog.png';
-import storeIcon from '../images/store.png';
-import galleryIcon from '../images/gallery.png';
-import communityIcon from '../images/community.png';
+import Navbar from '../components/Navbar';
+import './Desktopstyle.css';
 
 function Gallery() {
     const [Toggled, setToggled] = useState(false)
@@ -82,25 +78,50 @@ function Gallery() {
                 <div className="flex left-0 right-0 justify-center items-center mt-6">
                     <p>------------<button className="bg-black px-4 py-3 rounded-lg text-white text-[3vw] mb-32">COMING SOON</button>------------</p>
                 </div>
-                <div className="fixed bottom-4 left-0 right-0 flex mx-auto mb-1 bg-[#2D332F] rounded-full text-xl p-2 w-[350px] md:w-full md:hidden text-white justify-around items-center">
-                    <Link href="#" className="icon flex items-center justify-center bg-[#2D332F] rounded-full p-4 w-14 h-14 focus:bg-white focus:outline-none">
-                        <img src={homeIcon} alt="" className="w-8" />
-                    </Link>
-                    <Link href="catalog.html" className="icon flex items-center justify-center bg-[#2D332F] rounded-full p-4 w-14 h-14 focus:bg-white focus:outline-none">
-                        <img src={catalogIcon} alt="" className="w-8" />
-                    </Link>
-                    <Link href="#" className="icon flex items-center justify-center bg-[#2D332F] rounded-full p-4 w-14 h-14 focus:bg-white focus:outline-none">
-                        <img src={storeIcon} alt="" className="w-8" />
-                    </Link>
-                    <Link href="gallery.html" className="icon flex items-center justify-center bg-[#2D332F] rounded-full p-4 w-14 h-14 focus:bg-white focus:outline-none">
-                        <img src={galleryIcon} alt="" className="w-5" />
-                    </Link>
-                    <Link href="#" className="icon flex items-center justify-center bg-[#2D332F] rounded-full p-4 w-14 h-14 focus:bg-white focus:outline-none">
-                        <img src={communityIcon} alt="" className="w-5" />
-                    </Link>
-                </div>
+                <Navbar color="#2D332F" color2= "#2D332F" color3= "white" color4= "#2D332F"/>
             </section>
+            <section className="hidden lg:block">
+            <div className="flex">
+                <div className="mt-4 ml-7 2xl:mt-5 relative cursor-pointer">
+                    <img src="./images/menu icon.png" alt="" className="w-36" />
+                    <p className="absolute top-2 left-7 text-white">Menu</p>
+                </div>
+
+                <div className="px-7 py-2 mr-7 rounded-xl bg-black text-white ml-auto mt-5">
+                    Contact Us
+                </div>
             </div>
+
+            <h3 className="containers ml-8 text-2xl mt-10 font-semibold">Gallery<span className="text-green-500">&bull;</span></h3>
+
+            <div className="border-t-2 border-dotted border-gray-500 mt-10">
+            </div>
+            <div className='flex justify-center'>
+            <div className="flex justify-center mt-5 px-5">
+                <img src={frame401} alt="" />
+            </div>
+            <div className="flex justify-center mt-5 px-4 relative">
+                <img src={frame292} alt="" />
+                <h3 className="absolute text-white font-bold text-[4.3vw] mt-[39%] mr-[68%]">9,877<span><p className="text-white text-[3vw] absolute mt-[-53%] ml-[104%]">+</p></span></h3>
+            </div>
+            <div className="bg-[#F3F3F3] w-[93vw] mt-6 rounded-3xl shadow-xl p-4">
+                        <div className="bg-white p-2 w-[84vw] mt-1 rounded-3xl">
+                            <img className="w-[29vw] px-2 py-2" src={tnenntIcon} alt="" />
+                            <div className="flex justify-between">
+                                <h2 className="font-bold text-[#094446] text-[6vw] ml-[11px] mt-2">THE<br />MIDDLEMAN</h2>
+                                <img className="w-[40vw] mt-[-50px]" src={frame380} alt="" />
+                            </div>
+                        </div>
+                        <div className="px-3 py-2 flex justify-between mt-2">
+                            <h2 className="font-bold text-[4vw] leading-1">THE MIDDLEMAN<br />GROUP!</h2>
+                            <Link href="gallery_ins.html"><button className="bg-transparent border-2 border-[#094446] px-6 py-2 mt-1 rounded-full text-[#094446] text-[3vw] font-bold">View List</button></Link>
+                        </div>
+                        <p className="px-3 py-2 text-[2.8vw] mt-2">Get a chance to work as a certified middlemen and let's grow together!</p>
+                    </div>
+            </div>
+        </section>
+            </div>
+           
             </>
     );
 }
