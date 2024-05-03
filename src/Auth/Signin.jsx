@@ -5,6 +5,7 @@ import passwordIcon from '../images/AUTHENTICATION LOGOS AND ICONS/PASSWORD.png'
 import eastIcon from '../images/AUTHENTICATION LOGOS AND ICONS/east.png';
 
 import welcomeLogo from '../images/LOADING PAGE/WELCOME PAGE LOGO BLACK.png';
+import google from '../images/AUTHENTICATION LOGOS AND ICONS/GOOGLE ICON.png'
 
 import './Auth.css';
 import Slideshow from '../components/Slideshow.jsx';
@@ -50,19 +51,14 @@ function SignIn() {
                     </div>
                 </div>
             </div>
+            <button className='ml-[30vw] flex justify-center px-5 py-2 mt-2 rounded-lg border-2 cursor-pointer'>
+                                <div className='flex gap-2'>
+                                    <img className='w-[20px]' src={google} alt="" />
+                                    <h2 className='font-medium text-[15px]'>Google</h2>
+                                </div>
+                            </button>
         
-            <div className="text-center mt-24">
-                <p className="mt-2 mr-3 text-[#636363]">Or</p>
-                <div className="ml-auto mt-3 md:mt-5 pr-3 sm:pr-2">
-                    <button className="bg-[#094446] text-white font-bold py-2 md:py-2 px-7 rounded-[7px] cursor-pointer">
-                        <p className="font-poppins font-normal text-[15px]">Guest</p>
-                    </button>
-                </div>
-            </div>
-        
-            <div className="text-center mt-24">
-                <p className="text-[#545454] mt-10 text-[18px]">New here? <a href="sign_up.html" className="font-poppins text-[#545454] semi-bold">Sign up</a></p>
-            </div>
+            
         </section>
             <section class="hidden lg:block">
                 <Slideshow/>
@@ -119,21 +115,19 @@ function SignIn() {
                                 </div>
                             </div>
 
-                            <div className="text-center 2xl:mt-6">
-                                <p className="mt-[-10px]  text-[#636363]">Or</p>
-                                <div className="mt-4 text-center">
-                                    <a href="/dist/main/rent.html" className="bg-[#094446] text-white font-bold py-2 px-4 rounded-[7px] ">
-                                        Guest
-                                    </a>
-                                    
-                                </div>
-                            </div>
+                            
+                           
+                           
                     
-                            <div className="text-center">
-                                <p className="text-[#545454] mt-10 text-[15px] 2xl:mt-20">New here? <a href="sign_up.html" className="form-container font-poppins text-[#545454] semi-bold">Sign up</a></p>
-                            </div>
+                            
                     
                         </div>
+                        <button className='ml-[10vw] flex justify-center px-5 py-2 mt-2 rounded-lg border-2 cursor-pointer'>
+                                <div className='flex gap-2'>
+                                    <img className='w-[20px]' src={google} alt="" />
+                                    <h2 className='font-medium text-[15px]'>Google</h2>
+                                </div>
+                            </button>
                     </div>
                 </div>
                 </section>
