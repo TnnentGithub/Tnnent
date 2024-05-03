@@ -22,13 +22,13 @@ import Rectangle1856 from '../images/Rectangle 1856.svg';
 import Rectangle2267Image from '../images/images2/mobile icons/Rectangle 2267 (1).svg';
 import Navbar from '../components/Navbar.jsx';
 import { db } from "../../firebase.js";
-import { doc, setDoc, arrayUnion } from "firebase/firestore";
+import { doc, setDoc, arrayUnion, getDoc } from "firebase/firestore";
 
 function Store() {
   const [todaysDate, setTodaysDate] = useState('');
 
-  const userID = "Customer-1121";
-  const storeID = "Store-9819";
+  const userID = "Customer-0002";
+  const storeID = "Store-9812";
   useEffect(() => {
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -47,29 +47,44 @@ function Store() {
   };
 
 
-  const handleClick = async (e) =>{
-      e.preventDefault();
-      try {
-        console.log("Adding Data to Users - Connect List -");
-        const userDocRef = doc(db, `Users/${userID}`);
-        await setDoc(userDocRef,{
-          ConnectList: arrayUnion(storeID)
-        });
-        console.log('--Success--');
-        
-        console.log("Adding Data to Store/CommunityPost -Following List -");
-        const storeDocRef = doc(db,`Store/${storeID}`);
-        await setDoc(storeDocRef,{
-          FollowingList: arrayUnion(userID)
-        });
-        console.log('--Success--');
-      
-      } catch (error) {
-        console.log("Failed: ",error);
+  const handleClick = async (e) => {
+    e.preventDefault();
+    try {
+      console.log("Adding Data to Users - Connect List -");
+      const userDocRef = doc(db, `Users/${userID}`);
+      // Check if the user already has the store ID in their ConnectList
+      const userDocSnapshot = await getDoc(userDocRef);
+      let connectList = [];
+      if (userDocSnapshot.exists()) {
+        connectList = userDocSnapshot.data().ConnectList || [];
       }
-      
-
+      // Append the store ID to the ConnectList
+      connectList.push(storeID);
+      await setDoc(userDocRef, {
+        ConnectList: arrayUnion(...connectList)
+      });
+      console.log('--Success--');
+  
+      console.log("Adding Data to Store/CommunityPost -Following List -");
+      const storeDocRef = doc(db, `Store/${storeID}`);
+      // Check if the store already has the user ID in their FollowingList
+      const storeDocSnapshot = await getDoc(storeDocRef);
+      let followingList = [];
+      if (storeDocSnapshot.exists()) {
+        followingList = storeDocSnapshot.data().FollowingList || [];
+      }
+      // Append the user ID to the FollowingList
+      followingList.push(userID);
+      await setDoc(storeDocRef, {
+        FollowingList: arrayUnion(...followingList)
+      });
+      console.log('--Success--');
+  
+    } catch (error) {
+      console.log("Failed: ", error);
+    }
   }
+
   return (
     <>
     <div className='forscroll'>

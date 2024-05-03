@@ -21,6 +21,10 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
   } from "@/components/ui/alert-dialog";
+import { storage } from '../../firebase';
+import { ref, uploadBytes } from 'firebase/storage';
+import { db } from "../../firebase.js";
+import { doc, setDoc, arrayUnion } from "firebase/firestore";
 
 
 
