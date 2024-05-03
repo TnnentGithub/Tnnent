@@ -102,15 +102,15 @@ function Store() {
           <h2 className="absolute bottom-2 left-0 text-white ml-6 mb-4 leading-[1.2] text-[4vw]" style={{ bottom: '29%', left: '74%' }}>Tnennt<br />Store<span className="text-red-500"> &bull;</span></h2>
           <div className="absolute bottom-9 left-5 w-[38vw]" id="carousel" data-auto="true">
           <div id="scene">
-          <img class="carousel_item" src={Rectangle1856} alt=""/>
-          <img class="carousel_item" src={Rectangle1856} alt=""/>
-          <img class="carousel_item" src={Rectangle1856} alt=""/>
-          <img class="carousel_item" src={Rectangle1856} alt=""/>
-          <img class="carousel_item" src={Rectangle1856} alt=""/>
-          <img class="carousel_item" src={Rectangle1856} alt=""/>
-          <img class="carousel_item" src={Rectangle1856} alt=""/>
-          <img class="carousel_item" src={Rectangle1856} alt=""/>
-          <img class="carousel_item" src={Rectangle1856} alt=""/>
+          <img className="carousel_item" src={Rectangle1856} alt=""/>
+          <img className="carousel_item" src={Rectangle1856} alt=""/>
+          <img className="carousel_item" src={Rectangle1856} alt=""/>
+          <img className="carousel_item" src={Rectangle1856} alt=""/>
+          <img className="carousel_item" src={Rectangle1856} alt=""/>
+          <img className="carousel_item" src={Rectangle1856} alt=""/>
+          <img className="carousel_item" src={Rectangle1856} alt=""/>
+          <img className="carousel_item" src={Rectangle1856} alt=""/>
+          <img className="carousel_item" src={Rectangle1856} alt=""/>
           
     </div>
           </div>

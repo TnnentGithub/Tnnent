@@ -156,7 +156,7 @@ const Storeprofile = () => {
               </div>
             </div>
             </div>
-            <div class="flex justify-center">
+            <div className="flex justify-center">
                 <div className='flex justify-between items-center mt-9 gap-5'>
                   <div className='w-[45vw] h-[39vw] bg-[#F3F3F3]  rounded-3xl '>
                     <div className='flex flex-col'>
@@ -196,8 +196,8 @@ const Storeprofile = () => {
                 </div>
       </div>
       <h2 className="font-bold text-[5vw] ml-5 mt-6">Updates</h2>
-      <div class="flex justify-center">
-      <div class="w-[95vw] h-[40vw] mt-5 flex gap-2 ml-5 mr-3">
+      <div className="flex justify-center">
+      <div className="w-[95vw] h-[40vw] mt-5 flex gap-2 ml-5 mr-3">
       <Swiper
       spaceBetween={10}
       slidesPerView={2.5}
@@ -205,48 +205,48 @@ const Storeprofile = () => {
       onSwiper={(swiper) => console.log(swiper)}
     >
       <SwiperSlide>
-      <div class="border-[1px] border-[#B5B5B5] h-[30vw] w-[34vw] rounded-xl flex justify-center items-center swiper-slide">
+      <div className="border-[1px] border-[#B5B5B5] h-[30vw] w-[34vw] rounded-xl flex justify-center items-center swiper-slide">
                     
-                    <div class="bg-[#F5F5F5] h-[6vh] w-[6vh] rounded-full flex justify-center items-center">
+                    <div className="bg-[#F5F5F5] h-[6vh] w-[6vh] rounded-full flex justify-center items-center">
                         <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10.8828 1.71387L10.8828 19.2853" stroke="#B5B5B5" stroke-width="3" stroke-linecap="round"/>
-                            <path d="M19.2852 10.1182L1.71373 10.1182" stroke="#B5B5B5" stroke-width="3" stroke-linecap="round"/>
+                            <path d="M10.8828 1.71387L10.8828 19.2853" stroke="#B5B5B5" strokeWidth="3" strokeLinecap="round"/>
+                            <path d="M19.2852 10.1182L1.71373 10.1182" stroke="#B5B5B5" strokeWidth="3" strokeLinecap="round"/>
                             </svg>
                     </div>
                 
             </div>
       </SwiperSlide>
       <SwiperSlide>
-      <div class="border-[1px] border-[#B5B5B5] h-[30vw] w-[34vw] rounded-xl  flex justify-center items-center">
+      <div className="border-[1px] border-[#B5B5B5] h-[30vw] w-[34vw] rounded-xl  flex justify-center items-center">
                     
-                    <div class="bg-[#F5F5F5] h-[6vh] w-[6vh] rounded-full flex justify-center items-center">
+                    <div className="bg-[#F5F5F5] h-[6vh] w-[6vh] rounded-full flex justify-center items-center">
                         <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10.8828 1.71387L10.8828 19.2853" stroke="#B5B5B5" stroke-width="3" stroke-linecap="round"/>
-                            <path d="M19.2852 10.1182L1.71373 10.1182" stroke="#B5B5B5" stroke-width="3" stroke-linecap="round"/>
+                            <path d="M10.8828 1.71387L10.8828 19.2853" stroke="#B5B5B5" strokeWidth="3" strokeLinecap="round"/>
+                            <path d="M19.2852 10.1182L1.71373 10.1182" stroke="#B5B5B5" strokeWidth="3" strokeLinecap="round"/>
                             </svg>
                     </div>
                 
             </div>
       </SwiperSlide>
       <SwiperSlide>
-      <div class="border-[1px] border-[#B5B5B5] h-[30vw] w-[34vw] rounded-xl  flex justify-center items-center">
+      <div className="border-[1px] border-[#B5B5B5] h-[30vw] w-[34vw] rounded-xl  flex justify-center items-center">
                     
-                    <div class="bg-[#F5F5F5] h-[6vh] w-[6vh] rounded-full flex justify-center items-center">
+                    <div className="bg-[#F5F5F5] h-[6vh] w-[6vh] rounded-full flex justify-center items-center">
                         <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10.8828 1.71387L10.8828 19.2853" stroke="#B5B5B5" stroke-width="3" stroke-linecap="round"/>
-                            <path d="M19.2852 10.1182L1.71373 10.1182" stroke="#B5B5B5" stroke-width="3" stroke-linecap="round"/>
+                            <path d="M10.8828 1.71387L10.8828 19.2853" stroke="#B5B5B5" strokeWidth="3" strokeLinecap="round"/>
+                            <path d="M19.2852 10.1182L1.71373 10.1182" stroke="#B5B5B5" strokeWidth="3" strokeLinecap="round"/>
                             </svg>
                     </div>
                 
             </div>
       </SwiperSlide>
       <SwiperSlide>
-      <div class="border-[1px] border-[#B5B5B5] h-[30vw] w-[34vw] rounded-xl  flex justify-center items-center">
+      <div className="border-[1px] border-[#B5B5B5] h-[30vw] w-[34vw] rounded-xl  flex justify-center items-center">
                     
-                    <div class="bg-[#F5F5F5] h-[6vh] w-[6vh] rounded-full flex justify-center items-center">
+                    <div className="bg-[#F5F5F5] h-[6vh] w-[6vh] rounded-full flex justify-center items-center">
                         <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10.8828 1.71387L10.8828 19.2853" stroke="#B5B5B5" stroke-width="3" stroke-linecap="round"/>
-                            <path d="M19.2852 10.1182L1.71373 10.1182" stroke="#B5B5B5" stroke-width="3" stroke-linecap="round"/>
+                            <path d="M10.8828 1.71387L10.8828 19.2853" stroke="#B5B5B5" strokeWidth="3" strokeLinecap="round"/>
+                            <path d="M19.2852 10.1182L1.71373 10.1182" stroke="#B5B5B5" strokeWidth="3" strokeLinecap="round"/>
                             </svg>
                     </div>
                 
@@ -255,16 +255,16 @@ const Storeprofile = () => {
     </Swiper>
     </div>
     </div>
-    <div class="flex justify-between px-5 items-center">
-            <h2 class="font-bold text-[5vw]">Featured</h2>
-            <div class="bg-[#323232] h-[4vh] w-[4vh] rounded-xl flex justify-center items-center">
+    <div className="flex justify-between px-5 items-center">
+            <h2 className="font-bold text-[5vw]">Featured</h2>
+            <div className="bg-[#323232] h-[4vh] w-[4vh] rounded-xl flex justify-center items-center">
                 <svg width="18" height="18" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10.8828 1.71387L10.8828 19.2853" stroke="white" stroke-width="3" stroke-linecap="round"/>
-                    <path d="M19.2852 10.1182L1.71373 10.1182" stroke="white" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M10.8828 1.71387L10.8828 19.2853" stroke="white" strokeWidth="3" strokeLinecap="round"/>
+                    <path d="M19.2852 10.1182L1.71373 10.1182" stroke="white" strokeWidth="3" strokeLinecap="round"/>
                     </svg>
             </div>
         </div>
-        <div class="flex justify-center px-2 mt-7 mb-12">
+        <div className="flex justify-center px-2 mt-7 mb-12">
         <Swiper
       spaceBetween={10}
       slidesPerView={2.5}
