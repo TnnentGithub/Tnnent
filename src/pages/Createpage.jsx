@@ -32,23 +32,22 @@ function CreateProductPage() {
     
     
 
-     
 
-const [categoryname, setcategoryname] = useState('')
-const [item, setitem] = useState('')
+const [ProductName, setProductName] = useState('')
 const [Discount, setDiscount] = useState('')
-const [mrpprice, setmrpprice] = useState('')
-const [itemprice, setitemprice] = useState('')
-const [caption, setcaption] = useState('')
+const [ProductMrpPrice, setProductMrpPrice] = useState('')
+const [ProductPrice, setProductPrice] = useState('')
+const [ProductDesc, setProductDesc] = useState('')
+const [ProductStockQuantity, setProductStockQuantity] = useState('')
 
 useEffect(() => {
     const timerid = setTimeout(() => {
-        console.log(caption)
+        console.log(ProductStockQuantity)
     }, 1000);
     return () => {
         clearTimeout(timerid)
     }
-}, [caption])
+}, [ProductStockQuantity])
 
     const [selectedParcel, setSelectedParcel] = useState(null);
 
@@ -58,44 +57,31 @@ useEffect(() => {
 
   const [showHello, setShowHello] = useState(false);
 
-  const [uploadedImages, setUploadedImages] = useState([]);
+  const [Images, setImages] = useState([]);
 
-  const handleImageUpload1 = (event) => {
+  const handleImageUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
         const reader = new FileReader();
         reader.onload = function (e) {
             const imageData = e.target.result;
-            // Generate a unique key for each image
-            const uniqueKey = Date.now(); // Using timestamp as a unique key
-            setUploadedImages(prevImages => [...prevImages, { id: uniqueKey, data: imageData }]);
+            const uniqueKey = Date.now();
+            setImages(prevImages => [...prevImages, { id: uniqueKey, data: imageData }]);
         };
         reader.readAsDataURL(file);
     }
 };
 
-
-
 const handleDeleteImage = (id) => {
-    setUploadedImages(prevImages => prevImages.filter(image => image.id !== id));
+    setImages(prevImages => prevImages.filter(image => image.id !== id));
 };
-const [selectedOption, setSelectedOption] = useState('Product Type');
+const [ProductType, setProductType] = useState('Product Type');
 const [menuOpen, setMenuOpen] = useState(false);
 
-const handleOptionSelect = (option) => {
-    setSelectedOption(option);
+const handleProductType = (option) => {
+    setProductType(option);
     setMenuOpen(false);
 };
-
-const [selectedOption1, setSelectedOption1] = useState('Weight');
-const [menuOpen1, setMenuOpen1] = useState(false);
-
-const handleOptionSelect1 = (option) => {
-    setSelectedOption1(option);
-    setMenuOpen1(false);
-};
-
-
 
     return (
         <>
@@ -114,15 +100,15 @@ const handleOptionSelect1 = (option) => {
 
             <p className="mx-5 font-extrabold text-xl">Add Images</p>
             <div className="mx-5 my-4 flex flex-row gap-4 items-center ">
-            {uploadedImages.length < 5 && (
+            {Images.length < 5 && (
                             <div className="p-4 border-dotted border-[2px] rounded-[15px] border-[#848484] ">
                                 <label htmlFor="imageUpload1" className="cursor-pointer">
                                     <img src={frame401} alt="" className="w-[11vw]" />
-                                    <input id="imageUpload1" type="file" accept="image/*" className="hidden" onChange={handleImageUpload1} />
+                                    <input id="imageUpload1" type="file" accept="image/*" className="hidden" onChange={handleImageUpload} />
                                 </label>
                             </div>
                         )}
-                {uploadedImages.map((image) => (
+                {Images.map((image) => (
                             <div key={image.id} className='border-[1px] rounded-[15px] border-[#848484] w-[14vw] h-[14vw] bg-cover bg-center bg-no-repeat flex justify-center items-center' style={{ backgroundImage: `url(${image.data})` }}>
                             <AlertDialog className="z-[99999]">
                                 <AlertDialogTrigger>
@@ -151,7 +137,7 @@ const handleOptionSelect1 = (option) => {
     <div className='justify-between items-center flex px-4 mt-7 mb-4'>
     <div className="dropdown ">
                         <div className="select border-[1px] border-[#AFAFAF] rounded-3xl font-bold" onClick={() => setMenuOpen(!menuOpen)}>
-                            <span className="selected">{selectedOption}</span>
+                            <span className="selected">{ProductType}</span>
                             <div className={`caret ${menuOpen ? 'caret-rotate' : ''}`}>
                             <svg width="17" height="11" viewBox="0 0 17 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <line x1="15.9091" y1="1.63956" x2="7.7021" y2="9.84654" stroke="#272727" strokeWidth="2.4608"/>
@@ -160,10 +146,10 @@ const handleOptionSelect1 = (option) => {
                             </div>
                         </div>
                         <ul className={`menu font-bold ${menuOpen ? 'menu-open' : ''}`}>
-                            <li className={selectedOption === 'Today' ? 'active' : ''} onClick={() => handleOptionSelect('Today')}>Today</li>
-                            <li className={selectedOption === 'Yesterday' ? 'active' : ''} onClick={() => handleOptionSelect('Yesterday')}>Yesterday</li>
-                            <li className={selectedOption === 'Last Month' ? 'active' : ''} onClick={() => handleOptionSelect('Last Month')}>Last Month</li>
-                            <li className={selectedOption === 'Last Year' ? 'active' : ''} onClick={() => handleOptionSelect('Last Year')}>Last Year</li>
+                            <li className={ProductType === 'Bakery' ? 'active' : ''} onClick={() => handleProductType('Bakery')}>Bakery</li>
+                            <li className={ProductType === 'Size' ? 'active' : ''} onClick={() => handleProductType('Size')}>Size</li>
+                            <li className={ProductType === 'Storage' ? 'active' : ''} onClick={() => handleProductType('Storage')}>Storage</li>
+                            <li className={ProductType === 'Volume' ? 'active' : ''} onClick={() => handleProductType('Volume')}>Volume</li>
                         </ul>
                     </div>
                     <h2 className='text-[3.4vw]'>Enter your product type</h2>
@@ -171,7 +157,7 @@ const handleOptionSelect1 = (option) => {
 
             <p className="mx-5 font-extrabold text-xl">Item Name</p>
             <div className="mx-5 my-3 px-4 py-3  border-dotted border-[2px] rounded-[15px] border-[#848484] flex justifu-right mb-[30px]">
-                <input type="text" id="phone-input" className="text-[#636363] text-[13px] w-[100%] border-0 border-[#000000] px-0.5 py-1 outline-none bg-[#ffffff]" placeholder="Write your Product Name" onChange={(e) => setitem(e.target.value)}/>
+                <input type="text" id="phone-input" className="text-[#636363] text-[13px] w-[100%] border-0 border-[#000000] px-0.5 py-1 outline-none bg-[#ffffff]" placeholder="Write your Product Name" onChange={(e) => setProductName(e.target.value)}/>
             </div>
 
             <p className="mx-5 font-extrabold text-xl">Item Price</p>
@@ -183,11 +169,11 @@ const handleOptionSelect1 = (option) => {
                 </div>
                 <div className="my-3 px-3 py-2  border-dotted border-[2px] rounded-[10px] border-[#848484] flex justify-right mb-[30px]  flex-row gap-1">
                     <img className="h-3" src={frame402} alt="" />
-                    <input type="text" id="phone-input" className="text-[#989898] w-[60px] text-[11px] font-bold border-0 border-[#000000]  outline-none bg-[#ffffff]" maxLength="6" placeholder="MRP Price" onInput="this.value=this.value.replace(/[^0-9]/g,'');" onChange={(e) => setmrpprice(e.target.value)} />
+                    <input type="text" id="phone-input" className="text-[#989898] w-[60px] text-[11px] font-bold border-0 border-[#000000]  outline-none bg-[#ffffff]" maxLength="6" placeholder="MRP Price" onInput="this.value=this.value.replace(/[^0-9]/g,'');" onChange={(e) => setProductMrpPrice(e.target.value)} />
                 </div>
                 <div className="my-3 px-3 py-2  border-dotted border-[2px] rounded-[10px] border-[#848484] flex mb-[30px]  flex-row gap-1 items-center justify-center">
                     <img className="h-5" src={frame405} alt="" />
-                    <input type="text" id="phone-input" className="text-[#989898] w-[60px] text-[11px] font-bold border-0 border-[#000000]  outline-none bg-[#ffffff]" maxLength="6" placeholder="Item Price" onInput="this.value=this.value.replace(/[^0-9]/g,'');" onChange={(e) => setitemprice(e.target.value)} />
+                    <input type="text" id="phone-input" className="text-[#989898] w-[60px] text-[11px] font-bold border-0 border-[#000000]  outline-none bg-[#ffffff]" maxLength="6" placeholder="Item Price" onInput="this.value=this.value.replace(/[^0-9]/g,'');" onChange={(e) => setProductPrice(e.target.value)} />
                 </div>
             </div>
 
@@ -219,32 +205,20 @@ const handleOptionSelect1 = (option) => {
             <img className="w-4 h-4 mt-1" src={frame408} alt="" />
         </div>
         <div>
-            <textarea className="text-[#989898] w-[100%] text-[13px] font-bold border-0 border-[#000000]  outline-none bg-[#ffffff]" name="" maxLength="700" id="" cols="38" rows="4" placeholder="Write Your Caption" onChange={(e) => setcaption(e.target.value)}></textarea>
+            <textarea className="text-[#989898] w-[100%] text-[13px] font-bold border-0 border-[#000000]  outline-none bg-[#ffffff]" name="" maxLength="700" id="" cols="38" rows="4" placeholder="Write Your Caption" onChange={(e) => setProductDesc(e.target.value)}></textarea>
         </div>
     </div>
 </div>
 
-<p className="mx-5 font-extrabold text-xl">Item Weight</p>
-<div className='justify-between items-center flex px-2 mt-7 mb-32'>
-    <div className="dropdown relative">
-                        <div className="select border-[1px] border-[#AFAFAF] rounded-3xl font-bold" onClick={() => setMenuOpen1(!menuOpen1)}>
-                            <span className="selected">{selectedOption1}</span>
-                            <div className={`caret ${menuOpen1 ? 'caret-rotate' : ''}`}>
-                            <svg width="17" height="11" viewBox="0 0 17 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <line x1="15.9091" y1="1.63956" x2="7.7021" y2="9.84654" stroke="#272727" strokeWidth="2.4608"/>
-                    <line x1="0.870025" y1="1.26865" x2="7.83034" y2="8.22896" stroke="#272727" strokeWidth="2.4608"/>
-                    </svg> 
-                            </div>
-                        </div>
-                        <ul className={`menu font-bold ${menuOpen1 ? 'menu-open' : ''} absolute top-[-54vw]`}>
-                            <li className={selectedOption1 === 'Today' ? 'active' : ''} onClick={() => handleOptionSelect1('Today')}>Today</li>
-                            <li className={selectedOption1 === 'Yesterday' ? 'active' : ''} onClick={() => handleOptionSelect1('Yesterday')}>Yesterday</li>
-                            <li className={selectedOption1 === 'Last Month' ? 'active' : ''} onClick={() => handleOptionSelect1('Last Month')}>Last Month</li>
-                            <li className={selectedOption1 === 'Last Year' ? 'active' : ''} onClick={() => handleOptionSelect1('Last Year')}>Last Year</li>
-                        </ul>
-                    </div>
-                    <h2 className='text-[3.3vw]'>Select the weight of your product</h2>
-    </div>
+<p className="mx-5 font-extrabold text-xl ">Product Stock Quantity</p>
+  <div className='flex justify-between items-center mb-32 px-5 mt-4'>
+            <div className=" px-4 py-3  border-dotted border-[2px] rounded-[15px] border-[#848484] flex justifu-right ">
+                <input type="number" id="phone-input" className="text-[#636363] text-[13px] w-[100%] border-0 border-[#000000] px-0.5 py-1 outline-none bg-[#ffffff]" placeholder="700" onChange={(e) => setProductStockQuantity(e.target.value)}/>
+            </div>
+            <p className='text-[3vw] ml-12'>(Add your total product stock quantity)</p>
+            </div>
+
+
 
 
 
