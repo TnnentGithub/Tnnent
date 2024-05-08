@@ -76,6 +76,8 @@ import MyCommunity from './pages/Mycommunity';
 import Editcommunity from './pages/Editcommunity';
 import Storesettings from './pages/Storesettings';
 import Checkoutfinal from './pages/Checkoutfinal';
+import CreateProductedit from './pages/Createpageedit';
+import Optionalfootwear from './pages/Optionalfootwear';
 
 function App() {
   return (
@@ -133,6 +135,7 @@ function App() {
           <Route path='/optionalbakery' element={<Optionalsbakery/>}/>
           <Route path='/optionalsize' element={<Optionalssize/>}/>
           <Route path='/optionalstorage' element={<Optionalsstorage/>}/>
+          <Route path='/optionalfootwear' element={<Optionalfootwear/>}/>
           <Route path='/notification' element={<Notification/>}/>
           <Route path='/storenotification' element={<Storenotification/>}/>
           <Route path='/orderandpays' element={<Orderandpays/>}/>
@@ -159,6 +162,7 @@ function App() {
           <Route path='/editcommunity' element={<Editcommunity/>}/>
           <Route path='/storesettings' element={<Storesettings/>}/>
           <Route path='/checkoutfinal' element={<Checkoutfinal/>}/>
+          <Route path='/createproductedit' element={<CreateProductedit/>}/>
         </Routes>
       </Router>
     </div>

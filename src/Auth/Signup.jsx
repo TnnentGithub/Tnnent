@@ -53,6 +53,8 @@ function Signup() {
             <div className="text-center">
                 <p className="text-[#545454] mt-24">Already a user? <a href="sign_in.html" className="text-[#000000]">Sign In</a></p>
             </div>
+
+           
         </section>
         <section class="hidden lg:block">
             <Slideshow/>

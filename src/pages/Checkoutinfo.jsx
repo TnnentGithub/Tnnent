@@ -3,6 +3,9 @@ import person from '../images/person (1).svg';
 import phone from '../images/Vector (14).svg';
 import globe from '../images/Vector (15).svg';
 import location from '../images/Group 5.svg';
+import menudesktop from '../images/menu icon.png'
+import backdesktop from '../images/back desktop.png'
+import logo from '../images/Frame 397.png'
 import { Link } from 'react-router-dom';
 
 function Checkoutinfo() {
@@ -107,6 +110,18 @@ function Checkoutinfo() {
                                 </Link>
                             </div>
                 </section>
+                <section className='hidden lg:block'>
+  <div className="w-full flex justify-between px-5 py-5 absolute top-0">
+    <div className="flex items-center justify-center relative">
+        <img className="w-[10vw]" src={menudesktop} alt="" />
+        <p className="absolute text-[#ffffff] font-bold mr-[50px]">Menu</p>
+    </div>
+    <div className="flex items-center justify-center relative">
+        <img className="w-[7vw]" src={backdesktop} alt="" />
+        <p className="absolute text-[#000] font-bold">Back</p>
+    </div>
+</div>
+</section>
     </>
   )
 }

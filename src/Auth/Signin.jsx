@@ -106,7 +106,6 @@ function SignIn() {
                                 </div>
                             </div>
                             <a href="reset_pass.html" className="text-xs text-[#636363] font-poppins font-medium tracking-wide">Forgot your password?</a>
-                        
                             <div className="flex items-center justify-center mt-4">
                                 <div className="w-9 h-9 bg-[#094446] rounded-full ml-auto">
                                     <a href="sign_up.html">
@@ -114,13 +113,6 @@ function SignIn() {
                                     </a>
                                 </div>
                             </div>
-
-                            
-                           
-                           
-                    
-                            
-                    
                         </div>
                         <button className='ml-[10vw] flex justify-center px-5 py-2 mt-2 rounded-lg border-2 cursor-pointer'>
                                 <div className='flex gap-2'>

@@ -2,15 +2,17 @@ import React, { useState } from 'react';
 import tnnentLogo from '../images/Frame 397.png';
 import backIcon from '../images/back.png';
 import './style.css';
+import Desktopheader from '@/components/Desktopheader';
+import Desktopfooter from '@/components/Desktopfooter';
 
 const SelectCategory = () => {
-    const [selectedCategories, setSelectedCategories] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState(null);
 
     const toggleCategory = (category) => {
-        if (selectedCategories.includes(category)) {
-            setSelectedCategories(selectedCategories.filter((c) => c !== category));
+        if (selectedCategory === category) {
+            setSelectedCategory(null);
         } else {
-            setSelectedCategories([...selectedCategories, category]);
+            setSelectedCategory(category);
         }
     };
 
@@ -45,18 +47,18 @@ const SelectCategory = () => {
                     rows[rows.length - 1].push(
                         <div key={category} className="w-[50%] my-5">
                             <div
-                                className={`p-3 flex items-center border-dotted rounded-lg gap-2 border-[2px] border-[#636363] ${
-                                    selectedCategories.includes(category) && 'bg-[#094446] text-white'
+                                 className={`p-3 flex items-center border-dotted rounded-lg gap-2 border-[2px] border-[#636363] ${
+                                    selectedCategory === category && 'bg-[#094446] text-white'
                                 }`}
                                 onClick={() => toggleCategory(category)}
                             >
                                 <div className="checkbox-wrapper-13">
-                                    <input
-                                        id={`c1-${index}`}
-                                        type="checkbox"
-                                        checked={selectedCategories.includes(category)}
-                                        onChange={() => toggleCategory(category)}
-                                    />
+                                <input
+                                    id={`c1-${index}`}
+                                    type="checkbox"
+                                    checked={selectedCategory === category}
+                                    onChange={() => toggleCategory(category)}
+                                />
                                 </div>
                                 <p className="text text-[12px]">{category}</p>
                             </div>
@@ -79,6 +81,43 @@ const SelectCategory = () => {
                     </button>
                 
             
+        </section>
+        <section className='hidden lg:block'>
+            <Desktopheader/>
+            <div className="flex containers mt-[14%]">
+                <div className="text-center mt-10">
+                    <h2 className="text-2xl font-extrabold">Choose Your Category</h2>
+                    <p className="mt-5 text-[#636363] text-md ml-2">Select one category which describes your store</p>
+                    <a href="#" className="p-2 w-72 mt-20 mx-auto rounded-full py-4 bg-[#094446] text-lg text-center block">
+                        <div>
+                            <p className="text-white">Continue</p>
+                        </div>
+                    </a>  
+                </div>
+                <div className='flex flex-col gap-7 mt-[-5%] ml-[12%] flex-wrap max-h-[30vw]'>
+                    {categories.map((category, index) => (
+                        <div key={category} className={`w-[50%] flex justify-center items-center gap-8`}>
+                            <div
+                                className={`p-3 flex w-[170px] items-center border-dotted rounded-lg gap-2 border-[2px] border-[#636363] ${
+                                    selectedCategory === category && 'bg-[#094446] text-white'
+                                }`}
+                                onClick={() => toggleCategory(category)}
+                            >
+                                <div className="checkbox-wrapper-13">
+                                    <input
+                                        id={`c1-${index}`}
+                                        type="checkbox"
+                                        checked={selectedCategory === category}
+                                        onChange={() => toggleCategory(category)}
+                                    />
+                                </div>
+                                <p className="text text-[12px]">{category}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+            <Desktopfooter/> 
         </section>
         </div>
         </>
