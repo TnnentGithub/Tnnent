@@ -186,6 +186,7 @@ const handleProductType = (option) => {
                             </div>
                             </div>
                         </ul>
+                        </ul>
                     </div>
                     <h2 className='text-[3.4vw]'>Enter your product type</h2>
     </div>
