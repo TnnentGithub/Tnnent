@@ -6,18 +6,24 @@ import logo from '../images/Frame 397.png'
 import './style.css';
 
 
-function Optionalsstorage() {
-    const [selectedCategory, setSelectedCategory] = useState('s');
+function Optionalfootwear() {
+    const [selectedCategory, setSelectedCategory] = useState('foot');
 
     const showCategory = (category) => {
         setSelectedCategory(category);
     };
 
+    const [Footwear] = useState([
+        { amount: 'US 5' },
+        { amount: 'US 6' },
+        { amount: 'US 7' }
+    ])
     const [Storage] = useState([
         { amount: '6gb, 128gb' },
         { amount: '8gb, 514gb' },
         { amount: '12gb, 1TB' }
     ]);
+
 
 
     return (
@@ -39,14 +45,14 @@ function Optionalsstorage() {
 
                     <div className="mx-5 flex gap-3 flex-wrap">
                         <button className="focus:outline-none visited:outline-none active:outline-none category-button border border-black bg-[#094446] text-white px-14 py-3 rounded-lg transition-colors duration-300 inline-flex items-center font-bold ">
-                            Storage
+                            Footwear
                         </button>
                     </div>
 
                     <div className="mx-4 mt-7 mb-7">
                         <div>
-                            <button className={`focus:outline-none visited:outline-none active:outline-none category-button-1 border border-black bg-[#343434] text-[#737373] m-1 px-4 py-2 rounded-lg transition-colors duration-300 inline-flex items-center font-bold ${selectedCategory === 's' ? 'bg-[#343434] text-white' : 'bg-white text-[#737373]'}`} data-category="s" onClick={() => showCategory('s')}>
-                                Capacity
+                            <button className={`focus:outline-none visited:outline-none active:outline-none category-button-1 border border-black bg-[#343434] text-[#737373] m-1 px-4 py-2 rounded-lg transition-colors duration-300 inline-flex items-center font-bold ${selectedCategory === 'foot' ? 'bg-[#343434] text-white' : 'bg-white text-[#737373]'}`} data-category="foot" onClick={() => showCategory('foot')}>
+                                Size
                             </button>
                             
                         </div>
@@ -70,9 +76,9 @@ function Optionalsstorage() {
 
                 <div className="w-full mt-5">
                     <div className="mx-5">
-                        {selectedCategory === 's' && (
+                        {selectedCategory === 'foot' && (
                             <div className="flex flex-col">
-                            {Storage.map((option, index) => (
+                            {Footwear.map((option, index) => (
                                 <div key={index} className="my-5">
                                     <div className='flex justify-between'>
                                     <p className="text-[4vw] text-[#094446] font-bold">{option.amount}</p>
@@ -184,4 +190,4 @@ function Optionalsstorage() {
     );
 }
 
-export default Optionalsstorage;
+export default Optionalfootwear;

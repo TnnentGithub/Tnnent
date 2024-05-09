@@ -5,12 +5,12 @@ import menudesktop from '../images/menu icon.png'
 import backdesktop from '../images/back desktop.png'
 import logo from '../images/Frame 397.png'
 
-function SelectDefaultOptional() {
+function Defaultoptionalstorage() {
     const [options, setOptions] = useState([
-        { label: '1 Pound', value: '1pound' },
-        { label: '1.5 Pound', value: '1.5pound' },
-        { label: '2 Pound', value: '2pound' },
-        { label: '3 Pound', value: '3pound' }
+        { label: '1gb,128gb', value: '1gb,128gb' },
+        { label: '2gb,128gb', value: '2gb,128gb' },
+        { label: '3gb,128gb', value: '3gb,128gb' },
+        { label: '4gb,128gb', value: '4gb,128gb' },
     ]);
     const [selectedOption, setSelectedOption] = useState('');
 
@@ -112,4 +112,4 @@ function SelectDefaultOptional() {
     );
 }
 
-export default SelectDefaultOptional;
+export default Defaultoptionalstorage;

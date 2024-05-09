@@ -7,6 +7,9 @@ import frame380 from '../images/Frame 380.png';
 import frame401 from '../images/Frame 401.png';
 import frame292 from '../images/Frame 292.png';
 import Navbar from '../components/Navbar';
+import menudesktop from '../images/menu icon.png'
+import backdesktop from '../images/back desktop.png'
+import logo from '../images/Frame 397.png'
 import './Desktopstyle.css';
 
 function Gallery() {
@@ -80,10 +83,10 @@ function Gallery() {
                 </div>
                 <Navbar color="#2D332F" color2= "#2D332F" color3= "white" color4= "#2D332F"/>
             </section>
-            <section className="hidden lg:block">
+            <section className="hidden lg:block overflow-x-hidden">
             <div className="flex">
                 <div className="mt-4 ml-7 2xl:mt-5 relative cursor-pointer">
-                    <img src="./images/menu icon.png" alt="" className="w-36" />
+                    <img src={menudesktop} alt="" className="w-36" />
                     <p className="absolute top-2 left-7 text-white">Menu</p>
                 </div>
 
@@ -96,28 +99,30 @@ function Gallery() {
 
             <div className="border-t-2 border-dotted border-gray-500 mt-10">
             </div>
-            <div className='flex justify-center'>
-            <div className="flex justify-center mt-5 px-5">
-                <img src={frame401} alt="" />
-            </div>
-            <div className="flex justify-center mt-5 px-4 relative">
-                <img src={frame292} alt="" />
+
+            <div className="flex gap-5 px-5 mt-8">
+                <img className='w-[440px] h-[300px]' src={frame401} alt="" />
+       
+                <img className='w-[520px]' src={frame292} alt="" />
                 <h3 className="absolute text-white font-bold text-[4.3vw] mt-[39%] mr-[68%]">9,877<span><p className="text-white text-[3vw] absolute mt-[-53%] ml-[104%]">+</p></span></h3>
-            </div>
-            <div className="bg-[#F3F3F3] w-[93vw] mt-6 rounded-3xl shadow-xl p-4">
+
+                <div className="bg-[#F3F3F3] w-[130px] mt-6 rounded-3xl shadow-xl p-4">
                         <div className="bg-white p-2 w-[84vw] mt-1 rounded-3xl">
-                            <img className="w-[29vw] px-2 py-2" src={tnenntIcon} alt="" />
+                            <img className="w-[12px] px-2 py-2" src={tnenntIcon} alt="" />
                             <div className="flex justify-between">
-                                <h2 className="font-bold text-[#094446] text-[6vw] ml-[11px] mt-2">THE<br />MIDDLEMAN</h2>
-                                <img className="w-[40vw] mt-[-50px]" src={frame380} alt="" />
+                                <h2 className="font-bold text-[#094446] text-[12px] ml-[11px] mt-2">THE<br />MIDDLEMAN</h2>
+                                <img className="w-[30px] mt-[-50px]" src={frame380} alt="" />
                             </div>
                         </div>
                         <div className="px-3 py-2 flex justify-between mt-2">
-                            <h2 className="font-bold text-[4vw] leading-1">THE MIDDLEMAN<br />GROUP!</h2>
-                            <Link href="gallery_ins.html"><button className="bg-transparent border-2 border-[#094446] px-6 py-2 mt-1 rounded-full text-[#094446] text-[3vw] font-bold">View List</button></Link>
+                            <h2 className="font-bold text-[5px] leading-1">THE MIDDLEMAN<br />GROUP!</h2>
+                            <Link href="gallery_ins.html"><button className="bg-transparent border-2 border-[#094446] px-6 py-2 mt-1 rounded-full text-[#094446] text-[3px] font-bold">View List</button></Link>
                         </div>
-                        <p className="px-3 py-2 text-[2.8vw] mt-2">Get a chance to work as a certified middlemen and let's grow together!</p>
+                        <p className="px-3 py-2 text-[12px] mt-2">Get a chance to work as a certified middlemen and let's grow together!</p>
                     </div>
+                
+
+            
             </div>
         </section>
             </div>

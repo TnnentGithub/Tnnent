@@ -5,12 +5,12 @@ import menudesktop from '../images/menu icon.png'
 import backdesktop from '../images/back desktop.png'
 import logo from '../images/Frame 397.png'
 
-function SelectDefaultOptional() {
+function Defaultoptionalweight() {
     const [options, setOptions] = useState([
-        { label: '1 Pound', value: '1pound' },
-        { label: '1.5 Pound', value: '1.5pound' },
-        { label: '2 Pound', value: '2pound' },
-        { label: '3 Pound', value: '3pound' }
+        { label: '1 kg', value: '1 kg' },
+        { label: '1.5 kg', value: '1.5 kg' },
+        { label: '2 kg', value: '2 kg' },
+        { label: '3 kg', value: '3 kg' }
     ]);
     const [selectedOption, setSelectedOption] = useState('');
 
@@ -112,4 +112,4 @@ function SelectDefaultOptional() {
     );
 }
 
-export default SelectDefaultOptional;
+export default Defaultoptionalweight;

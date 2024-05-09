@@ -5,12 +5,12 @@ import menudesktop from '../images/menu icon.png'
 import backdesktop from '../images/back desktop.png'
 import logo from '../images/Frame 397.png'
 
-function SelectDefaultOptional() {
+function Defaultoptionalsize() {
     const [options, setOptions] = useState([
-        { label: '1 Pound', value: '1pound' },
-        { label: '1.5 Pound', value: '1.5pound' },
-        { label: '2 Pound', value: '2pound' },
-        { label: '3 Pound', value: '3pound' }
+        { label: '1 XX', value: '1 XX' },
+        { label: '1.5 XSS', value: '1.5 XSS' },
+        { label: '2 S', value: '2 S' },
+        { label: '3 XL', value: '3 XL' }
     ]);
     const [selectedOption, setSelectedOption] = useState('');
 
@@ -112,4 +112,4 @@ function SelectDefaultOptional() {
     );
 }
 
-export default SelectDefaultOptional;
+export default Defaultoptionalsize;
