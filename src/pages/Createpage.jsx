@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import backIcon from '../images/images3/back.png';
 import frame401 from '../images/images3/Frame 401.png';
@@ -38,7 +39,13 @@ const [Discount, setDiscount] = useState('')
 const [ProductMrpPrice, setProductMrpPrice] = useState('')
 const [ProductPrice, setProductPrice] = useState('')
 const [ProductDesc, setProductDesc] = useState('')
-const [ProductStockQuantity, setProductStockQuantity] = useState('')
+const [ProductStockQuantity, setProductStockQuantity] = useState('');
+
+const navigate = useNavigate();
+
+const handleClick2 = ()=>{
+    navigate('/defaultoptional');
+}
 
 useEffect(() => {
     const timerid = setTimeout(() => {
@@ -85,7 +92,7 @@ const handleProductType = (option) => {
 
     return (
         <>
-        
+        <button onClick={handleClick2}>TEST</button>
         <div className='forscroll'>
         <section className="lg:hidden">
             <div className="w-full h-[12vh] flex p-[20px] justify-between">
@@ -146,7 +153,7 @@ const handleProductType = (option) => {
                             </div>
                         </div>
                         <ul className={`menu font-bold ${menuOpen ? 'menu-open' : ''}`}>
-                            <li className={ProductType === 'Bakery' ? 'active' : ''} onClick={() => handleProductType('Bakery')}>Bakery</li>
+                            <li className={ProductType === 'Bakery' ? 'active' : ''} onClick={() =>handleProductType('Bakery')}>Bakery</li>
                             <li className={ProductType === 'Size' ? 'active' : ''} onClick={() => handleProductType('Size')}>Size</li>
                             <li className={ProductType === 'Storage' ? 'active' : ''} onClick={() => handleProductType('Storage')}>Storage</li>
                             <li className={ProductType === 'Volume' ? 'active' : ''} onClick={() => handleProductType('Volume')}>Volume</li>
