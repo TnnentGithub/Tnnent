@@ -133,7 +133,7 @@ function Storeregistrationstarting() {
                     <div className="swiper-button-next flex bg-[#094446] rounded-full text-xl p-4 w-[63vw] md:hidden text-white justify-center font-bold items-center">
                         {currentSlide < 4 ? (
                             currentSlide < 1 ? 'Get Started' : 'Next'
-                        ) : <Link>Finish</Link>}
+                        ) : <Link to='/registration'>Finish</Link>}
                     </div>
                 </div>
 

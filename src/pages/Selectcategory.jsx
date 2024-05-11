@@ -4,6 +4,8 @@ import backIcon from '../images/back.png';
 import './style.css';
 import Desktopheader from '@/components/Desktopheader';
 import Desktopfooter from '@/components/Desktopfooter';
+import { Link } from 'react-router-dom';
+
 
 const SelectCategory = () => {
     const [selectedCategory, setSelectedCategory] = useState(null);
@@ -75,10 +77,11 @@ const SelectCategory = () => {
 
             {/* Continue button */}
             
-                
+                <Link to='/storeupi'>
                     <button className="absolute bottom-[3%] left-[20%] px-[9vh] py-3 bg-[#094446] font-extrabold text-white border rounded-[15px]">
                         CONTINUE
                     </button>
+                    </Link>
                 
             
         </section>

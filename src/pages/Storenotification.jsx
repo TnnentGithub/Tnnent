@@ -20,7 +20,7 @@ function Storenotification() {
    <div className="sticky bg-white z-60 top-0 w-full">
             <div className="w-full h-[12vh] flex p-[20px] justify-between">
                 <div className="flex justify-center items-center gap-2">
-                    <h2 className="text-[4vw] font-black">UPDATE</h2>
+                    <h2 className="text-[6vw] font-black">UPDATE</h2>
                     <div className="bg-green-400 h-[1vh] w-[1vh] rounded-full"></div>
                 </div>
                 <div className="flex justify-center items-center gap-4">
@@ -29,14 +29,14 @@ function Storenotification() {
             </div>
             <div className="mx-5 pb-4 flex gap-3 flex-wrap">
         <button
-            className={`focus:outline-none visited:outline-none active:outline-none category-button border-2 border-black bg-[#094446] text-white px-5 py-2 rounded-2xl text-[3vw] transition-colors duration-300 inline-flex items-center font-extrabold"
+            className={`focus:outline-none visited:outline-none active:outline-none category-button border-2 border-black bg-[#094446] text-[#000] px-5 py-2 rounded-2xl text-[3vw] transition-colors duration-300 inline-flex items-center font-extrabold"
            ${selectedCategory === 'gen' ? 'bg-[#094446] text-white' : 'bg-white text-[#000]'}`} data-category="gen" onClick={() => showCategory('gen')}
             
         >
             General
         </button>
         <button
-            className={`focus:outline-none visited:outline-none active:outline-none category-button border-[1px] border-black bg-[#094446] text-white px-5 py-2 rounded-2xl text-[3vw] transition-colors duration-300 inline-flex items-center font-extrabold"
+            className={`focus:outline-none visited:outline-none active:outline-none category-button border-[1px] border-black bg-[#094446] text-[#000] px-5 py-2 rounded-2xl text-[3vw] transition-colors duration-300 inline-flex items-center font-extrabold"
             
             ${selectedCategory === 'store' ? 'bg-[#094446] text-white' : 'bg-white text-[#000]'}`} data-category="store" onClick={() => showCategory('store')}
         >

@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import backIcon from '../images/images3/back.png';
 import earthIcon from '../images/Vector (25).svg';
 import deleteIcon from '../images/Vector (24).svg';
+import './style.css'
 import {
     AlertDialog,
     AlertDialogAction,
@@ -15,11 +16,11 @@ import {
   } from "@/components/ui/alert-dialog";
 
 function Storesettings() {
-    const [selectedOption, setSelectedOption] = useState('Today');
-    const [menuOpen, setMenuOpen] = useState(false);
+    const [ProductType, setProductType] = useState('Product Type');
+    const [menuOpen, setMenuOpen] = useState(true);
 
-    const handleOptionSelect = (option) => {
-        setSelectedOption(option);
+    const handleProductType = (option) => {
+        setProductType(option);
         setMenuOpen(false);
     };
   return (
@@ -57,9 +58,9 @@ function Storesettings() {
       <div class="flex ml-5 mt-5 gap-5 mr-5">
       <div class="flex flex-col flex-grow">
       <label for="inputField1" class="mb-2 font-extrabold text-lg">Category</label>
-      <div className="dropdown">
-                        <div className="select border-[1px] border-[#AFAFAF] rounded-xl font-bold" onClick={() => setMenuOpen(!menuOpen)}>
-                            <span className="selected">{selectedOption}</span>
+      <div className="dropdown" >
+                        <div className="select border-[1px] border-[#AFAFAF] rounded-3xl font-bold " onClick={() => setMenuOpen(!menuOpen)}>
+                            <span className="selected">{ProductType}</span>
                             <div className={`caret ${menuOpen ? 'caret-rotate' : ''}`}>
                             <svg width="17" height="11" viewBox="0 0 17 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <line x1="15.9091" y1="1.63956" x2="7.7021" y2="9.84654" stroke="#272727" strokeWidth="2.4608"/>
@@ -67,11 +68,33 @@ function Storesettings() {
                     </svg> 
                             </div>
                         </div>
-                        <ul className={`menu font-bold ${menuOpen ? 'menu-open' : ''}`}>
-                            <li className={selectedOption === 'Today' ? 'active' : ''} onClick={() => handleOptionSelect('Today')}>Today</li>
-                            <li className={selectedOption === 'Yesterday' ? 'active' : ''} onClick={() => handleOptionSelect('Yesterday')}>Yesterday</li>
-                            <li className={selectedOption === 'Last Month' ? 'active' : ''} onClick={() => handleOptionSelect('Last Month')}>Last Month</li>
-                            <li className={selectedOption === 'Last Year' ? 'active' : ''} onClick={() => handleOptionSelect('Last Year')}>Last Year</li>
+                        <ul className={`menu font-bold ${menuOpen ? 'menu-open1' : ''}`} style={{width:'85vw', marginLeft:'21vw'}}>
+                            <div className='flex gap-3'>
+                                <div>
+                            <li className={ProductType === 'Clothing' ? 'active' : ''} onClick={() => handleProductType('Clothing')}>Clothing</li>
+                            <li className={ProductType === 'Grocery' ? 'active' : ''} onClick={() => handleProductType('Grocery')}>Grocery</li>
+                            <li className={ProductType === 'Electronics' ? 'active' : ''} onClick={() => handleProductType('Electronics')}>Electronics</li>
+                            <li className={ProductType === 'Restaurant' ? 'active' : ''} onClick={() => handleProductType('Restaurant')}>Restaurant</li>
+                            <li className={ProductType === 'Book Store' ? 'active' : ''} onClick={() => handleProductType('Book Store')}>Book Store</li>
+                            <li className={ProductType === 'Bakery' ? 'active' : ''} onClick={() => handleProductType('Bakery')}>Bakery</li>
+                  
+                            </div>
+                            <div>
+                            <li className={ProductType === 'Beauty Apparel' ? 'active' : ''} onClick={() => handleProductType('Beauty Apparel')}>Beauty Apparel</li>
+                            <li className={ProductType === 'Cafe' ? 'active' : ''} onClick={() => handleProductType('Cafe')}>Cafe</li>
+                            <li className={ProductType === 'Florist' ? 'active' : ''} onClick={() => handleProductType('Florist')}>Florist</li>
+                            <li className={ProductType === 'Footwear' ? 'active' : ''} onClick={() => handleProductType('Footwear')}>Footwear</li>
+                            <li className={ProductType === 'Accessories' ? 'active' : ''} onClick={() => handleProductType('Accessories')}>Accessories</li>
+                            
+                            </div>
+                            <div>
+                            <li className={ProductType === 'Stationary' ? 'active' : ''} onClick={() => handleProductType('Stationary')}>Stationary</li>
+                            <li className={ProductType === 'Eyewear' ? 'active' : ''} onClick={() => handleProductType('Eyewear')}>Eyewear</li>
+                            <li className={ProductType === 'Watch' ? 'active' : ''} onClick={() => handleProductType('Watch')}>Watch</li>
+                            <li className={ProductType === 'Musical Instrument' ? 'active' : ''} onClick={() => handleProductType('Musical Instrument')}>Musical Instrument</li>
+                            <li className={ProductType === 'Sports' ? 'active' : ''} onClick={() => handleProductType('Sports')}>Sports</li>
+                            </div>
+                            </div>
                         </ul>
                     </div>
                     </div>

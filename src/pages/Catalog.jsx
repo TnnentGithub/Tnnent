@@ -5,8 +5,9 @@ import notification from '../images/notfication00.png';
 import vector from '../images/Vector2.png';
 import cart from '../images/add_shopping_cart.png';
 import vector2 from '../images/Vector 3.png'
-import pattern from '../images/Rectangle 2322.png';
+import pattern from '../images/Rectangle 2324.svg';
 import Navbar from '../components/Navbar';
+import diamond from '../images/Vector (27).svg'
 
 function Catalog() {
 
@@ -34,23 +35,24 @@ function Catalog() {
             <h2 className="font-bold text-[5.4vw] md:text-2xl">Wishlist</h2>
             <p className="leading-2 text-[2.5vw] md:text-xs">See all your saved products<br/>here</p>
             <img className="w-7 ml-[80%] mt-4" src={vector} alt=""/>
-        </div> 
+        </div>
+        <Link to='/purchases'> 
         <div className="bg-red-200 h-auto md:h-[17vh] w-[45vw] md:w-[44vw] rounded-lg p-[13px] bg-no-repeat bg-cover" style={{ backgroundImage: `url(${pattern})` }}>
             <h2 className="font-bold text-[5.4vw] md:text-2xl">My Purchases</h2>
             <p className="leading-2 text-[2.5vw] md:text-xs">See all your currently purchased items </p>
             <img className="w-7 ml-[80%] mt-4" src={cart} alt=""/>
-        </div> 
+        </div>
+        </Link> 
       </div>
       <div className="flex justify-between p-[13px] gap-2 mb-32">
         <div className="bg-violet-200 h-auto md:h-[17vh] w-[45vw] md:w-[44vw] rounded-lg p-[13px] bg-no-repeat bg-cover" style={{ backgroundImage: `url(${pattern})` }}>
-            <h2 className="font-bold text-[5.4vw] md:text-2xl">Earnings</h2>
-            <p className="leading-2 text-[2.5vw] md:text-xs">See all Rewards and Earnings you have earned </p>
-            <img className="w-7 ml-[80%] mt-4" src={vector} alt=""/>
+            <h2 className="font-bold text-[5.4vw] md:text-2xl">Premium</h2>
+            <p className="leading-2 text-[2.5vw] md:text-xs mt-1">Unlock features with our<br/>premium services</p>
+            <img className="w-7 ml-[80%] mt-4" src={diamond} alt=""/>
         </div> 
         <div className="bg-green-200 h-auto md:h-[17vh] w-[45vw] md:w-[44vw] rounded-lg p-[13px] bg-no-repeat bg-cover" style={{ backgroundImage: `url(${pattern})` }}>
-            <h2 className="font-bold text-[5.4vw] md:text-2xl">House Rental</h2>
-            <p className="leading-2 text-[2.5vw] md:text-xs">Track your monthly house rental and pay bills directly</p>
-            <img className="w-7 ml-[80%] mt-4" src={vector2} alt=""/>
+            <h2 className="font-bold text-[5.4vw] md:text-2xl">Coming Soon...</h2>
+            <p className="leading-2 text-[2.5vw] md:text-xs">Let Team Tnennt. Cook</p>
         </div>        
       </div>
       <Navbar color="#2D332F" color2= "#2D332F" color3= "#2D332F" color4= "white"/>

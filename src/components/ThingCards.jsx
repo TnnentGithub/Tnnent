@@ -2,10 +2,15 @@ import React from 'react'
 import camera from '../images/Rectangle 2267.svg';
 import '../pages/style.css';
 
-function ThingCards() {
+function ThingCards({ marginTop, width, height }) {
+  const cardStyle = {
+    marginTop: marginTop,
+    width: width,
+    height: height,
+};
   return (
     <>
-    <div className=" bg-[#F5F5F5] w-[37vw] h-[52vw] flex flex-col rounded-lg ">
+    <div className="bg-[#F5F5F5]  flex flex-col rounded-lg " style={cardStyle}>
                     <div className="w-full h-[70%] rounded-lg bg-cover bg-center bg-no-repeat relative"
                       style={{ backgroundImage: `url(${camera})` }}>
                       <div className="bg-white rounded-full w-[6vw] h-[6vw] absolute top-2 right-2  flex justify-center items-center">

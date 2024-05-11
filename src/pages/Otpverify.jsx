@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import tnnentLogo from '../images/Frame 397.png';
 import backButton from '../images/back.png';
 import eastImage from '../images/east.png';
+import { Link } from 'react-router-dom';
 
 function Otpverify() {
     const [verificationCode, setVerificationCode] = useState(['', '', '', '']);
@@ -61,9 +62,9 @@ function Otpverify() {
                 </div>
             </div>
             <div className="w-12 h-12 bg-[#094446] rounded-full mt-3 mx-auto flex items-center">
-                <a href="profile_pic.html">
+                <Link to='/storeemail'>
                     <img src={eastImage} alt="" className="w-6 ml-3" />
-                </a>
+           </Link>
             </div>
         </section>
         </div>

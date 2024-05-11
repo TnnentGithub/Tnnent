@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import camera from '../images/Rectangle 2267.svg';
+import subho from '../images/Subhajit.jpg'
 
 function Details() {
     const [time, setTime] = useState("06:00:00");
@@ -58,7 +60,7 @@ function Details() {
 
       <div className="flex px-5 py-5 gap-4  p-[20px] justify-between">
         <div>
-          <div className="w-[30vw] h-[30vw] bg-[#00ff00]"></div>
+          <div className="w-[30vw] h-[30vw] bg-green-200 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${camera})` }}></div>
         </div>
         <div className="flex flex-col justify-between">
           <div>
@@ -78,7 +80,7 @@ function Details() {
             <p className="text-[3vw] font-bold" style={{ color: 'rgb(136, 136, 136)' }}>+91 9395593877</p>
           </div>
         </div>
-        <div className="bg-[#ff0000] w-[8vw] h-[8vw] border rounded-full"></div>
+        <div className="bg-[#ff0000] w-[9vw] h-[9vw] border rounded-full bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${subho})` }}></div>
       </div>
 
       <p className="text-[4vw] font-bold px-4 mt-7">Amount Details:</p>

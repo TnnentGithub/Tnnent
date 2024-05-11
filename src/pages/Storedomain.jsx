@@ -3,6 +3,7 @@ import tnnentLogo from '../images/Frame 397.png';
 import backIcon from '../images/back.png';
 import frame398Icon from '../images/Frame 398.png';
 import frame399Icon from '../images/Frame 399.png';
+import { Link } from 'react-router-dom';
 
 const SelectStoreDomainPage = () => {
     const [domain, setDomain] = useState('');
@@ -57,10 +58,13 @@ const SelectStoreDomainPage = () => {
             )}
 
             <div className="parent flex justify-center items-center relative h-[440px]">
+
                 <div className="absolute bottom-[10px]">
+                    <Link to='/selectcategory'>
                     <button onClick={handleContinueClick} className="px-[9vh] py-3 bg-[#094446] text-[3vw] font-extrabold text-white border rounded-[15px]">
                         CONTINUE
                     </button>
+                    </Link>
                 </div>
             </div>
         </section>

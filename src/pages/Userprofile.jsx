@@ -12,6 +12,7 @@ import circle5 from '../images/time-past (1).svg';
 import circle6 from '../images/Vector (8).svg';
 import circle7 from '../images/Vector (9).svg';
 import circle8 from '../images/Vector (10).svg';
+import profilepic from '../images/Subhajit.jpg'
 import {
     AlertDialog,
     AlertDialogAction,
@@ -36,7 +37,7 @@ function Userprofile() {
         <div className="w-[93vw] rounded-3xl h-[40vw] mt-4 bg-[#2D332F]">
             <img className="w-[10vw] ml-[83%] mt-6" src={backoption} alt=""/>
             <div className="flex gap-4 ml-4 mt-[-5%] ">
-                <div className="rounded-full w-[7vh] h-[7vh] bg-green-200"></div>
+                <div className="rounded-full w-[7vh] h-[7vh] bg-green-200 bg-cover bg-center bg-no-repeat" style={{backgroundImage: `url(${profilepic})`}}></div>
                 <div className="flex flex-col mt-[-1%]">
                     <div className="flex items-center gap-3">
                     <h2 className="text-white font-bold text-[7vw]">Kunal Deb</h2>

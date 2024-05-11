@@ -9,8 +9,12 @@ import settings from '../images/settings.svg';
 import contact from '../images/Frame 416.svg';
 import flag from '../images/Vector (2).png';
 import camera from '../images/Rectangle 2267.svg';
+import { Link } from 'react-router-dom';
 import { storage } from '../../firebase';
 import { ref, uploadBytes } from 'firebase/storage';
+import ThingCards from '@/components/ThingCards';
+import Featuredthingcard from '@/components/Featuredthingcard';
+import xyzstore from '../images/damian-barczak-U9E423m3Hd8-unsplash.jpg'
 
 
 const Storeprofile = () => {
@@ -34,47 +38,47 @@ const Storeprofile = () => {
   return (
     <>
     <div className='forscroll'>
-    <div className='add-story-btn'>
+    {/* <div className='add-story-btn'>
         <input type="file" name="story" id="story" onChange={(e)=>{setSelectedFile(e.target.files[0])}} />
         <button onClick={handleAddStory}>Upload</button>
-      </div>
+      </div> */}
     <section className="lg:hidden">
       <div className="flex justify-center">
-            <div className="w-[93vw] rounded-3xl mt-4 bg-[#2D332F] relative">
+            <div className="w-[97vw] rounded-3xl mt-4 bg-[#2D332F] relative">
                 <div className="flex gap-4 ml-4 items-center">
-                    <div className="rounded-xl w-[11vh] h-[11vh] bg-green-200 mt-6"></div>
+                    <div className="rounded-xl w-[11vh] h-[11vh] bg-green-200 mt-6 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${xyzstore})` }}></div>
                     <div className="flex flex-col">
                       <div className=" absolute flex justify-center items-center text-[#DEFF98] border-[#DEFF98] border-2 px-4 py-1 rounded-2xl mt-8">
                         <h3 className="text-[3vw]">Clothing</h3>
                       </div>
                       <div className="flex items-center gap-3 mt-16">
-                        <h2 className="text-white font-bold text-[7vw]">Jain Brothers</h2>
+                        <h2 className="text-white font-bold text-[7vw]">XYZ Store</h2>
                         <div className="rounded-full bg-green-500 w-[1vh] h-[1vh]  mt-1"></div>
                     </div>
                     <div className="flex gap-3 items-center">
                         <img className="w-[1.3vh]" src={vectorImage} alt=""/>
-                        <p className="text-white opacity-50 text-[3vw]">jainbrothers.tnennt.store</p>
+                        <p className="text-white opacity-50 text-[3vw]">xyzstore.tnennt.store</p>
                     </div>
                 </div>
                 
             </div>
-            <div className="flex justify-between items-center mb-2">
+            <div className="flex justify-between items-center mb-3 mt-8">
             <div className="flex gap-3 items-center">
                 <img
-            className="w-[4vw] mt-12 ml-4 mb-4"
+            className="w-[4vw]  ml-4 "
             src={iosShareImage}
             alt=""
           />
           <button
-          className="bg-[#67676733] px-5 py-2 mt-9 rounded-full text-white text-[2.7vw] font-bold"
+          className="bg-[#67676733] px-5 py-2  rounded-full text-white text-[2.7vw] font-bold"
         >
           Assam-Karimganj
         </button>
             </div>
-            <div className="flex items-center gap-3 mt-4">
-            <p className="font-bold text-white text-[3vw] mt-6">Accepting Orders:</p>
+            <div className="flex items-center gap-3 ">
+            <p className="font-bold text-white text-[2.9vw]">Accepting Orders:</p>
             <div
-        className={`toggle w-[15vw] h-[8vw] bg-transparent border-2 border-white rounded-[30px] flex items-center px-1 mr-2 mt-6 ${
+        className={`toggle w-[15vw] h-[8vw] bg-transparent border-2 border-white rounded-[30px] flex items-center px-1 mr-2 ${
           Toggled ? "Toggled" : ""
         }`}
         onClick={() => setToggled(!Toggled)}
@@ -89,10 +93,11 @@ const Storeprofile = () => {
         </div>
         <div className="flex justify-center w-full items-center">
             <div
-              className="bg-transparent border-2 border-[#A7A7A7]  p-2 h-[32vw] w-[96vw] mt-4 rounded-3xl"
+              className="bg-transparent   p-2 h-[32vw] w-[98vw] mt-4 rounded-3xl"
             >
-              <div className="flex px-1 py-2 gap-2 justify-center items-center">
-                <div className="bg-green-200 w-[33%] h-[24vw] rounded-lg p-2">
+              <div className="flex px-1 py-2 gap-3 justify-center items-center">
+                <Link to='/createpage'>
+                <div className="bg-green-200 w-[29vw] h-[24vw] rounded-lg p-2">
                   <div className="flex gap-1 items-center">
                     <h2 className="font-bold text-[3.2vw]">LIST</h2>
                     <div className="bg-[#FF0000] h-[0.6vh] w-[0.6vh] rounded-full"></div>
@@ -113,7 +118,9 @@ const Storeprofile = () => {
                     </div>
                     </div>
                 </div>
-                <div className="bg-[#EAE6F6] w-[33%] h-[24vw] rounded-lg p-2">
+                </Link>
+                <Link to='/analytics'>
+                <div className="bg-[#EAE6F6] w-[29vw] h-[24vw] rounded-lg p-2">
                     <div className="flex gap-1 items-center">
                         <h2 className="font-bold text-[3.2vw]">ANALYTICS</h2>
                         <div className="bg-[#0D6A6D] h-[0.6vh] w-[0.6vh] rounded-full"></div>
@@ -133,8 +140,9 @@ const Storeprofile = () => {
                       
                     </div>
                 </div>
-              
-                <div className="bg-[#EFEFEF] w-[33%] h-[24vw] rounded-lg p-2">
+                </Link>
+                <Link to='/mycommunity'>
+                <div className="bg-[#EFEFEF] w-[30vw] h-[24vw] rounded-lg p-2">
                     <div className="flex gap-1 items-center">
                         <h2 className="font-bold text-[2.5vw]">STORE</h2>
                         <div className="bg-yellow-400 h-[0.6vh] w-[0.6vh] rounded-full"></div>
@@ -153,6 +161,7 @@ const Storeprofile = () => {
                         </div>
                     </div>
                 </div>
+                </Link>
               </div>
             </div>
             </div>
@@ -174,6 +183,7 @@ const Storeprofile = () => {
                     </div>
                   </div>
                   <div className='flex flex-col gap-4'>
+                    <Link to='/orderandpays'>
                      <div className='w-[45vw] h-[17vw] bg-[#F3F3F3] rounded-3xl flex justify-between items-center'>
                       <div className='w-[14vw] h-[14vw] rounded-full bg-white ml-1 flex justify-center items-center'>
                         <img className='w-[5vw]' src={contact} alt="" />
@@ -183,6 +193,8 @@ const Storeprofile = () => {
                         <p className='text-[2.3vw] text-[#838383]leading-[0.05rem]'>Orders, payments &<br/>cupons</p>
                       </div>
                      </div>
+                     </Link>
+                     <Link to='/storesettings'>
                      <div className='w-[45vw] h-[17vw] bg-[#F3F3F3] rounded-3xl flex justify-between items-center'>
                       <div className='w-[14vw] h-[14vw] rounded-full bg-white ml-1 flex justify-center items-center'>
                       <img className='w-[5vw]' src={settings} alt="" />
@@ -192,6 +204,7 @@ const Storeprofile = () => {
                         <p className='text-[2.3vw] text-[#838383]leading-[0.05rem]'>Store Setting</p>
                       </div>
                      </div>
+                     </Link>
                   </div>
                 </div>
       </div>
@@ -204,18 +217,7 @@ const Storeprofile = () => {
       onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper) => console.log(swiper)}
     >
-      <SwiperSlide>
-      <div className="border-[1px] border-[#B5B5B5] h-[30vw] w-[34vw] rounded-xl flex justify-center items-center swiper-slide">
-                    
-                    <div className="bg-[#F5F5F5] h-[6vh] w-[6vh] rounded-full flex justify-center items-center">
-                        <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10.8828 1.71387L10.8828 19.2853" stroke="#B5B5B5" strokeWidth="3" strokeLinecap="round"/>
-                            <path d="M19.2852 10.1182L1.71373 10.1182" stroke="#B5B5B5" strokeWidth="3" strokeLinecap="round"/>
-                            </svg>
-                    </div>
-                
-            </div>
-      </SwiperSlide>
+     
       <SwiperSlide>
       <div className="border-[1px] border-[#B5B5B5] h-[30vw] w-[34vw] rounded-xl  flex justify-center items-center">
                     
@@ -264,67 +266,43 @@ const Storeprofile = () => {
                     </svg>
             </div>
         </div>
-        <div className="flex justify-center px-2 mt-7 mb-12">
+        <div className="flex ml-4 mr-2 mt-7">
         <Swiper
-      spaceBetween={10}
+      spaceBetween={40}
       slidesPerView={2.5}
       onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper) => console.log(swiper)}
     >
-      <SwiperSlide><div className="bg-[#F5F5F5] w-[37vw] h-[52vw] flex flex-col rounded-lg swiper-slide">
-      <div className="w-full h-[70%] rounded-lg bg-cover bg-center bg-no-repeat relative" style={{ backgroundImage: `url(${camera})` }}>
-        <div className="bg-white rounded-full w-[6vw] h-[6vw] absolute top-2 right-2 flex justify-center items-center">
-          <svg width="13" height="3" viewBox="0 0 16 3" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <line x1="0.800781" y1="1.05859" x2="15.8008" y2="1.05859" stroke="#FF0000" strokeWidth="2" />
-          </svg>
-        </div>
-      </div>
-      <div className="flex flex-col gap-4 ml-2">
-        <h1 className="font-extrabold text-[3vw] mt-2">Canon xyz Camera</h1>
-        <p className="text-left font-extrabold text-[3vw] mb-2">&#8377; 200</p>
-      </div>
-    </div></SwiperSlide>
-    <SwiperSlide><div className="bg-[#F5F5F5] w-[37vw] h-[52vw] flex flex-col rounded-lg swiper-slide">
-      <div className="w-full h-[70%] rounded-lg bg-cover bg-center bg-no-repeat relative" style={{ backgroundImage: `url(${camera})` }}>
-        <div className="bg-white rounded-full w-[6vw] h-[6vw] absolute top-2 right-2 flex justify-center items-center">
-          <svg width="13" height="3" viewBox="0 0 16 3" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <line x1="0.800781" y1="1.05859" x2="15.8008" y2="1.05859" stroke="#FF0000" strokeWidth="2" />
-          </svg>
-        </div>
-      </div>
-      <div className="flex flex-col gap-4 ml-2">
-        <h1 className="font-extrabold text-[3vw] mt-2">Canon xyz Camera</h1>
-        <p className="text-left font-extrabold text-[3vw] mb-2">&#8377; 200</p>
-      </div>
-    </div></SwiperSlide>
-    <SwiperSlide><div className="bg-[#F5F5F5] w-[37vw] h-[52vw] flex flex-col rounded-lg swiper-slide">
-      <div className="w-full h-[70%] rounded-lg bg-cover bg-center bg-no-repeat relative" style={{ backgroundImage: `url(${camera})` }}>
-        <div className="bg-white rounded-full w-[6vw] h-[6vw] absolute top-2 right-2 flex justify-center items-center">
-          <svg width="13" height="3" viewBox="0 0 16 3" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <line x1="0.800781" y1="1.05859" x2="15.8008" y2="1.05859" stroke="#FF0000" strokeWidth="2" />
-          </svg>
-        </div>
-      </div>
-      <div className="flex flex-col gap-4 ml-2">
-        <h1 className="font-extrabold text-[3vw] mt-2">Canon xyz Camera</h1>
-        <p className="text-left font-extrabold text-[3vw] mb-2">&#8377; 200</p>
-      </div>
-    </div></SwiperSlide>
-    <SwiperSlide><div className="bg-[#F5F5F5] w-[37vw] h-[52vw] flex flex-col rounded-lg swiper-slide">
-      <div className="w-full h-[70%] rounded-lg bg-cover bg-center bg-no-repeat relative" style={{ backgroundImage: `url(${camera})` }}>
-        <div className="bg-white rounded-full w-[6vw] h-[6vw] absolute top-2 right-2 flex justify-center items-center">
-          <svg width="13" height="3" viewBox="0 0 16 3" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <line x1="0.800781" y1="1.05859" x2="15.8008" y2="1.05859" stroke="#FF0000" strokeWidth="2" />
-          </svg>
-        </div>
-      </div>
-      <div className="flex flex-col gap-4 ml-2">
-        <h1 className="font-extrabold text-[3vw] mt-2">Canon xyz Camera</h1>
-        <p className="text-left font-extrabold text-[3vw] mb-2">&#8377; 200</p>
-      </div>
-    </div></SwiperSlide>
+     <SwiperSlide>
+     <Featuredthingcard marginTop="0" width="37vw" height="52vw" />
+     </SwiperSlide>
+     <SwiperSlide>
+      <Featuredthingcard marginTop="0" width="37vw" height="52vw" />
+     </SwiperSlide>
+     <SwiperSlide>
+      <Featuredthingcard marginTop="0" width="37vw" height="52vw" />
+     </SwiperSlide>
     </Swiper>
         </div>
+        <h2 className='ml-4 text-[5vw] font-bold mt-7'>Category 01</h2>
+        <div className="flex ml-4 mr-2 mt-7 mb-12">
+        <Swiper
+      spaceBetween={40}
+      slidesPerView={2.5}
+      onSlideChange={() => console.log('slide change')}
+      onSwiper={(swiper) => console.log(swiper)}
+    >
+     <SwiperSlide>
+     <Featuredthingcard marginTop="0" width="37vw" height="52vw" />
+     </SwiperSlide>
+     <SwiperSlide>
+      <Featuredthingcard marginTop="0" width="37vw" height="52vw" />
+     </SwiperSlide>
+     <SwiperSlide>
+      <Featuredthingcard marginTop="0" width="37vw" height="52vw" />
+     </SwiperSlide>
+    </Swiper>
+    </div>
     </section>
     </div>
     </>

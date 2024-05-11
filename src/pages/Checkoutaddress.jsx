@@ -102,7 +102,9 @@ function Checkoutaddress() {
             </div>
         </div>
         <div className='flex justify-center'>
+          <Link to='/checkoutinfo'>
         <button className='mt-9 mb-4 px-[10vw] py-4 text-[17px] font-bold border-2 border-[#E3E3E3] rounded-full'>Change Your Address</button>
+        </Link>
         </div>
       </div>
       </div>

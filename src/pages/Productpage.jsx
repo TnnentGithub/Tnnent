@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import ratingIcon from '../images/Vector (17).svg';
 import shareIcon from '../images/ios_share (2).svg';
 import mapIcon from '../images/images2/mobile icons/map.png';
-import storeIcon from '../images/images2/mobile icons/store.png'
+import storeIcon from '../images/add_shopping_cart (1).svg'
 import logo from '../images/images2/desktop icons/logo.png';
 import flags from '../images/Vector (19).svg';
 import greenflag from '../images/Vector (20).svg';
@@ -11,6 +11,14 @@ import redflag from '../images/Vector (21).svg';
 import whatsapp from '../images/whatsapp.svg';
 import threedots from '../images/image 2.svg';
 import questionmark from '../images/Frame 372.svg';
+import link from '../images/attach_file_add.svg';
+import fb from '../images/facebook.svg';
+import signal from '../images/signal.svg';
+import instagram from '../images/instagram.svg';
+import telegram from '../images/telegram.svg';
+import twitter from '../images/Vector (28).svg';
+import more from '../images/Frame 509.svg'
+import { Link } from 'react-router-dom';
 import './style.css';
 
 import 'swiper/css';
@@ -94,31 +102,43 @@ function Productpage() {
                 <Swiper
           className="mySwiper mr-2 ml-4"
           spaceBetween={10}
-          slidesPerView={1.2}
+          slidesPerView={1}
+          centeredSlides={true}
          
         >
         <SwiperSlide>
-          <div className='h-[65vw] w-[70vw] bg-red-400'></div>  
+          <div className='flex justify-center'>
+          <div className='h-[65vw] w-[90vw] bg-red-400'></div>
+          </div>  
         </SwiperSlide> 
         <SwiperSlide>
-          <div className='h-[65vw] w-[70vw] bg-red-400'></div>  
+          <div className='flex justify-center'>
+          <div className='h-[65vw] w-[90vw] bg-red-400'></div>
+          </div>  
         </SwiperSlide> 
         <SwiperSlide>
-          <div className='h-[65vw] w-[70vw] bg-red-400'></div>  
+          <div className='flex justify-center'>
+          <div className='h-[65vw] w-[90vw] bg-red-400'></div>
+          </div>  
         </SwiperSlide> 
         <SwiperSlide>
-          <div className='h-[65vw] w-[70vw] bg-red-400'></div>  
+          <div className='flex justify-center'>
+          <div className='h-[65vw] w-[90vw] bg-red-400'></div>
+          </div>  
         </SwiperSlide> 
         <SwiperSlide>
-          <div className='h-[65vw] w-[70vw] bg-red-400'></div>  
+          <div className='flex justify-center'>
+          <div className='h-[65vw] w-[90vw] bg-red-400'></div>
+          </div>  
         </SwiperSlide> 
+       
 
         </Swiper>
         </div>
         <div className="flex justify-between items-center mt-6">
             <div className="flex gap-2 ml-4 items-center ">
                 <div className="w-8 h-8  bg-[#616363] rounded-full flex-shrink-0"></div>
-                <p className="font-semibold text-[#9C9C9C] flex-shrink-0">Jain Brothers</p>
+                <p className="font-semibold text-[#9C9C9C] flex-shrink-0">XYZ Store</p>
             </div>
 
             <div className="flex ml-20 gap-3 mt-[-3px] justify-end right-0">
@@ -196,36 +216,36 @@ function Productpage() {
                 <DrawerContent className = "h-[70vw]">
                    <div className='mt-8 justify-between flex px-9'>
                    <div className="flex flex-col justify-center items-center">
-                <div className="py-4 px-4 border border-black rounded-full">
-                    <img className="w-[7vw]" src={whatsapp} alt=""/>
+                <div className="py-3 px-4 border border-black rounded-full">
+                    <img className="w-[6vw]" src={link} alt=""/>
                 </div>
-                <p className='text-[3vw] font-medium mt-1'>Whatsapp</p>
+                <p className='text-[3vw] font-medium mt-1'>Copy Link</p>
             </div>
             <div className="flex flex-col justify-center items-center">
                 <div className="py-4 px-4 border border-black rounded-full">
-                    <img className="w-[7vw]" src={whatsapp} alt=""/>
+                    <img className="w-[7vw]" src={instagram} alt=""/>
                 </div>
-                <p className='text-[3vw] font-medium mt-1'>Whatsapp</p>
+                <p className='text-[3vw] font-medium mt-1'>Instagram</p>
             </div>
             <div className="flex flex-col justify-center items-center">
                 <div className="py-4 px-4 border border-black rounded-full">
-                    <img className="w-[7vw]" src={whatsapp} alt=""/>
+                    <img className="w-[7vw]" src={fb} alt=""/>
                 </div>
-                <p className='text-[3vw] font-medium mt-1'>Whatsapp</p>
+                <p className='text-[3vw] font-medium mt-1'>Facebook</p>
             </div>
             <div className="flex flex-col justify-center items-center">
                 <div className="py-4 px-4 border border-black rounded-full">
-                    <img className="w-[7vw]" src={whatsapp} alt=""/>
+                    <img className="w-[7vw]" src={signal} alt=""/>
                 </div>
-                <p className='text-[3vw] font-medium mt-1'>Whatsapp</p>
+                <p className='text-[3vw] font-medium mt-1'>Signal</p>
             </div>
                    </div>
                    <div className='mt-4 justify-between flex px-9'>
                    <div className="flex flex-col justify-center items-center">
                 <div className="py-4 px-4 border border-black rounded-full">
-                    <img className="w-[7vw]" src={whatsapp} alt=""/>
+                    <img className="w-[7vw]" src={telegram} alt=""/>
                 </div>
-                <p className='text-[3vw] font-medium mt-1'>Whatsapp</p>
+                <p className='text-[3vw] font-medium mt-1'>Telegram</p>
             </div>
             <div className="flex flex-col justify-center items-center">
                 <div className="py-4 px-4 border border-black rounded-full">
@@ -235,24 +255,25 @@ function Productpage() {
             </div>
             <div className="flex flex-col justify-center items-center">
                 <div className="py-4 px-4 border border-black rounded-full">
-                    <img className="w-[7vw]" src={whatsapp} alt=""/>
+                    <img className="w-[7vw]" src={twitter} alt=""/>
                 </div>
-                <p className='text-[3vw] font-medium mt-1'>Whatsapp</p>
+                <p className='text-[3vw] font-medium mt-1'>Twitter</p>
             </div>
             <div className="flex flex-col justify-center items-center">
                 <div className="py-4 px-4 border border-black rounded-full">
-                    <img className="w-[7vw]" src={whatsapp} alt=""/>
+                    <img className="w-[7vw]" src={more} alt=""/>
                 </div>
-                <p className='text-[3vw] font-medium mt-1'>Whatsapp</p>
+                <p className='text-[3vw] font-medium mt-1'>More</p>
             </div>
                    </div>
                 </DrawerContent>
                 </Drawer>
 
                 <div className="w-10 h-10 mt-3 mr-3 bg-[#F5F5F5] rounded-full flex justify-center items-center">
+           
                     <div className="heart-container" title="Like">
                         <input type="checkbox" className="checkbox" id="Give-It-An-Id" />
-                        <div className="svg-container">
+                        <div className="svg-container ">
                             <svg viewBox="0 0 24 24" className="svg-outline" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z" stroke="#BEBEBE"></path>
                             </svg>
@@ -271,10 +292,11 @@ function Productpage() {
                             </svg>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </div>
-        <div className="mt-4 ml-6">
+        <div className="mt-7 ml-6">
       <h2 className="font-black text-lg">Canon XYZ Camera</h2>
       {/* <p className="text-[#9C9C9C]">Assam, Karimganj, Shyamaprasad Road- house no.3</p> */}
       
@@ -286,13 +308,15 @@ function Productpage() {
               <h2 className="text-2xl font-extrabold mt-2">&#x20b9; 2000</h2>
               <p className="text-red-600 font-black ml-2 mt-4">40% Discount</p>
             </div>
-            <p className="text-[#A9A9A9] font-extrabold mt-[-5px] ml-5 text-md line-through">
+            <p className="text-[#A9A9A9] font-extrabold mt- ml-5 text-md line-through">
               MRP ₹700
             </p>
           </div>
+          <Link to='/checkoutaddress'>
           <div className="bg-[#094446] p-2 py-2 w-14 h-14 mt-1 rounded-lg ml-12 flex justify-center items-center">
             <img src={storeIcon} alt="" className="w-7" />
           </div>
+          </Link>
         </div>
       </div>
     </div>
@@ -310,6 +334,7 @@ function Productpage() {
     <div className="mt-14 ml-6">
       <h2 className="text-2xl font-extrabold font-gotham-black">Related Products<span className="text-green-600"> &bull;</span></h2>
     </div>
+    <div className='flex ml-5'>
     <Swiper
           className="mySwiper mr-2 ml-4 mt-7"
           spaceBetween={10}
@@ -317,22 +342,22 @@ function Productpage() {
          
         >
             <SwiperSlide>
-                <ThingCards/>
+            <ThingCards marginTop="0" width="37vw" height="52vw" />
             </SwiperSlide>
             <SwiperSlide>
-                <ThingCards/>
+            <ThingCards marginTop="0" width="37vw" height="52vw" />
             </SwiperSlide>
             <SwiperSlide>
-                <ThingCards/>
+            <ThingCards marginTop="0" width="37vw" height="52vw" />
             </SwiperSlide>
             <SwiperSlide>
-                <ThingCards/>
+            <ThingCards marginTop="0" width="37vw" height="52vw" />
             </SwiperSlide>
             <SwiperSlide>
-                <ThingCards/>
+            <ThingCards marginTop="0" width="37vw" height="52vw" />
             </SwiperSlide>
         </Swiper>
-        
+        </div>
         <div className="ml-6 mt-9">
       <h2 className="text-2xl font-gotham-black font-extrabold">Reviews <span className="text-red-600"> &bull;</span></h2>
     </div>

@@ -11,6 +11,8 @@ import menudesktop from '../images/menu icon.png'
 import backdesktop from '../images/back desktop.png'
 import logo from '../images/Frame 397.png'
 import './Desktopstyle.css';
+import xyzstore from '../images/damian-barczak-U9E423m3Hd8-unsplash.jpg'
+
 
 function Gallery() {
     const [Toggled, setToggled] = useState(false)
@@ -29,19 +31,21 @@ function Gallery() {
                 <h3 className="font-bold text-[5vw] mt-5 ml-4">Store</h3>
                 <div className="flex justify-center">
                     <div className="w-[93vw] rounded-xl mt-4 bg-[#2D332F] py-5 px-3 items-center relative">
+                        <Link to='/storeprofile'>
                         <div className="flex gap-3 items-center">
-                            <div className="rounded-lg w-[9vh] h-[9vh] bg-green-200"></div>
+                            <div className="rounded-lg w-[9vh] h-[9vh] bg-green-200 bg-no-repeat bg-cover bg-center" style={{ backgroundImage: `url(${xyzstore})` }}></div>
                             <div className="flex flex-col">
                                 <div className="flex items-center gap-2">
-                                    <h2 className="text-white font-bold text-[7vw]">Jain Brothers</h2>
+                                    <h2 className="text-white font-bold text-[7vw]">XYZ Store</h2>
                                     <div className="rounded-full w-[0.8vh] h-[0.8vh] bg-green-500 mt-2"></div>
                                 </div>
                                 <div className="flex gap-2 items-center">
                                     <img className="w-[1.3vh]" src={vector5} alt="" />
-                                    <p className="text-white opacity-50 text-[3vw]">jainbrothers.tnennt.store</p>
+                                    <p className="text-white opacity-50 text-[3vw]">xyzstore.tnennt.store</p>
                                 </div>
                             </div>
                         </div>
+                        </Link>
                         <div
         className={`toggle w-[15vw] h-[8vw] bg-transparent border-2 border-white rounded-[30px] flex items-center px-1 mr-2 ml-[77%] absolute mt-[-7%] ${
           Toggled ? "Toggled" : ""
@@ -56,12 +60,18 @@ function Gallery() {
                 </div>
                 <hr className="mt-8 ml-2" />
                 <div className="flex justify-center mt-5 px-5">
+                    <Link to='/storestarting'>
                     <img src={frame401} alt="" />
+                    </Link>
                 </div>
+                <Link to='/services'>
                 <div className="flex justify-center mt-5 px-4 relative">
+                    
                     <img src={frame292} alt="" />
                     <h3 className="absolute text-white font-bold text-[4.3vw] mt-[39%] mr-[68%]">9,877<span><p className="text-white text-[3vw] absolute mt-[-53%] ml-[104%]">+</p></span></h3>
+                    
                 </div>
+                </Link>
                 <div className="flex justify-center">
                     <div className="bg-[#F3F3F3] w-[93vw] mt-6 rounded-3xl shadow-xl p-4">
                         <div className="bg-white p-2 w-[84vw] mt-1 rounded-3xl">

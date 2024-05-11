@@ -136,7 +136,7 @@ function Couponpercent() {
                       
                     </div>
                     <div className="fixed bottom-4 left-0 right-0 flex justify-center items-center">
-                                <Link to="" className="flex bg-[#2D332F] rounded-full text-xl p-4 w-72 md:hidden text-white justify-center items-center">
+                                <Link to="/couponcreated" className="flex bg-[#2D332F] rounded-full text-xl p-4 w-72 md:hidden text-white justify-center items-center">
                                 Generate Coupon
                                 </Link>
                             </div>

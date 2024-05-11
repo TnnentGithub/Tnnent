@@ -14,6 +14,8 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "../components/ui/drawer.jsx"
+import Desktopheader from '@/components/Desktopheader';
+import Desktopfooter from '@/components/Desktopfooter';
 
 
 function Analytics() {
@@ -290,7 +292,7 @@ function Analytics() {
     </div>
   </div>
 </div>
-<div className="flex justify-center">
+<div className="flex justify-center mb-12">
   <div className="w-[95vw] border-[1px] border-[#AFAFAF] mt-4 rounded-xl p-3">
     <div className="flex justify-between px-2">
       <div className="flex flex-col gap-5">
@@ -313,7 +315,7 @@ function Analytics() {
   </div>
 </div>
 
-<div className="flex justify-center mb-12">
+{/* <div className="flex justify-center mb-12">
   <div className="w-[95vw] border-[1px] border-[#AFAFAF] mt-4 rounded-xl p-3">
     <div className="flex justify-between items-center px-2">
       <div className="flex flex-col gap-6">
@@ -350,9 +352,168 @@ function Analytics() {
       </div>
     </div>
   </div>
-</div>
+</div> */}
                 
                 
+        </section>
+        <section className='hidden lg:block'>
+          <Desktopheader/>
+          <div className='flex gap-12'>
+          <div>
+          <div className='flex flex-col mt-32 ml-7'>
+            <div className='flex gap-2 items-center'>
+            <h2 className='font-bold text-[27px] '>ANALYTICS</h2>
+            <div className='w-2 h-2 bg-green-500 rounded-full'></div>
+            </div>
+            <p className='font-medium opacity-70 '>See Your Business Insights & Store Matrics</p>
+          </div>
+          <div className='flex items-center gap-5'>
+          <div className="dropdown relative ml-7 mt-12" style={{width:"160px"}}>
+                        <div className="select border-[1px] border-[#AFAFAF] rounded-xl font-bold" onClick={() => setMenuOpen(!menuOpen)}>
+                            <span className="selected">{selectedOption}</span>
+                            <div className={`caret ${menuOpen ? 'caret-rotate' : ''}`}>
+                            <svg width="17" height="11" viewBox="0 0 17 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="15.9091" y1="1.63956" x2="7.7021" y2="9.84654" stroke="#272727" strokeWidth="2.4608"/>
+                    <line x1="0.870025" y1="1.26865" x2="7.83034" y2="8.22896" stroke="#272727" strokeWidth="2.4608"/>
+                    </svg> 
+                            </div>
+                        </div>
+                        <ul className={`menu font-bold ${menuOpen ? 'menu-open' : ''}`}>
+                            <li className={selectedOption === 'Today' ? 'active' : ''} onClick={() => handleOptionSelect('Today')}>Today</li>
+                            <li className={selectedOption === 'Yesterday' ? 'active' : ''} onClick={() => handleOptionSelect('Yesterday')}>Yesterday</li>
+                            <li className={selectedOption === 'Last Month' ? 'active' : ''} onClick={() => handleOptionSelect('Last Month')}>Last Month</li>
+                            <li className={selectedOption === 'Last Year' ? 'active' : ''} onClick={() => handleOptionSelect('Last Year')}>Last Year</li>
+                        </ul>
+                    </div>
+                    <button className='text-[18px] mt-12 rounded-full px-7 py-2 bg-black text-white'>Print Data</button>
+          </div>
+          </div>
+          <div className='ml-16 mt-12'>
+          <div className="w-[440px] border-[1px] border-[#AFAFAF]  rounded-xl p-3 ">
+    <div className="flex flex-col gap-4 ml-2">
+      <h3 className="font-bold text-[20px]">Total Customers</h3>
+      <div className="flex items-center gap-2">
+        <h3 className="font-bold text-[30px] text-[#094446]">760</h3>
+        <p className="mt-3 font-bold opacity-50 text-[12px]">customers engaged to your store.</p>
+      </div>
+    </div>
+  </div>
+  <div className="w-[440px]  border-[1px] border-[#AFAFAF] mt-2 rounded-xl px-3 pt-3 pb-2">
+    <h2 className="font-bold text-[17px]">Top Ordered item</h2>
+    <div className="flex justify-between">
+      <div className="flex flex-col gap-3 mt-5">
+        <div className="flex flex-col gap-1">
+          <h3 className="font-semibold opacity-60 text-[15px]">Product Lifetime Sell</h3>
+          <div className="flex gap-2 items-center">
+            <h3 className="font-bold text-[26px] text-[#094446]">100</h3>
+            <p className="mt-2 font-bold opacity-50 text-[12px]">pieces sold</p>
+          </div>
+        </div>
+        <div className="flex flex-col gap-1">
+          <h3 className="font-semibold opacity-60 text-[15px]">Contributing About</h3>
+          <div className="flex gap-2 items-center">
+            <h3 className="font-bold text-[26px] text-[#094446]">0.00%</h3>
+            <p className="mt-2 font-bold opacity-50 text-[12px]">of the store Sales</p>
+          </div>
+        </div>
+      </div>
+      <div className="flex flex-col items-center gap-3 mt-[-6%] mr-3">
+        <div className="w-[130px] h-[140px] bg-green-200 rounded-md"></div>
+        <h3 className="font-bold text-[16px]">Canon xyz Camera</h3>
+      </div>
+    </div>
+  </div>
+  <div className="w-[440px] border-[1px] border-[#AFAFAF] mt-2 rounded-xl p-3 ">
+    <div className="flex flex-col gap-3 ml-2">
+      <h3 className="font-bold text-[20px]">Average order value</h3>
+      <div className="flex items-center gap-2">
+        <h3 className="font-bold text-[30px] text-[#094446]">₹ 760</h3>
+        <p className="font-bold opacity-50 text-[12px]">is the average item price that your<br/>customer purchases</p>
+      </div>
+    </div>
+    </div>
+    <div className="w-[440px] border-[1px] border-[#AFAFAF] mt-2   rounded-xl p-3">
+    <div className="flex justify-between px-2">
+      <div className="flex flex-col gap-5">
+        <h3 className="font-bold text-[18px]">Gender</h3>
+        <div className="flex flex-col gap-2">
+          <p className="text-[14px] font-bold" style={{ color: 'rgba(0, 0, 0, 0.5)' }}>Male : <span className="font-bold text-[15px]" style={{ color: '#094446' }}>0.00%</span></p>
+          <p className="text-[14px] font-bold" style={{ color: 'rgba(0, 0, 0, 0.5)' }}>Female : <span className="font-bold text-[15px]" style={{ color: '#094446' }}>0.00%</span></p>
+          <p className="text-[14px] font-bold" style={{ color: 'rgba(0, 0, 0, 0.5)' }}>Others : <span className="font-bold text-[15px]" style={{ color: '#094446' }}>0.00%</span></p>
+        </div>        
+      </div>
+      <div className="flex flex-col gap-5">
+        <h3 className="font-bold text-[18px]">Age Group</h3>
+        <div className="flex flex-col gap-2">
+          <p className="text-[14px] font-bold" style={{ color: 'rgba(0, 0, 0, 0.5)' }}>18 - 24 : <span className="font-bold text-[15px]" style={{ color: '#094446' }}>0.00%</span></p>
+          <p className="text-[14px] font-bold" style={{ color: 'rgba(0, 0, 0, 0.5)' }}>25 - 35 : <span className="font-bold text-[15px]" style={{ color: '#094446' }}>0.00%</span></p>
+          <p className="text-[14px] font-bold" style={{ color: 'rgba(0, 0, 0, 0.5)' }}>36 - 50 : <span className="font-bold text-[15px]" style={{ color: '#094446' }}>0.00%</span></p>
+        </div>        
+      </div>
+    </div>
+  </div>
+          </div>
+          <div className='mt-8'>
+          <div className="w-[440px]  border-[1px] border-[#AFAFAF] mt-4 rounded-xl p-3">
+    <div className="flex justify-between">
+      <div className="flex flex-col gap-14 ml-2">
+        <div className="flex flex-col gap-1">
+          <h3 className="font-semibold opacity-60 text-[18px]">Total Store<br/>Visitors</h3>
+          <h3 className="font-bold text-[27px] text-[#094446]">800K</h3>
+        </div>
+        <div className="flex flex-col gap-1">
+          <h3 className="font-semibold opacity-60 text-[18px]">Conversion<br/>Rate</h3>
+          <h3 className="font-bold text-[27px] text-[#094446]">0.00%</h3>
+        </div>
+      </div>
+      <div className="flex flex-col gap-14 mr-3">
+        <div className="flex flex-col gap-1">
+          <h3 className="font-semibold opacity-60 text-[18px]">New Store<br/>Visitors</h3>
+          <h3 className="font-bold text-[27px] text-[#094446]">10K</h3>
+        </div>
+        <div className="flex flex-col gap-1">
+          <h3 className="font-semibold opacity-60 text-[18px]">Conversion Rate<br/>From New Visitors</h3>
+          <h3 className="font-bold text-[27px] text-[#094446]">0.00%</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div className="w-[440px] border-[1px] border-[#AFAFAF] mt-8 rounded-xl p-3 ">
+    <div className="flex justify-between items-center">
+      <div className="flex flex-col gap-14 ">
+        <div className="flex flex-col gap-1">
+          <h3 className="font-semibold opacity-60 text-[18px]">Revenue From<br/>Store</h3>
+          <h3 className="font-bold text-[27px] text-[#094446]">800K</h3>
+        </div>
+        <div className="flex flex-col gap-3">
+          <div className="flex flex-col">
+            <h3 className="font-semibold opacity-60 text-[18px]">Tax Amount</h3>
+             <p className="font-bold opacity-40 text-[11px]">Platform tax, GST, Middleman</p>
+          </div>
+          <h3 className="font-bold text-[27px] text-[#094446]">40K</h3>
+        </div>
+      </div>
+      <div className="flex flex-col gap-14 mt-4">
+        <div className="flex flex-col gap-1">
+          <h3 className="font-semibold opacity-60 text-[18px]">Net Profit From<br/>Store</h3>
+          <h3 className="font-bold text-[27px] text-[#094446]">760K</h3>
+        </div>
+        <div className="flex flex-col gap-3">
+          <div className="flex flex-col">
+            <h3 className="font-semibold opacity-60 text-[18px]">Store Performance</h3>
+             <p className="font-bold opacity-40 text-[11px]">Compared to last month</p>
+          </div>
+          <div className="flex flex-col">
+          <h3 className="font-bold text-[27px] text-[#094446]">+0.00%</h3>
+          <p className="font-bold opacity-40 text-[11px]">Difference compared to last month</p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+          </div>
+          </div>
+          <Desktopfooter/>
         </section>
         </div>
         </>

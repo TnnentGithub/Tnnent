@@ -2,6 +2,7 @@ import React from 'react';
 import logo from '../images/Frame 397.png';
 import coupon from '../images/Group 3.svg';
 import back from '../images/images3/back.png'
+import { Link } from 'react-router-dom';
 
 function CreateCoupon() {
   return (
@@ -41,6 +42,7 @@ function CreateCoupon() {
      <div className='flex justify-center'>
       <hr className='mt-4 mb-4'/>
       </div>
+      <Link to='/couponprice'>
       <div className="mt-4 p-10 py-10 m-5 rounded-xl bg-[#094446]">
         <h2 className="text-white text-2xl font-bold mt-[-10px] ml-[-20px]">
           Fixed Price Discount <span className="text-red-500"> &bull;</span>
@@ -49,7 +51,8 @@ function CreateCoupon() {
           Create fixed amount discount coupons for your customers
         </p>
       </div>
-
+      </Link>
+      <Link to='/couponpercent'>
       <div className="mt-4 mb-10 p-10 py-10 m-5 rounded-xl bg-[#094446]">
         <h2 className="text-white text-2xl font-bold mt-[-10px] ml-[-20px]">
           Percentage Discount <span className="text-green-500"> &bull;</span>
@@ -58,6 +61,7 @@ function CreateCoupon() {
           Create percentage based discount coupons for your customers
         </p>
       </div>
+      </Link>
     </section>
   );
 }

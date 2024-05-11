@@ -65,6 +65,12 @@ hr{
     transform: rotate(180deg);
 
   }
+  .swiper-no-swiping {
+    pointer-events: none; /* Disable pointer events */
+    cursor: default; /* Change cursor to default */
+    /* Optionally, you can add other styles to indicate that the swiper is not interactive */
+  }
+  
 
   ::-webkit-scrollbar{
     display: none;

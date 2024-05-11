@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from 'react';
-
 import backIcon from '../images/images3/back.png';
 import frame401 from '../images/images3/Frame 401.png';
 import frame402 from '../images/images3/Frame 402.png';
@@ -29,6 +28,8 @@ import { storage } from '../../firebase';
 import { ref, uploadBytes } from 'firebase/storage';
 import { db } from "../../firebase.js";
 import { doc, setDoc, arrayUnion } from "firebase/firestore";
+import Optionalsweight from './Optionalsweight';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 
@@ -43,6 +44,13 @@ const [ProductMrpPrice, setProductMrpPrice] = useState('')
 const [ProductPrice, setProductPrice] = useState('')
 const [ProductDesc, setProductDesc] = useState('')
 const [ProductStockQuantity, setProductStockQuantity] = useState('')
+const [showHello, setShowHello] = useState(false);
+const [ProductType, setProductType] = useState('Product Type');
+const [menuOpen, setMenuOpen] = useState(false);
+const [Images, setImages] = useState([]);
+const [selectedParcel, setSelectedParcel] = useState(null);
+
+const [optional,setOptional]=useState(false);
 
 useEffect(() => {
     const timerid = setTimeout(() => {
@@ -53,15 +61,12 @@ useEffect(() => {
     }
 }, [ProductStockQuantity])
 
-    const [selectedParcel, setSelectedParcel] = useState(null);
 
   const handleParcelSelect = (parcel) => {
     setSelectedParcel(parcel);
   };
 
-  const [showHello, setShowHello] = useState(false);
-
-  const [Images, setImages] = useState([]);
+ 
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
@@ -79,17 +84,32 @@ useEffect(() => {
 const handleDeleteImage = (id) => {
     setImages(prevImages => prevImages.filter(image => image.id !== id));
 };
-const [ProductType, setProductType] = useState('Product Type');
-const [menuOpen, setMenuOpen] = useState(false);
+
 
 const handleProductType = (option) => {
     setProductType(option);
     setMenuOpen(false);
 };
 
+
+    useEffect(()=>{
+
+            if (ProductType === "Grocery" || ProductType === "Electronics" || ProductType === "Clothing" || ProductType === "Bakery" ||  ProductType === "Footwear" )
+            {
+                setOptional({url:`/optional${ProductType.toLowerCase()}`});
+            }
+            else
+            {
+                setOptional(false);
+            }
+        
+    },[ProductType]);
+
+    
+    
     return (
         <>
-        
+       
         <div className='forscroll'>
         <section className="lg:hidden">
             <div className="w-full h-[12vh] flex p-[20px] justify-between">
@@ -188,37 +208,23 @@ const handleProductType = (option) => {
             <div className="flex flex-row items-center justify-center gap-1 my-2">
                 <div className="my-3 px-3 py-2  border-dotted border-[2px] rounded-[10px] border-[#848484] flex justify-right mb-[30px]  flex-row gap-1">
                     <img className="h-5" src={frame403} alt="" />
-                    <input type="text" id="phone-input" className="text-[#989898] w-[60px] text-[11px] font-bold border-0 border-[#000000]  outline-none bg-[#ffffff]" maxLength="6" placeholder="Discount" onInput="this.value=this.value.replace(/[^0-9]/g,'');" onChange={(e) => setDiscount(e.target.value)}/>
+                    <input type="text" id="phone-input" className="text-[#989898] w-[60px] text-[11px] font-bold border-0 border-[#000000]  outline-none bg-[#ffffff]" maxLength="6" placeholder="Discount" onChange={(e) => setDiscount(e.target.value)}/>
                 </div>
                 <div className="my-3 px-3 py-2  border-dotted border-[2px] rounded-[10px] border-[#848484] flex justify-right mb-[30px]  flex-row gap-1">
                     <img className="h-3" src={frame402} alt="" />
-                    <input type="text" id="phone-input" className="text-[#989898] w-[60px] text-[11px] font-bold border-0 border-[#000000]  outline-none bg-[#ffffff]" maxLength="6" placeholder="MRP Price" onInput="this.value=this.value.replace(/[^0-9]/g,'');" onChange={(e) => setProductMrpPrice(e.target.value)} />
+                    <input type="text" id="phone-input" className="text-[#989898] w-[60px] text-[11px] font-bold border-0 border-[#000000]  outline-none bg-[#ffffff]" maxLength="6" placeholder="MRP Price" onChange={(e) => setProductMrpPrice(e.target.value)} />
                 </div>
                 <div className="my-3 px-3 py-2  border-dotted border-[2px] rounded-[10px] border-[#848484] flex mb-[30px]  flex-row gap-1 items-center justify-center">
                     <img className="h-5" src={frame405} alt="" />
-                    <input type="text" id="phone-input" className="text-[#989898] w-[60px] text-[11px] font-bold border-0 border-[#000000]  outline-none bg-[#ffffff]" maxLength="6" placeholder="Item Price" onInput="this.value=this.value.replace(/[^0-9]/g,'');" onChange={(e) => setProductPrice(e.target.value)} />
+                    <input type="text" id="phone-input" className="text-[#989898] w-[60px] text-[11px] font-bold border-0 border-[#000000]  outline-none bg-[#ffffff]" maxLength="6" placeholder="Item Price" onChange={(e) => setProductPrice(e.target.value)} />
                 </div>
             </div>
 
-            <p className="mx-5 font-extrabold text-xl">Item Optional</p>
-            <p className="mx-5 text-[#636363] text-[12px]">(Use if your product has different size, weight & volume )</p>
-        {showHello ? (
-            <div className=" mx-5 my-3 p-3 flex flex-row border border-[#094446] rounded-lg items-center gap-2 w-[37%] mb-[30px]">
-                
-                <img className="w-6" src={frame407} alt="" />
-                
-                <p className="text-[#094446] text-[13px] font-bold">Add Optional</p>
-            </div>
-          ) : (
-             <div className=" flex flex-row items-center mb-[30px]">
-                <div className="mx-5 my-3 p-3 flex flex-row border border-[#ffffff] bg-[#094446] rounded-lg items-center gap-2 w-[37%] ">
-                    <img className="w-6" src={frame406} alt="" />
-                    <p className="text-[#ffffff] text-[13px] font-bold">View Optional</p>
-                </div>
-                <img className="wow w-6" src={frame404} alt="" onClick={() => setShowHello(true)} />
-            </div>
 
-           )}
+ 
+            {/* Phone View */}
+          
+
             <p className="mx-5 font-extrabold text-xl">Add Product Description and More</p>
 
 <div className="mx-5 my-3 p-2 border-dotted border-[2px] rounded-[10px] border-[#848484] flex flex-col gap-1">
@@ -234,21 +240,35 @@ const handleProductType = (option) => {
 </div>
 
 <p className="mx-5 font-extrabold text-xl ">Product Stock Quantity</p>
-  <div className='flex justify-between items-center mb-32 px-5 mt-4'>
+  <div className='flex justify-between items-center px-5 mt-4'>
             <div className=" px-4 py-3  border-dotted border-[2px] rounded-[15px] border-[#848484] flex justifu-right ">
                 <input type="number" id="phone-input" className="text-[#636363] text-[13px] w-[100%] border-0 border-[#000000] px-0.5 py-1 outline-none bg-[#ffffff]" placeholder="700" onChange={(e) => setProductStockQuantity(e.target.value)}/>
             </div>
             <p className='text-[3vw] ml-12'>(Add your total product stock quantity)</p>
             </div>
+            {optional && (
+                <Link to={optional.url}>
+            <p className="mx-5 font-extrabold text-xl mt-6">Item Optional</p>
+            <p className="mx-5 text-[#636363] text-[12px]">(Use if your product has different size, weight & volume )</p>
+
+           
+       
+            <div className=" mx-5 my-3 p-3 flex flex-row border border-[#094446] rounded-lg items-center gap-2 w-[37%]">
+                
+                <img className="w-6" src={frame407} alt="" />
+                
+                <p className="text-[#094446] text-[13px] font-bold">Add Optional</p>
+            </div>
+             </Link>
+          ) }
 
 
 
-
-
-    <button className="text-[#ffffff] z-[999] text-[4vw] py-3 px-20 bg-[#000000] border rounded-full font-bold fixed bottom-4 left-[23%]">
+   <div className='justify-center flex mb-2 mt-7'>
+    <button to="/" className="text-[#ffffff] z-[999] text-[4vw] py-3 px-20 bg-[#000000] border rounded-full font-bold ">
         List Item
     </button>
-
+    </div>
         </section>
         <section className="hidden lg:block">
             <div className="w-[100vw] flex justify-between px-5 py-5 absolute top-0">

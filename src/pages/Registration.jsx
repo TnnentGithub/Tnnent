@@ -3,6 +3,7 @@ import tnnentLogo from '../images/Frame 397.png';
 import backIcon from '../images/back.png';
 import flagIcon from '../images/flag.png';
 import checkIcon from '../images/check.png';
+import { Link } from 'react-router-dom';
 
 const RegistrationPage = () => {
     const handleInputChange = (event) => {
@@ -32,15 +33,15 @@ const RegistrationPage = () => {
                     <img className="w-10" src={flagIcon} alt="flag" />
                     <p className="text-[#636363] text-[5vw]">+91</p>
                     <div className="relative border-black">
-                        <input type="text" id="phone-input" className="w-[30vw] ml-3 pl-[3vw] border-b-2 border-[#636363] py-1 outline-none bg-[#E1E1E1] text-[5vw]" maxLength="10" onChange={handleInputChange} />
+                        <input type="number" id="phone-input" className="w-[30vw] ml-3 pl-[3vw] border-b-2 border-[#636363] py-1 outline-none bg-[#E1E1E1] text-[5vw]" maxLength="10" onChange={handleInputChange} />
                     </div>
                 </div>
             </div>
-            <a href="./verification.html">
+           <Link to= '/otpverify'>
                 <div className="w-12 h-12 bg-[#094446] rounded-full mt-3 mx-auto flex justify-center items-center">
                     <img src={checkIcon} alt="" className="w-[4vw]" />
                 </div>
-            </a>
+                </Link>
         </section>
         </div>
         </>

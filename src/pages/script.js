@@ -63,6 +63,8 @@ function carouselRUN() {
     }
 }
 
+
+
 document.addEventListener('DOMContentLoaded', function () {
     const inputField = document.querySelector('.input-field');
     const placeholderLabel = document.getElementById('placeholder-label');
@@ -102,5 +104,5 @@ document.addEventListener('DOMContentLoaded', function () {
     // Prevent click propagation from placeholder label to input field
     placeholderLabel.addEventListener('click', function (event) {
       event.stopPropagation();
-    });
-  });
+ });
+});

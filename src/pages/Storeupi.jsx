@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import tnnentLogo from '../images/Frame 397.png';
 import backButton from '../images/back.png';
 import frame398 from '../images/Frame 398.png';
+import { Link } from 'react-router-dom';
+
 
 function StoreUPI() {
     const [username, setUsername] = useState('');
@@ -62,9 +64,11 @@ function StoreUPI() {
 
             <div className="parent flex justify-center items-center h-[350px] relative">
                 <div className="absolute bottom-[10px]">
+                    <Link to='/storelocation'>
                     <button onClick={handleContinueClick} className="px-[9vh] py-3 bg-[#094446] font-extrabold text-white border rounded-[15px]">
                         CONTINUE
                     </button>
+                    </Link>
                 </div>
             </div>
         </section>

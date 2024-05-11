@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import { Link } from 'react-router-dom';
 
 function Purchasecards() {
     const [liked, setLiked] = useState(false);
@@ -31,11 +32,13 @@ function Purchasecards() {
             <div className="flex flex-col justify-between">
                 <p className="font-semibold text-[4vw]">Shyamaprasad Road Karimganj</p>
                 <div>
-                    <p className="font-bold text-[4vw]">₹ 999 <span style={{ color: 'rgb(136, 136, 136)' }}>/month</span></p>
+                    <p className="font-bold text-[5vw]">₹ 5000</p>
                     <div>
-                        <div className="flex gap-1 my-5">
-                            <button className="px-2 py-1 text-[3vw] font-semibold rounded-full" style={{ border: '1px solid black' }}>Details</button>
-                            <button className="px-2 py-1 rounded-full text-white font-semibold text-[3vw]" style={{ backgroundColor: '#343434' }}>Track Order</button>
+                        <div className="flex gap-1 mt-6">
+                            <Link to='/details'>
+                            <button className="px-3 py-1 text-[3.5vw] font-semibold rounded-full" style={{ border: '1px solid black' }}>Details</button>
+                            </Link>
+                            <button className="px-3 py-1 rounded-full text-white font-semibold text-[3.5vw]" style={{ backgroundColor: '#343434' }}>Track Order</button>
                         </div>
                     </div>
                 </div>

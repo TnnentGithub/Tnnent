@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import './style.css';
 import './script.js';
+import 'swiper/css/autoplay';
 import image1 from '../images/image 1.png';
 import image4 from '../images/image 4.svg';
 import frame380 from '../images/Frame 380.png';
@@ -19,12 +20,35 @@ import Rectangle2486Image from '../images/images2/mobile icons/Rectangle 2486.sv
 import Rectangle2487Image from '../images/images2/mobile icons/Rectangle 2487.svg';
 import Rectangle2488Image from '../images/images2/mobile icons/Rectangle 2488.svg';
 import Rectangle1856 from '../images/Rectangle 1856.svg';
-import Rectangle2267Image from '../images/images2/mobile icons/Rectangle 2267 (1).svg';
+import clothing from '../images/mnz-ToLMORRb97Q-unsplash.jpg'
+import accessories from '../images/apostolos-vamvouras-Pp_nVOuJMTU-unsplash.jpg'
+import electronics from '../images/christopher-gower-_aXa21cf7rY-unsplash.jpg'
+import books from '../images/kimberly-farmer-lUaaKCUANVI-unsplash.jpg'
+import grocery from '../images/maria-lin-kim-8RaUEd8zD-U-unsplash.jpg'
+import more from '../images/luca-florio-QLmBiJ9GYpU-unsplash.jpg'
 import Navbar from '../components/Navbar.jsx';
 import { db } from "../../firebase.js";
 import { doc, setDoc, arrayUnion, getDoc } from "firebase/firestore";
+import ThingCards from '@/components/ThingCards.jsx';
+import store1 from '../images/damian-barczak-U9E423m3Hd8-unsplash.jpg'
+import store2 from '../images/adam-kolmacka-DQiJZa3LKwY-unsplash.jpg'
+import store3 from '../images/arno-senoner-MRjjcDIk3Gw-unsplash.jpg'
+import store4 from '../images/declan-sun-MGYc7EH61NA-unsplash.jpg'
+import update1 from '../images/download (1).jpeg'
+import update2 from '../images/Instagram.jpeg'
+import update3 from '../images/Instagram story __ morning routine.jpeg'
+import update4 from '../images/Markett.jpeg'
+import { Autoplay, EffectCoverflow, Pagination } from 'swiper/modules';
+import 'swiper/css/effect-coverflow';
+import { Link } from 'react-router-dom';
+import profilepic from '../images/Subhajit.jpg'
 
 function Store() {
+  useEffect(() => {
+    const scrollPosition = window.scrollY;
+    sessionStorage.setItem('scrollPosition', scrollPosition);
+  }, []);
+
   const [todaysDate, setTodaysDate] = useState('');
 
   const userID = "Customer-0002";
@@ -88,7 +112,7 @@ function Store() {
   return (
     <>
     <div className='forscroll'>
-    <div className='follow-btn'><button onClick={handleClick}>follow store</button></div>
+    {/* <div className='follow-btn'><button onClick={handleClick}>follow store</button></div> */}
     <section className='lg:hidden'>
       <div className="flex justify-between items-center">
         <div className="mt-7 ml-4">
@@ -96,8 +120,14 @@ function Store() {
           <h2 className="text-[6vw] font-bold">Barnik Deb <span className="text-green-500"> &bull;</span></h2>
         </div>
         <div className="flex justify-center items-center gap-4 mt-7 mr-3">
+          <Link to='/storenotification'>
           <img className="w-[21px]" src={notificationIcon} alt="" />
-          <div className="bg-slate-300 h-[7vh] w-[7vh] rounded-full"></div>
+          </Link>
+          <Link to='/userprofile'>
+          <div className="bg-slate-300 h-[6vh] w-[6vh] rounded-full bg-cover bg-center bg-no-repeat" style={{backgroundImage: `url(${profilepic})`}}>
+           
+          </div>
+          </Link>
         </div>
       </div>
 
@@ -106,7 +136,7 @@ function Store() {
         <div className="w-12 h-12 bg-[#DDDDDD] rounded-full absolute top-5 left-5 flex items-center justify-center">
           <img src={image4} alt="" className="w-8" />
         </div>
-        <input type="text" className="input-field px-6 py-4 pl-16 border-2  border-black rounded-full w-full text-lg focus:outline-none" placeholder="Search Products & Store" />
+        <input type="text" className="input-field px-6 py-4 pl-16 border-2  border-[#DDDDDD] rounded-full w-full text-lg focus:outline-none" placeholder="Search Products & Store" />
       </div>
 
       <div className="flex justify-center relative">
@@ -116,23 +146,61 @@ function Store() {
           <h2 className="absolute bottom-2 left-0 text-white ml-6 mb-4 font-bold leading-[1.2] text-[4vw]" style={{ bottom: '54%', left: '8%' }}>Buy From Your Local Store<br />At A Discounted Price</h2>
           <h2 className="absolute bottom-2 left-0 text-white ml-6 mb-4 leading-[1.2] text-[4vw]" style={{ bottom: '29%', left: '74%' }}>Tnennt<br />Store<span className="text-red-500"> &bull;</span></h2>
           <div className="absolute bottom-9 left-5 w-[38vw]" id="carousel" data-auto="true">
-          <div id="scene">
-          <img className="carousel_item" src={Rectangle1856} alt=""/>
-          <img className="carousel_item" src={Rectangle1856} alt=""/>
-          <img className="carousel_item" src={Rectangle1856} alt=""/>
-          <img className="carousel_item" src={Rectangle1856} alt=""/>
-          <img className="carousel_item" src={Rectangle1856} alt=""/>
-          <img className="carousel_item" src={Rectangle1856} alt=""/>
-          <img className="carousel_item" src={Rectangle1856} alt=""/>
-          <img className="carousel_item" src={Rectangle1856} alt=""/>
-          <img className="carousel_item" src={Rectangle1856} alt=""/>
+          <Swiper
+          className="mySwiper "
+          slidesPerView={'3'}
+          effect={'coverflow'}
+          grabCursor={false}
+          centeredSlides={true}
+          autoplay={{ delay:1000 }}
+          coverflowEffect={{
+            rotate: 0,
+            stretch: 0,
+            depth: 100,
+            modifier: 1,
+            slideShadows: true,
+          }}
+          pagination={true}
+          modules={[EffectCoverflow, Pagination, Autoplay]}
+          loop={true}
+        >
+          <SwiperSlide>
+        
+              <div className="h-[14vw] w-[14vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${store1})` }}></div>
+       
           
-    </div>
+          </SwiperSlide>
+          <SwiperSlide>
+        
+        <div className="h-[14vw] w-[14vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${store2})` }}></div>
+ 
+    
+    </SwiperSlide>
+    <SwiperSlide>
+        
+        <div className="h-[14vw] w-[14vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${store3})` }}></div>
+ 
+    
+    </SwiperSlide>
+    <SwiperSlide>
+        
+        <div className="h-[14vw] w-[14vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${store4})` }}></div>
+ 
+    
+    </SwiperSlide>
+    <SwiperSlide>
+        
+        <div className="h-[14vw] w-[14vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${update3})` }}></div>
+ 
+    
+    </SwiperSlide>
+     
+        </Swiper>
           </div>
         </div>
       </div>
       <h2 className="text-[5vw] font-bold ml-4">Updates</h2>
-      <div className="flex mt-4">
+      <div className="flex mt-4 ml-4">
         <Swiper
           className="mySwiperrr mr-2 ml-4"
           spaceBetween={10}
@@ -141,20 +209,26 @@ function Store() {
         >
           <SwiperSlide>
             <div className="flex-col swiper-slide">
-              <div className="h-[30vw] w-[31vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${Rectangle1856})` }}></div>
-              <h2 className="px-[28%] text-[4vw]">Nahata</h2>
+              <div className="h-[30vw] w-[31vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${update4})` }}></div>
+              <h2 className="px-[28%] text-[4vw]">Store</h2>
             </div>
           </SwiperSlide>
           <SwiperSlide>
             <div className="flex-col swiper-slide">
-              <div className="h-[30vw] w-[31vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${Rectangle1856})` }}></div>
-              <h2 className="px-[28%] text-[4vw]">Nahata</h2>
+              <div className="h-[30vw] w-[31vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${update2})` }}></div>
+              <h2 className="px-[28%] text-[4vw]">Store</h2>
             </div>
           </SwiperSlide>
           <SwiperSlide>
             <div className="flex-col swiper-slide">
-              <div className="h-[30vw] w-[31vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${Rectangle1856})` }}></div>
-              <h2 className="px-[28%] text-[4vw]">Nahata</h2>
+              <div className="h-[30vw] w-[31vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${update3})` }}></div>
+              <h2 className="px-[28%] text-[4vw]">Store</h2>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex-col swiper-slide">
+              <div className="h-[30vw] w-[31vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${update4})` }}></div>
+              <h2 className="px-[28%] text-[4vw]">Store</h2>
             </div>
           </SwiperSlide>
         </Swiper>
@@ -222,199 +296,81 @@ function Store() {
         More+
       </button>
       </div>
-      <img className="absolute right-0 mr-2 w-[7.5vw]" src={designImage} alt="" />
+      {/* <img className="absolute right-0 mr-2 w-[7.5vw]" src={designImage} alt="" /> */}
       <h2 className="text-[7vw] font-bold ml-4 mt-10">Featured</h2>
+      <div className='flex ml-4 mt-2'>
       <Swiper
       spaceBetween={10}
       slidesPerView={2.3}
       onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper) => console.log(swiper)}
-      className='mr-2 ml-5 mt-4'
+      className='mr-2 ml-4 mt-4'
     >
         <SwiperSlide>
-        <div className=" bg-[#F5F5F5] w-[37vw] h-[52vw] flex flex-col rounded-lg ">
-                    <div className="w-full h-[70%] rounded-lg bg-cover bg-center bg-no-repeat relative"
-                      style={{ backgroundImage: `url(${camera})` }}>
-                      <div className="bg-white rounded-full w-[6vw] h-[6vw] absolute top-2 right-2  flex justify-center items-center">
-                        <div className="heart-container " title="Like">
-                          <input type="checkbox" className="checkbox w-[1vw]" id="Give-It-An-Id"/>
-                          <div className="svg-container">
-                            <svg viewBox="0 0 24 24" className="svg-outline" xmlns="http://www.w3.org/2000/svg">
-                              <path
-                                d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
-                              </path>
-                            </svg>
-                            <svg viewBox="0 0 24 24" className="svg-filled" xmlns="http://www.w3.org/2000/svg">
-                              <path
-                                d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
-                              </path>
-                            </svg>
-                            
-                            <svg className="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
-                              <polygon points="10,10 20,20"></polygon>
-                              <polygon points="10,50 20,50"></polygon>
-                              <polygon points="20,80 30,70"></polygon>
-                              <polygon points="90,10 80,20"></polygon>
-                              <polygon points="90,50 80,50"></polygon>
-                              <polygon points="80,80 70,70"></polygon>
-                            </svg>
-                          </div>
-                        </div>
-                      </div>
-                      
-                    </div>
-                    <div className="flex flex-col gap-4 ml-2">
-                      <h1 className="font-extrabold text-[3vw] mt-2">Canon xyz Camera</h1>
-                      <p className="text-left font-extrabold text-[3vw] mb-2">&#8377; 200</p>
-                    </div>
-                  </div>
+        <ThingCards marginTop="0" width="37vw" height="52vw" />
         </SwiperSlide>
         <SwiperSlide>
-        <div className=" bg-[#F5F5F5] w-[37vw] h-[52vw] flex flex-col rounded-lg ">
-                    <div className="w-full h-[70%] rounded-lg bg-cover bg-center bg-no-repeat relative"
-                      style={{ backgroundImage: `url(${camera})` }}>
-                      <div className="bg-white rounded-full w-[6vw] h-[6vw] absolute top-2 right-2  flex justify-center items-center">
-                        <div className="heart-container " title="Like">
-                          <input type="checkbox" className="checkbox w-[1vw]" id="Give-It-An-Id"/>
-                          <div className="svg-container">
-                            <svg viewBox="0 0 24 24" className="svg-outline" xmlns="http://www.w3.org/2000/svg">
-                              <path
-                                d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
-                              </path>
-                            </svg>
-                            <svg viewBox="0 0 24 24" className="svg-filled" xmlns="http://www.w3.org/2000/svg">
-                              <path
-                                d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
-                              </path>
-                            </svg>
-                            
-                            <svg className="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
-                              <polygon points="10,10 20,20"></polygon>
-                              <polygon points="10,50 20,50"></polygon>
-                              <polygon points="20,80 30,70"></polygon>
-                              <polygon points="90,10 80,20"></polygon>
-                              <polygon points="90,50 80,50"></polygon>
-                              <polygon points="80,80 70,70"></polygon>
-                            </svg>
-                          </div>
-                        </div>
-                      </div>
-                      
-                    </div>
-                    <div className="flex flex-col gap-4 ml-2">
-                      <h1 className="font-extrabold text-[3vw] mt-2">Canon xyz Camera</h1>
-                      <p className="text-left font-extrabold text-[3vw] mb-2">&#8377; 200</p>
-                    </div>
-                  </div>
+        <ThingCards marginTop="0" width="37vw" height="52vw" />
         </SwiperSlide>
         <SwiperSlide>
-        <div className=" bg-[#F5F5F5] w-[37vw] h-[52vw] flex flex-col rounded-lg ">
-                    <div className="w-full h-[70%] rounded-lg bg-cover bg-center bg-no-repeat relative"
-                      style={{ backgroundImage: `url(${camera})` }}>
-                      <div className="bg-white rounded-full w-[6vw] h-[6vw] absolute top-2 right-2  flex justify-center items-center">
-                        <div className="heart-container " title="Like">
-                          <input type="checkbox" className="checkbox w-[1vw]" id="Give-It-An-Id"/>
-                          <div className="svg-container">
-                            <svg viewBox="0 0 24 24" className="svg-outline" xmlns="http://www.w3.org/2000/svg">
-                              <path
-                                d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
-                              </path>
-                            </svg>
-                            <svg viewBox="0 0 24 24" className="svg-filled" xmlns="http://www.w3.org/2000/svg">
-                              <path
-                                d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
-                              </path>
-                            </svg>
-                            
-                            <svg className="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
-                              <polygon points="10,10 20,20"></polygon>
-                              <polygon points="10,50 20,50"></polygon>
-                              <polygon points="20,80 30,70"></polygon>
-                              <polygon points="90,10 80,20"></polygon>
-                              <polygon points="90,50 80,50"></polygon>
-                              <polygon points="80,80 70,70"></polygon>
-                            </svg>
-                          </div>
-                        </div>
-                      </div>
-                      
-                    </div>
-                    <div className="flex flex-col gap-4 ml-2">
-                      <h1 className="font-extrabold text-[3vw] mt-2">Canon xyz Camera</h1>
-                      <p className="text-left font-extrabold text-[3vw] mb-2">&#8377; 200</p>
-                    </div>
-                  </div>
+        <ThingCards marginTop="0" width="37vw" height="52vw" />
         </SwiperSlide>
         <SwiperSlide>
-        <div className=" bg-[#F5F5F5] w-[37vw] h-[52vw] flex flex-col rounded-lg ">
-                    <div className="w-full h-[70%] rounded-lg bg-cover bg-center bg-no-repeat relative"
-                      style={{ backgroundImage: `url(${camera})` }}>
-                      <div className="bg-white rounded-full w-[6vw] h-[6vw] absolute top-2 right-2  flex justify-center items-center">
-                        <div className="heart-container " title="Like">
-                          <input type="checkbox" className="checkbox w-[1vw]" id="Give-It-An-Id"/>
-                          <div className="svg-container">
-                            <svg viewBox="0 0 24 24" className="svg-outline" xmlns="http://www.w3.org/2000/svg">
-                              <path
-                                d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,11,8.967a1,1,0,0,0,2,0,4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,22,8.967C22,11.87,19.053,16.006,13.915,20.313Z">
-                              </path>
-                            </svg>
-                            <svg viewBox="0 0 24 24" className="svg-filled" xmlns="http://www.w3.org/2000/svg">
-                              <path
-                                d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z">
-                              </path>
-                            </svg>
-                            
-                            <svg className="svg-celebrate" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
-                              <polygon points="10,10 20,20"></polygon>
-                              <polygon points="10,50 20,50"></polygon>
-                              <polygon points="20,80 30,70"></polygon>
-                              <polygon points="90,10 80,20"></polygon>
-                              <polygon points="90,50 80,50"></polygon>
-                              <polygon points="80,80 70,70"></polygon>
-                            </svg>
-                          </div>
-                        </div>
-                      </div>
-                      
-                    </div>
-                    <div className="flex flex-col gap-4 ml-2">
-                      <h1 className="font-extrabold text-[3vw] mt-2">Canon xyz Camera</h1>
-                      <p className="text-left font-extrabold text-[3vw] mb-2">&#8377; 200</p>
-                    </div>
-                  </div>
+        <ThingCards marginTop="0" width="37vw" height="52vw" />
+        </SwiperSlide>
+        <SwiperSlide>
+        <ThingCards marginTop="0" width="37vw" height="52vw" />
         </SwiperSlide>
     </Swiper>
-    <div className="flex mt-12">
+    </div>
+    <div className="flex mt-12 ml-4 mr-2 h-[70vw]">
       <Swiper
         spaceBetween={20}
         slidesPerView={2}
         onSlideChange={() => console.log('slide change')}
         onSwiper={(swiper) => console.log(swiper)}
-        className='ml-5 mr-2'
+        autoplay={{ delay: 2000 }}
+        modules={[EffectCoverflow, Pagination, Autoplay]}
+        className=' mr-2 '
       >
         <SwiperSlide>
-          <div className="w-[39vw] h-[52vw] flex flex-col swiper-slide">
-            <div className="w-full h-[38vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${Rectangle2488Image})` }}></div>
-            <div className="w-full h-[58vw] mt-2 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${Rectangle2486Image})` }}></div>
+        <div className='w-[44vw] h-[] flex flex-col'>
+          <div className='w-full h-[43vw] rounded-lg bg-green-300 bg-cover bg-center bg-no-repeat' style={{backgroundImage:`url(${Rectangle2488Image})`}}></div>
+          <div className="w-full h-[32vw] mt-2 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${Rectangle2486Image})` }}></div>
+        </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="w-[39vw] h-[] swiper-slide bg-cover bg-center bg-no-repeat rounded-lg" style={{ backgroundImage: `url(${Rectangle2484Image})` }}></div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="w-[39vw] h-[] flex flex-col swiper-slide">
+            <div className="w-full h-[60%] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${Rectangle2485Image})` }}></div>
+            <div className="w-full h-[40%]  mt-2 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${Rectangle2487Image})` }}></div>
+          </div>
+        </SwiperSlide>
+        {/* <SwiperSlide>
+          <div className="w-[39vw] h-[42vw] flex flex-col swiper-slide">
+            <div className="w-full h-[28vw] rounded-lg bg-red-400 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${Rectangle2488Image})` }}></div>
+            <div className="w-full h-[48vw] mt-2 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${Rectangle2486Image})` }}></div>
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="w-[45vw] swiper-slide bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${Rectangle2484Image})` }}></div>
+          <div className="w-[39vw] h-[42vw] swiper-slide bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${Rectangle2484Image})` }}></div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="w-[39vw] h-[52vw] flex flex-col swiper-slide">
-            <div className="w-full h-[58vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${Rectangle2485Image})` }}></div>
-            <div className="w-full h-[38vw] mt-2 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${Rectangle2487Image})` }}></div>
+          <div className="w-[39vw] h-[42vw] flex flex-col swiper-slide">
+            <div className="w-full h-[60%] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${Rectangle2485Image})` }}></div>
+            <div className="w-full h-[40%]  mt-2 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${Rectangle2487Image})` }}></div>
           </div>
-        </SwiperSlide>
+        </SwiperSlide> */}
       </Swiper>
     </div>
     <div>
       <div className="flex justify-between mt-8">
         <h2 className="font-bold text-[6vw] ml-4">Featured Store</h2>
-        <p className="text-[3vw] mt-3 mr-4">View All</p>
+        <p className="text-[3vw] mt-3 mr-4 ">View All</p>
       </div>
-      <div className="flex mt-6">
+      <div className="flex mt-6 ml-4">
         <Swiper
           className="mySwiperrr mr-2 ml-4"
           spaceBetween={10}
@@ -423,44 +379,44 @@ function Store() {
         >
           <SwiperSlide>
             <div className="flex-col swiper-slide">
-              <div className="h-[20vw] w-[21vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${Rectangle1856})` }}></div>
+              <div className="h-[20vw] w-[21vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${store1})` }}></div>
+              <h2 className="px-[20%] text-[4vw]">Store</h2>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex-col swiper-slide">
+              <div className="h-[20vw] w-[21vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${store2})` }}></div>
+              <h2 className="px-[20%] text-[4vw]">Store</h2>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex-col swiper-slide">
+              <div className="h-[20vw] w-[21vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${store3})` }}></div>
+              <h2 className="px-[20%] text-[4vw]">Store</h2>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex-col swiper-slide">
+              <div className="h-[20vw] w-[21vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${store4})` }}></div>
+              <h2 className="px-[20%] text-[4vw]">Store</h2>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="flex-col swiper-slide">
+              <div className="h-[20vw] w-[21vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${store1})` }}></div>
               <h2 className="px-[20%] text-[4vw]">Nahata</h2>
             </div>
           </SwiperSlide>
           <SwiperSlide>
             <div className="flex-col swiper-slide">
-              <div className="h-[20vw] w-[21vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${Rectangle1856})` }}></div>
-              <h2 className="px-[20%] text-[4vw]">Nahata</h2>
+              <div className="h-[20vw] w-[21vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${store2})` }}></div>
+              <h2 className="px-[20%] text-[4vw]">Store</h2>
             </div>
           </SwiperSlide>
           <SwiperSlide>
             <div className="flex-col swiper-slide">
-              <div className="h-[20vw] w-[21vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${Rectangle1856})` }}></div>
-              <h2 className="px-[20%] text-[4vw]">Nahata</h2>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="flex-col swiper-slide">
-              <div className="h-[20vw] w-[21vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${Rectangle1856})` }}></div>
-              <h2 className="px-[20%] text-[4vw]">Nahata</h2>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="flex-col swiper-slide">
-              <div className="h-[20vw] w-[21vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${Rectangle1856})` }}></div>
-              <h2 className="px-[20%] text-[4vw]">Nahata</h2>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="flex-col swiper-slide">
-              <div className="h-[20vw] w-[21vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${Rectangle1856})` }}></div>
-              <h2 className="px-[20%] text-[4vw]">Nahata</h2>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="flex-col swiper-slide">
-              <div className="h-[20vw] w-[21vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${Rectangle1856})` }}></div>
-              <h2 className="px-[20%] text-[4vw]">Nahata</h2>
+              <div className="h-[20vw] w-[21vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${store3})` }}></div>
+              <h2 className="px-[20%] text-[4vw]">Store</h2>
             </div>
           </SwiperSlide>
         </Swiper>
@@ -472,32 +428,46 @@ function Store() {
         <div className="h-[78vw] w-[95vw] mt-6">
           <div className="flex gap-4">
             <div className="w-[50%] mb-28">
+              <Link to= '/clothingcategory'>
               <div className="flex flex-col w-full h-[60vw] bg-[#F5F5F5] rounded-lg">
-                <div className="w-full bg-slate-200 h-[45vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${Rectangle2267Image})` }}></div>
-                <h2 className="px-[31%] text-[4vw] py-[10%]">Clothings</h2>
+                <div className="w-full bg-slate-200 h-[45vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${clothing})` }}></div>
+                <h2 className="px-[30%] text-[4vw] py-[10%] font-bold">Clothings</h2>
               </div>
+              </Link>
+              <Link to='/electronicscategory'>
               <div className="flex flex-col w-full h-[60vw] bg-[#F5F5F5] mt-12 rounded-lg">
-                <div className="w-full bg-slate-200 h-[45vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${Rectangle2267Image})` }}></div>
-                <h2 className="px-[31%] text-[4vw] py-[10%]">Clothings</h2>
+                <div className="w-full bg-slate-200 h-[45vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${electronics})` }}></div>
+                <h2 className="px-[28%] text-[4vw] py-[10%] font-bold">Electronics</h2>
               </div>
+              </Link>
+              <Link to='/grocerycategory'>
               <div className="flex flex-col w-full h-[60vw] bg-[#F5F5F5] mt-12 rounded-lg">
-                <div className="w-full bg-slate-200 h-[45vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${Rectangle2267Image})` }}></div>
-                <h2 className="px-[31%] text-[4vw] py-[10%]">Clothings</h2>
+                <div className="w-full bg-slate-200 h-[45vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${grocery})` }}></div>
+                <h2 className="px-[33%] text-[4vw] py-[10%] font-bold">Grocery</h2>
+
               </div>
+              </Link>
             </div>
+            
             <div className="w-[50%] mb-28">
-              <div className="flex flex-col w-full h-[60vw] bg-[#F5F5F5] rounded-lg">
-                <div className="w-full bg-slate-200 h-[45vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${Rectangle2267Image})` }}></div>
-                <h2 className="px-[31%] text-[4vw] py-[10%]">Clothings</h2>
+              <Link to='/accessoriescategory'>
+              <div className="flex flex-col w-full h-[60vw] bg-[rgb(245,245,245)] rounded-lg">
+                <div className="w-full bg-slate-200 h-[45vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${accessories})` }}></div>
+                <h2 className="px-[29%] text-[4vw] py-[10%] font-bold ">Accessories</h2>
               </div>
+              </Link>
+              <Link to='/bookscategory'>
               <div className="flex flex-col w-full h-[60vw] bg-[#F5F5F5] mt-12 rounded-lg">
-                <div className="w-full bg-slate-200 h-[45vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${Rectangle2267Image})` }}></div>
-                <h2 className="px-[31%] text-[4vw] py-[10%]">Clothings</h2>
+                <div className="w-full bg-slate-200 h-[45vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${books})` }}></div>
+                <h2 className="px-[36%] text-[4vw] py-[10%] font-bold">Books</h2>
               </div>
+              </Link>
+              <Link to='/morecategory'>
               <div className="flex flex-col w-full h-[60vw] bg-[#F5F5F5] mt-12 rounded-lg">
-                <div className="w-full bg-slate-200 h-[45vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${Rectangle2267Image})` }}></div>
-                <h2 className="px-[31%] text-[4vw] py-[10%]">Clothings</h2>
+                <div className="w-full bg-slate-200 h-[45vw] rounded-lg bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${more})` }}></div>
+                <h2 className="px-[39%] text-[4vw] py-[10%] font-bold">More</h2>
               </div>
+              </Link>
             </div>
           </div>
         </div>

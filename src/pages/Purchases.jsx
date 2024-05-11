@@ -23,8 +23,8 @@ function Purchases() {
         <div className="w-full flex p-[20px] justify-between z-50">
             <div className="flex justify-center items-center gap-2">
                 <div>
-                    <p className="font-bold text-[3vw]">Total Amount</p>
-                    <p className="font-bold text-[3vw]" style={{ color: 'rgb(136, 136, 136)' }}>₹ 69</p>
+                    <p className="font-bold text-[4vw]">Total Amount</p>
+                    <p className="font-bold text-[4vw]" style={{ color: 'rgb(136, 136, 136)' }}>₹ 15000</p>
                 </div>
             </div>
         </div>

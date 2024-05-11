@@ -3,6 +3,7 @@ import './style.css';
 import rupee from '../images/₹.svg';
 import coupon from '../images/Vector (11).svg';
 import gonext from '../images/Group 2.svg';
+import { Link } from 'react-router-dom';
 
 function Orderandpays() {
   return (
@@ -28,8 +29,9 @@ function Orderandpays() {
                 </div>
                 <div className='flex justify-center '>
                     <div className='flex justify-between items-center mt-[29%] gap-5'>
-                    <div className='w-[45vw] h-[17vw] bg-[#F3F3F3] rounded-3xl flex justify-between items-center'>
-                    <div className='w-[14vw] h-[14vw] rounded-full bg-white ml-1 flex justify-center items-center'>
+                      <Link to='/payments'>
+                    <div className='w-[45vw] h-[17vw] bg-[#F3F3F3] rounded-full flex justify-between items-center'>
+                    <div className='w-[14vw] h-[14vw] rounded-full bg-white ml-2 flex justify-center items-center'>
                         <img className='w-[3vw]' src={rupee} alt="" />
                       </div>
                       <div className='flex flex-col mr-12 gap-1'>
@@ -37,19 +39,23 @@ function Orderandpays() {
                         <p className='text-[2.3vw] text-[#838383]leading-[0.05rem]'>My Earnings</p>
                       </div>
                     </div>
-                    <div className='w-[45vw] h-[17vw] bg-[#F3F3F3] rounded-3xl flex justify-between items-center'>
-                    <div className='w-[14vw] h-[14vw] rounded-full bg-white ml-1 flex justify-center items-center'>
+                    </Link>
+                    <Link to='/createcoupon'>
+                    <div className='w-[45vw] h-[17vw] bg-[#F3F3F3] rounded-full flex justify-between items-center'>
+                    <div className='w-[14vw] h-[14vw] rounded-full bg-white ml-2 flex justify-center items-center'>
                         <img className='w-[4vw]' src={coupon} alt="" />
                       </div>
                       <div className='flex flex-col mr-5 gap-1'>
                         <h2 className='text-[3.2vw] font-bold '>Coupons</h2>
-                        <p className='text-[2.3vw] text-[#838383] leading-[0.05rem]'>Orders, payments &<br/>cupons</p>
+                        <p className='text-[2.3vw] text-[#838383] '>Orders, payments &<br/>cupons</p>
                       </div>
                     </div>
+                    </Link>
                     </div>
                 </div>
                 <p className="font-extrabold text-[4.5vw] ml-4 mt-8">Orders</p>
                 <div className='flex justify-center'>
+                  <Link to='/ongoingorders'>
                     <div className='mt-4 w-[93vw] h-[27vw] bg-[#F3F3F3] rounded-2xl'>
                         <div className='flex justify-between items-center'>
                         <div className='flex flex-col ml-3 mt-3'>
@@ -60,9 +66,10 @@ function Orderandpays() {
                         <img className='w-[11vw] mr-3 mt-2' src={gonext} alt="" />
                         </div>
                     </div>
-                    
+                    </Link>
                 </div>
                 <div className='flex justify-center'>
+                <Link to='/deliveredorders'>
                     <div className='mt-4 w-[93vw] h-[27vw] bg-[#F3F3F3] rounded-2xl'>
                         <div className='flex justify-between items-center'>
                         <div className='flex flex-col ml-3 mt-3'>
@@ -73,9 +80,10 @@ function Orderandpays() {
                         <img className='w-[11vw] mr-3 mt-2' src={gonext} alt="" />
                         </div>
                     </div>
-                    
+                    </Link>
                 </div>
                 <div className='flex justify-center'>
+                  <Link to='/cancelledorders'>
                     <div className='mt-4 w-[93vw] h-[27vw] bg-[#F3F3F3] rounded-2xl'>
                         <div className='flex justify-between items-center'>
                         <div className='flex flex-col ml-3 mt-3'>
@@ -86,7 +94,7 @@ function Orderandpays() {
                         <img className='w-[11vw] mr-3 mt-2' src={gonext} alt="" />
                         </div>
                     </div>
-                    
+                    </Link> 
                 </div>
                 <p className="font-extrabold text-[4.5vw] ml-4 mt-8">Orders Matrix</p>
                 <div className="flex justify-center mb-12">

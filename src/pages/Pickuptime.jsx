@@ -86,7 +86,11 @@ function PickupTimePage() {
     </AlertDialogHeader>
     <AlertDialogFooter>
       <AlertDialogCancel className="rounded-3xl">Cancel</AlertDialogCancel>
-      <AlertDialogAction className="rounded-3xl">Continue</AlertDialogAction>
+      
+      <AlertDialogAction className="rounded-3xl">
+      <Link to='/'>Continue
+      </Link></AlertDialogAction>
+      
     </AlertDialogFooter>
                         </AlertDialogContent>
                                 

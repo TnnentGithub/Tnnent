@@ -70,8 +70,8 @@ function CreateProductPage2() {
 
             <p className="mx-5 text-[7vw] font-extrabold">Choose Your <br /> Personalised Category</p>
             <p className="mx-5 mt-2 text-[3vw] text-[#636363]">Create dedicated sections for your product list add items to their respective slot.</p>
-
-            <p className="mx-5 mt-8 mb-2 font-extrabold text-[#636363] text-[4vw]">New Category:</p>
+            <button className='mt-5 ml-4 font-bold text-[3vw] px-5 py-3 bg-[#094446] rounded-full text-white'>View all products</button>
+            <p className="mx-5 mt-7 mb-2 font-extrabold text-[#636363] text-[4vw]">New Category:</p>
             <div className="mx-5 my-1 p-3 flex flex-row items-center  border-dotted border-[1px] border-[#636363] rounded-[15px] gap-2">
                 <img className="w-[7vw] h-[7vw]" src={frame400} alt="" onClick={handleAddCategory}/>
                 <input

@@ -2,6 +2,8 @@ import React from 'react';
 import tnnentLogo from '../images/Frame 397.png';
 import backButton from '../images/back.png';
 import frame398 from '../images/Frame 398.png';
+import { Link } from 'react-router-dom';
+
 
 function StorePayment() {
     return (
@@ -53,9 +55,11 @@ function StorePayment() {
                 <div className="absolute bottom-[10px]">
                     <p className="text-[#636363] text-center text-[2.2vw]">Hurry up! Register now and start your digital Store</p>
                     <p className="text-[#094446] text-center text-[2.2vw]">Join Our Tnennt Community</p>
+                    <Link to='/storeprofile'>
                     <button className="px-[9vh] py-3 bg-[#094446] text-[4vw] font-extrabold text-white border rounded-[15px]">
                         Pay ₹2999.03
                     </button>
+                    </Link>
                 </div>
             </div>
         </section>

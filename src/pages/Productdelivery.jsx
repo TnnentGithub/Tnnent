@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import logo from '../images/images2/desktop icons/logo.png';
 import bigIllustration from '../images/images2/mobile icons/big illustration.png';
 import smallIllustration from '../images/images2/mobile icons/small illustrtion.png';
+import greenbar from '../images/images2/mobile icons/green bar mobile.png'
 import earthIcon from '../images/images2/mobile icons/earth.png';
 import './style.css';
 
@@ -36,7 +37,7 @@ const  Productdelivery = () => {
       <div className="ml-[-170px] h-72" style={{ backgroundImage: `url(${smallIllustration})`, backgroundSize: 'cover', backgroundPosition: 'left' }}>
         <div className="flex">
           <div className="ml-3 mt-28">
-            <img src="./images2/mobile icons/green bar mobile.png" alt="" className="w-[13px] h-[150px] ml-44 float-left" />
+            <img src={greenbar} alt="" className="w-[13px] h-[150px] ml-44 float-left" />
           </div>
           <div className="flex-col">
             <div className="p-8">
@@ -45,7 +46,7 @@ const  Productdelivery = () => {
                 <div className="input-with-icon">
                   <div className="absolute left-0 p-2 pointer-events-none font-extrabold text-black ml-1 text-[17px]">Location</div>
                   <img src={earthIcon} alt="" className="absolute top-10 left-3 w-4 h-4" />
-                  <Link >
+                  <Link to='/pickupdetails'>
                     <input type="text" id="Location" name="Location" className="border w-full pt-9 p-1 py-5 border-dotted border-[#848484] text-black rounded-xl px-20 pl-10 focus:outline-none" placeholder="Pickup item from..." onFocus="askForLocation()" onBlur="collapseLabel('LocationLabel')" />
                   </Link>
                 </div>
@@ -57,9 +58,9 @@ const  Productdelivery = () => {
                 <div className="input-with-icon">
                   <div className="absolute left-0 p-2 pointer-events-none font-extrabold text-black ml-1 text-[17px]">Location</div>
                   <img src={earthIcon} alt="" className="absolute top-10 left-3 w-4 h-4" />
-                  <a href="shipment.html">
+                  <Link to='/shipment'>
                     <input type="text" id="Location" name="Location" className="border w-full pt-9 p-1 py-5 border-dotted border-[#848484] text-black rounded-xl px-20 pl-10 focus:outline-none" placeholder="Drop item to..." onFocus="askForLocation()" onBlur="collapseLabel('LocationLabel')" />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -91,9 +92,11 @@ const  Productdelivery = () => {
           <textarea id="" name="" className="border text-xl w-full p-1 py-10 border-dotted border-[#848484] text-black rounded-xl px-20 pl-10 focus:outline-none resize-none" placeholder="Custom Message"></textarea>
         </div>
         <div className="fixed bottom-4 left-0 right-0 flex justify-center items-center">
+          <Link to='/verification'>
           <div className="flex bg-[#2D332F] rounded-full text-xl p-4 w-72 md:hidden text-white justify-center items-center">
             Next Process
           </div>
+          </Link>
         </div>
       </div>
     </section>
