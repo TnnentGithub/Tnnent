@@ -5,6 +5,8 @@ import vector2 from '../images/Vector (2).svg';
 import movieEdit from '../images/movie_edit (1).svg';
 import { Link } from 'react-router-dom';
 import './style.css';
+import { doc, getDoc, setDoc, updateDoc, runTransaction } from "firebase/firestore";
+import { db } from '../../firebase'; // Assuming you have a db instance exported from your firebase setup
 import {
     AlertDialog,
     AlertDialogAction,
@@ -17,8 +19,14 @@ import {
     AlertDialogTrigger,
   } from "@/components/ui/alert-dialog";
 
+import { storage } from '../../firebase';
+import { ref, uploadBytes } from 'firebase/storage';
+
 function Editcommunity() {
+    const storeID = 'Store-0001';
+     const [imagePreviews, setImagePreviews] = useState([]); // Changed to an array
     const [imagePreview1, setimagePreview1] = useState(vector1);
+    const [productLink, setProductLink] = useState(''); // New state for product link
     const [description, setDescription] = useState('');
     const maxLength = 700;
 
@@ -28,19 +36,63 @@ function Editcommunity() {
             setDescription(inputValue);
         }
     };
+    const handleProductLinkChange = (event) => {
+        setProductLink(event.target.value);
+    };
 
-    const [uploadedImage, setUploadedImage] = useState(null);
+    useEffect(() => {
+        console.log(imagePreviews);
+    }, [imagePreviews]); // This effect runs whenever `imagePreviews` changes//FOR TESTING ONLY
 
-    function handleImageUpload1(event) {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                setimagePreview1(e.target.result);
-            };
-            reader.readAsDataURL(file);
+
+    const handleImageUpload1 = (event) => {
+        const files = event.target.files;
+        setImagePreviews(Array.from(files)); // Directly set the File objects to state
+    };
+
+
+    const handleAddPost = async () => {
+        if(imagePreviews.length === 0){
+            alert('Please select at least one file to upload');
+            return;
         }
-    }
+    
+        // Reference to the counter document
+        const counterRef = doc(db, "Store", storeID, "CommunityPost", "counter");
+    
+        // Transaction to safely increment the counter
+        const newPostID = await runTransaction(db, async (transaction) => {
+            const counterDoc = await transaction.get(counterRef);
+            if (!counterDoc.exists()) {
+                // If the counter document does not exist, create it with an initial value of 1
+                transaction.set(counterRef, { lastPostID: 1 });
+                return 1;
+            } else {
+                // Increment the counter and update the document
+                const newPostID = counterDoc.data().lastPostID + 1;
+                transaction.update(counterRef, { lastPostID: newPostID });
+                return newPostID;
+            }
+        });
+    
+        // Create a document reference with the specified newPostID as the document ID
+        const postRef = doc(db, "Store", storeID, "CommunityPost", newPostID.toString());
+    
+        // Use setDoc to write the document data, including the PostID as a field
+        await setDoc(postRef, {
+            PostID: newPostID, // Store the PostID within the document
+            description: description,
+            productLink: productLink,
+        });
+    
+        // Upload images
+        for (let i = 0; i < imagePreviews.length; i++) {
+            const image = imagePreviews[i];
+            const storageRef = ref(storage, `${storeID}/community-post/${newPostID}/${image.name}`);
+            await uploadBytes(storageRef, image);
+            console.log(`File ${i + 1} uploaded successfully`);
+        }
+    };
 
     return (
         <section className="lg:hidden">
@@ -55,11 +107,18 @@ function Editcommunity() {
                     <h2 className="font-extrabold text-[5vw] mt-16 ml-3">Add Images</h2>
                     <h2 className='mt-[16.4%] text-[3.5vw]'>(optional)</h2>
                     </div>
+                    {imagePreviews && (
+                        <div className="image-previews">
+                            {imagePreviews.map((preview, index) => (
+                                <img key={index} src={preview} alt={`Preview ${index}`} style={{ width: '100px', height: '100px' }} />
+                            ))}
+                        </div>
+                        )}
                     <div className="flex ml-4 items-center mt-6 gap-3">
                         <div className="w-[25vw] h-[25vw] border-2 border-dashed flex justify-center items-center rounded-2xl border-[#848484]">
                             <label htmlFor="imageUpload1" className="cursor-pointer">
                             <img id="imagePreview1" src={imagePreview1} alt="" className="w-[11vw]" />
-                            <input id="imageUpload1" type="file" accept="image/*" className="hidden" onChange={handleImageUpload1} />
+                            <input id="imageUpload1" type="file"  multiple accept="image/*" className="hidden" onChange={handleImageUpload1} />
                         </label>
                         </div>
                         <p className="text-[3.2vw]">(Add more than one image of the product)</p>
@@ -83,15 +142,15 @@ function Editcommunity() {
             </div>
             <div className='px-3 py-5 flex items-center gap-2 w-[93vw] ml-3 mt-5 rounded-2xl h-[10vw] border-[1px] border-[#B7B7B7]'>
                 <h2 className='text-[#737373] font-bold'>Link:</h2>
-                <input type="text" className='focus:outline-none text-[4vw] w-[91vw]'/>
+                <input onChange={handleProductLinkChange} type="text" className='focus:outline-none text-[4vw] w-[91vw]'/>
             </div>
             </div>
             <AlertDialog>
                 <AlertDialogTrigger>
             <div className="fixed bottom-4 left-0 right-0 flex justify-center items-center">
-                                <div className="flex bg-[#2D332F] rounded-full text-xl p-4 w-72 md:hidden text-white justify-center items-center">
+                                <button onClick={handleAddPost} className="flex bg-[#2D332F] rounded-full text-xl p-4 w-72 md:hidden text-white justify-center items-center">
                                     Edit
-                                </div>
+                                </button>
                             </div>
                             </AlertDialogTrigger>
                             <AlertDialogContent className="w-[90vw] rounded-3xl">
