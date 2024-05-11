@@ -105,8 +105,8 @@ function Checkoutinfo() {
           <button className={` border-[1.5px] border-[#343434] px-4 py-2 rounded-3xl mt-8 ${addressType === 'office' ? 'bg-[#343434] text-white' : 'bg-white text-[#000]'}`} onClick={handleOfficeClick}>Office</button>
                 </div>
                 <div className="fixed bottom-4 left-0 right-0 flex justify-center items-center">
-                                <Link to="" className="flex bg-[#2D332F] rounded-full text-xl p-4 w-72 md:hidden text-white justify-center items-center">
-                                Confirm Order
+                                <Link to="/checkoutaddress" className="flex bg-[#2D332F] rounded-full text-xl p-4 w-72 md:hidden text-white justify-center items-center">
+                                Confirm Address
                                 </Link>
                             </div>
                 </section>

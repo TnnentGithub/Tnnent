@@ -57,7 +57,9 @@ function Checkoutaddress() {
             </div>
         </div>
         <div className='flex justify-center'>
+          <Link to="/checkoutinfo">
         <button className='mt-9 mb-4 px-[23vw] py-3 text-[3.6vw] font-bold border-2 border-[#E3E3E3] rounded-3xl'>Change Your Address</button>
+        </Link>
         </div>
       </div>
     </div>
@@ -65,7 +67,7 @@ function Checkoutaddress() {
        <Checkoutcards/>
     </div>
     <div className="fixed bottom-4 left-0 right-0 flex justify-center items-center">
-                                <Link to="" className="flex bg-[#2D332F] rounded-full text-xl p-4 w-72 md:hidden text-white justify-center items-center">
+                                <Link to="/checkoutmain1" className="flex bg-[#2D332F] rounded-full text-xl p-4 w-72 md:hidden text-white justify-center items-center">
                                 Continue
                                 </Link>
                             </div>

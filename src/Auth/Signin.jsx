@@ -9,9 +9,11 @@ import google from '../images/AUTHENTICATION LOGOS AND ICONS/GOOGLE ICON.png'
 
 import './Auth.css';
 import Slideshow from '../components/Slideshow.jsx';
+import { UserAuth } from '@/context/AuthContext';
 
 function SignIn() {
-
+ 
+    const {googleSignIn} = UserAuth()
   
     return (
         <div>
@@ -52,7 +54,8 @@ function SignIn() {
                 </div>
             </div>
             <button className='ml-[30vw] flex justify-center px-5 py-2 mt-2 rounded-lg border-2 cursor-pointer'>
-                                <div className='flex gap-2'>
+                                <div className='flex gap-2' onClick={async() => await googleSignIn() }
+                                    >
                                     <img className='w-[20px]' src={google} alt="" />
                                     <h2 className='font-medium text-[15px]'>Google</h2>
                                 </div>

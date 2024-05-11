@@ -3,6 +3,7 @@ import backIcon from '../images/images3/back.png';
 import menudesktop from '../images/menu icon.png'
 import backdesktop from '../images/back desktop.png'
 import logo from '../images/Frame 397.png'
+import { Link } from 'react-router-dom';
 import './style.css';
 
 
@@ -160,11 +161,11 @@ function Optionalsweight() {
                         )}
                     </div>
                 </div>
-                <div className="flex justify-center items-center sticky bottom-[1px] bg-white">
-                <button className="text-[#ffffff] text-[4vw] w-[66%] py-3 my-3 bg-[#000000] border rounded-full font-bold">
-                    Next
-                </button>
-            </div>
+                <div className="fixed bottom-4 left-0 right-0 flex justify-center items-center">
+                                <Link to="/addprice" className="flex bg-[#2D332F] rounded-full text-xl p-4 w-72 md:hidden text-white justify-center items-center">
+                                Next
+                                </Link>
+                            </div>
 
             </section>
 

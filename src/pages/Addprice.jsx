@@ -51,13 +51,7 @@ function AddPriceToOptionals() {
                 <hr className="w-[95%]" style={{ borderTop: '1.5px dashed #848484' }} />
             </div>
 
-            <div className="flex justify-between mx-5 my-5 mb-12">
-                <div>
-                    <p className="text-[4vw] font-extrabold">1.5 Pounds</p>
-                    <p className="text-[3vw] text-[#646464] font-bold">Default Optional</p>
-                </div>
-                <button className="px-5 py-2 bg-[#343434] text-[4vw] text-white border rounded-lg font-bold">Change</button>
-            </div>
+    
 
             {pounds.map(pound => (
                 <div key={pound.id}>
@@ -86,10 +80,11 @@ function AddPriceToOptionals() {
                     )}
                 </div>
             ))}
-
+<Link to='/createpage'>
 <button className="text-[#ffffff] text-[4vw] py-3 px-20 bg-[#000000]  rounded-full font-bold fixed bottom-4 left-[23%]">
         Confirm
     </button>
+    </Link>
         </section>
          <section className="hidden lg:block">
 

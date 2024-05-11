@@ -1,6 +1,4 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-
 import backIcon from '../images/images3/back.png';
 import frame401 from '../images/images3/Frame 401.png';
 import frame402 from '../images/images3/Frame 402.png';
@@ -46,6 +44,13 @@ const [ProductMrpPrice, setProductMrpPrice] = useState('')
 const [ProductPrice, setProductPrice] = useState('')
 const [ProductDesc, setProductDesc] = useState('')
 const [ProductStockQuantity, setProductStockQuantity] = useState('')
+const [showHello, setShowHello] = useState(false);
+const [ProductType, setProductType] = useState('Product Type');
+const [menuOpen, setMenuOpen] = useState(false);
+const [Images, setImages] = useState([]);
+const [selectedParcel, setSelectedParcel] = useState(null);
+
+const [optional,setOptional]=useState(false);
 
 useEffect(() => {
     const timerid = setTimeout(() => {
@@ -104,7 +109,7 @@ const handleProductType = (option) => {
     
     return (
         <>
-        
+       
         <div className='forscroll'>
         <section className="lg:hidden">
             <div className="w-full h-[12vh] flex p-[20px] justify-between">
@@ -164,11 +169,6 @@ const handleProductType = (option) => {
                     </svg> 
                             </div>
                         </div>
-                        <ul className={`menu font-bold ${menuOpen ? 'menu-open' : ''}`}>
-                            <li className={ProductType === 'Bakery' ? 'active' : ''} onClick={() =>handleProductType('Bakery')}>Bakery</li>
-                            <li className={ProductType === 'Size' ? 'active' : ''} onClick={() => handleProductType('Size')}>Size</li>
-                            <li className={ProductType === 'Storage' ? 'active' : ''} onClick={() => handleProductType('Storage')}>Storage</li>
-                            <li className={ProductType === 'Volume' ? 'active' : ''} onClick={() => handleProductType('Volume')}>Volume</li>
                         <ul className={`menu font-bold ${menuOpen ? 'menu-open1' : ''}`}>
                             <div className='flex justify-between gap-5'>
                                 <div>
@@ -193,7 +193,6 @@ const handleProductType = (option) => {
                             <li className={ProductType === 'Sports' ? 'active' : ''} onClick={() => handleProductType('Sports')}>Sports</li>
                             </div>
                             </div>
-                        </ul>
                         </ul>
                     </div>
                     <h2 className='text-[3.4vw]'>Enter your product type</h2>
@@ -266,9 +265,11 @@ const handleProductType = (option) => {
 
 
    <div className='justify-center flex mb-2 mt-7'>
-    <button to="/" className="text-[#ffffff] z-[999] text-[4vw] py-3 px-20 bg-[#000000] border rounded-full font-bold ">
+    <Link to='/'>
+    <button className="text-[#ffffff] z-[999] text-[4vw] py-3 px-20 bg-[#000000] border rounded-full font-bold ">
         List Item
     </button>
+    </Link>
     </div>
         </section>
         <section className="hidden lg:block">

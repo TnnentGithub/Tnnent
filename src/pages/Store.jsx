@@ -160,7 +160,7 @@ function Store() {
             modifier: 1,
             slideShadows: true,
           }}
-          pagination={true}
+          
           modules={[EffectCoverflow, Pagination, Autoplay]}
           loop={true}
         >
@@ -307,19 +307,34 @@ function Store() {
       className='mr-2 ml-4 mt-4'
     >
         <SwiperSlide>
+          <Link to='/product'>
         <ThingCards marginTop="0" width="37vw" height="52vw" />
+        </Link>
         </SwiperSlide>
         <SwiperSlide>
+          <Link to='/product'>
         <ThingCards marginTop="0" width="37vw" height="52vw" />
+        </Link>
         </SwiperSlide>
         <SwiperSlide>
+          <Link to='/product'>
         <ThingCards marginTop="0" width="37vw" height="52vw" />
+        </Link>
         </SwiperSlide>
         <SwiperSlide>
+          <Link to='/product'>
         <ThingCards marginTop="0" width="37vw" height="52vw" />
+        </Link>
         </SwiperSlide>
         <SwiperSlide>
+          <Link to='/product'>
         <ThingCards marginTop="0" width="37vw" height="52vw" />
+        </Link>
+        </SwiperSlide>
+        <SwiperSlide>
+          <Link to='/product'>
+        <ThingCards marginTop="0" width="37vw" height="52vw" />
+        </Link>
         </SwiperSlide>
     </Swiper>
     </div>

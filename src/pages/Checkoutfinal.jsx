@@ -20,6 +20,7 @@ import {
 import Desktopheader from '@/components/Desktopheader.jsx';
 import Desktopfooter from '@/components/Desktopfooter.jsx';
 import Checkoutcardsdesktop from '@/components/Checkoutcardsdesktop.jsx';
+import { Link } from 'react-router-dom';
 
 function Checkoutfinal() {
   return (
@@ -138,6 +139,7 @@ function Checkoutfinal() {
                 </Accordion>
                 
                 </div>
+                <Link to='/receiptsuccess'>
                 <div className='flex justify-center'>
                 <div className='w-[90vw] border-2 rounded-xl px-4 mt-2 h-[18vw] flex items-center'>
                 <div className='flex gap-3'>
@@ -149,6 +151,7 @@ function Checkoutfinal() {
                         </div>
                 </div>
                 </div>
+                </Link>
                 <h2 className='font-bold text-[3.7vw] ml-5 mt-8'>Order Information</h2>
                 <div className='flex justify-center'>
                 <div className='w-[90vw] border-2 rounded-xl px-4 mt-3 h-[14vw] flex items-center'>
@@ -259,6 +262,7 @@ function Checkoutfinal() {
 
                     
                 </Accordion>
+                <Link>
                 <div className=''>
                 <div className='w-[430px] border-2 rounded-xl px-4 mt-2 h-[75px] flex items-center'>
                 <div className='flex gap-3'>
@@ -270,6 +274,7 @@ function Checkoutfinal() {
                         </div>
                 </div>
                 </div>
+                </Link>
                 <h2 className='font-bold text-[19px] mt-5'>Order Information</h2>
                 <div className=''>
                 <div className='w-[430px] border-2 rounded-xl px-4 mt-3 h-[75px] flex items-center'>

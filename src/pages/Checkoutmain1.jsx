@@ -108,7 +108,7 @@ function Checkoutmain1() {
                         <h2 className='font-bold text-[5.4vw]'>₹ 210</h2>
                     </div>
                     <div className="fixed bottom-2 left-0 right-0 flex justify-center items-center">
-                                <Link to="" className="flex bg-[#094446] rounded-xl text-xl p-4 w-[93vw] md:hidden text-white justify-center font-bold items-center">
+                                <Link to="/checkoutfinal" className="flex bg-[#094446] rounded-xl text-xl p-4 w-[93vw] md:hidden text-white justify-center font-bold items-center">
                                 Pay ₹210
                                 </Link>
                             </div>

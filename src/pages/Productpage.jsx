@@ -18,6 +18,8 @@ import instagram from '../images/instagram.svg';
 import telegram from '../images/telegram.svg';
 import twitter from '../images/Vector (28).svg';
 import more from '../images/Frame 509.svg'
+import camera from '../images/Rectangle 2267.svg';
+import xyzstore from '../images/damian-barczak-U9E423m3Hd8-unsplash.jpg'
 import { Link } from 'react-router-dom';
 import './style.css';
 
@@ -62,7 +64,7 @@ function Productpage() {
     if (text) {
       const newReview = {
         text,
-        author: 'Kunal Deb', // You can replace this with dynamic author name if needed
+        author: 'Kunal Deb',
       };
       setReviews([...reviews, newReview]);
       setReviewText('');
@@ -108,27 +110,27 @@ function Productpage() {
         >
         <SwiperSlide>
           <div className='flex justify-center'>
-          <div className='h-[65vw] w-[90vw] bg-red-400'></div>
+          <div className='h-[65vw] w-[90vw] bg-red-400 bg-cover bg-center bg-no-repeat'           style={{ backgroundImage: `url(${camera})` }}></div>
           </div>  
         </SwiperSlide> 
         <SwiperSlide>
           <div className='flex justify-center'>
-          <div className='h-[65vw] w-[90vw] bg-red-400'></div>
+          <div className='h-[65vw] w-[90vw] bg-red-400 bg-cover bg-center bg-no-repeat'           style={{ backgroundImage: `url(${camera})` }}></div>
           </div>  
         </SwiperSlide> 
         <SwiperSlide>
           <div className='flex justify-center'>
-          <div className='h-[65vw] w-[90vw] bg-red-400'></div>
+          <div className='h-[65vw] w-[90vw] bg-red-400 bg-cover bg-center bg-no-repeat'           style={{ backgroundImage: `url(${camera})` }}></div>
           </div>  
         </SwiperSlide> 
         <SwiperSlide>
           <div className='flex justify-center'>
-          <div className='h-[65vw] w-[90vw] bg-red-400'></div>
+          <div className='h-[65vw] w-[90vw] bg-red-400 bg-cover bg-center bg-no-repeat'           style={{ backgroundImage: `url(${camera})` }}></div>
           </div>  
         </SwiperSlide> 
         <SwiperSlide>
           <div className='flex justify-center'>
-          <div className='h-[65vw] w-[90vw] bg-red-400'></div>
+          <div className='h-[65vw] w-[90vw] bg-red-400 bg-cover bg-center bg-no-repeat'           style={{ backgroundImage: `url(${camera})` }}></div>
           </div>  
         </SwiperSlide> 
        
@@ -137,7 +139,7 @@ function Productpage() {
         </div>
         <div className="flex justify-between items-center mt-6">
             <div className="flex gap-2 ml-4 items-center ">
-                <div className="w-8 h-8  bg-[#616363] rounded-full flex-shrink-0"></div>
+                <div className="w-8 h-8  bg-[#616363] rounded-full flex-shrink-0 bg-cover bg-center bg-no-repeat"    style={{ backgroundImage: `url(${xyzstore})` }}></div>
                 <p className="font-semibold text-[#9C9C9C] flex-shrink-0">XYZ Store</p>
             </div>
 
@@ -342,19 +344,34 @@ function Productpage() {
          
         >
             <SwiperSlide>
+              <Link to='/product'>
             <ThingCards marginTop="0" width="37vw" height="52vw" />
+            </Link>
             </SwiperSlide>
             <SwiperSlide>
+              <Link to='/product'>
             <ThingCards marginTop="0" width="37vw" height="52vw" />
+            </Link>
             </SwiperSlide>
             <SwiperSlide>
+              <Link to='/product'>
             <ThingCards marginTop="0" width="37vw" height="52vw" />
+            </Link>
             </SwiperSlide>
             <SwiperSlide>
+              <Link to='/product'>
             <ThingCards marginTop="0" width="37vw" height="52vw" />
+            </Link>
             </SwiperSlide>
             <SwiperSlide>
+              <Link to='/product'>
             <ThingCards marginTop="0" width="37vw" height="52vw" />
+            </Link>
+            </SwiperSlide>
+            <SwiperSlide>
+              <Link to='/product'>
+            <ThingCards marginTop="0" width="37vw" height="52vw" />
+            </Link>
             </SwiperSlide>
         </Swiper>
         </div>
