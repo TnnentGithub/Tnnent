@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import ratingIcon from '../images/Vector (17).svg';
 import shareIcon from '../images/ios_share (2).svg';
@@ -34,12 +34,20 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "../components/ui/drawer.jsx"
+} from "../components/ui/drawer.jsx";
+import { db } from "../../firebase.js";
+import { doc, setDoc, arrayUnion, getDoc } from "firebase/firestore";
+import { useParams } from 'react-router-dom';
 
 
 function Productpage() {
       // State to track whether the full description is visible
   const [showFullDescription, setShowFullDescription] = useState(false);
+  const { id } = useParams();
+
+  const parts = id.split('-');
+
+  const storeID = parts[0] + '-' + parts[1];
 
   // Function to handle click event on "See full description" link
   const handleShowMore = () => {
@@ -47,6 +55,7 @@ function Productpage() {
     setShowFullDescription(true);
   };
   const [reviewText, setReviewText] = useState('');
+  const [product, setProduct] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [displayedReviews, setDisplayedReviews] = useState(5);
     const [showAll, setShowAll] = useState(false);
@@ -58,6 +67,20 @@ function Productpage() {
   const handleReviewInput = (event) => {
     setReviewText(event.target.value);
   };
+
+  const fetch = async() =>{
+    console.log("fetching-->");
+     const docRef = doc(db,"Store",storeID,"Products",id);
+     const docSnap = await getDoc(docRef);
+     if (docSnap.exists()) { 
+      setProduct(docSnap.data());
+      console.log("Document data:", product);
+     }
+  };
+
+  useEffect(()=>{
+    fetch;
+  },[]);
 
   const displayReview = () => {
     const text = reviewText.trim();
@@ -88,6 +111,7 @@ function Productpage() {
                 <div className="flex flex-col">
             <div className="flex gap-2 items-center">
                 <h2 className="font-bold text-[6vw]">PRODUCT</h2>
+                <button onClick={fetch}>TEST</button>
                 <div className="rounded-full bg-red-500 w-[1vh] h-[1vh] "></div>
             </div>
             
@@ -299,7 +323,7 @@ function Productpage() {
             </div>
         </div>
         <div className="mt-7 ml-6">
-      <h2 className="font-black text-lg">Canon XYZ Camera</h2>
+      <h2 className="font-black text-lg">{product.ProductName}</h2>
       {/* <p className="text-[#9C9C9C]">Assam, Karimganj, Shyamaprasad Road- house no.3</p> */}
       
       <div className="flex  mt-5 gap-4">
@@ -307,11 +331,11 @@ function Productpage() {
         <div className="w-full bg-[#F5F5F5] p-4 py-2 rounded-xl flex justify-between mr-4 items-center">
           <div>
             <div className="flex">
-              <h2 className="text-2xl font-extrabold mt-2">&#x20b9; 2000</h2>
-              <p className="text-red-600 font-black ml-2 mt-4">40% Discount</p>
+              <h2 className="text-2xl font-extrabold mt-2">&#x20b9; {product.ProductPrice}</h2>
+              <p className="text-red-600 font-black ml-2 mt-4">{product.ProductDiscount}% Discount</p>
             </div>
             <p className="text-[#A9A9A9] font-extrabold mt- ml-5 text-md line-through">
-              MRP ₹700
+              MRP ₹{product.ProductMrpPrice}
             </p>
           </div>
           <Link to='/checkoutaddress'>
@@ -325,7 +349,7 @@ function Productpage() {
     <div className="ml-6 mt-7">
       <h2 className="text-2xl font-extrabold font-gotham-black">Description <span className="text-red-600"> &bull;</span></h2>
       <p className={`mt-4 mr-4 text-[14px] ${showFullDescription ? '' : 'overflow-hidden line-clamp-3'}`}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo adipisci itaque enim dolorem atque labore dignissimos, ratione explicabo repellat totam id earum a alias impedit consequuntur tempore suscipit consequatur eveniet?
+        {product.ProductDescription}
       </p>
       {!showFullDescription && (
         <p className="mt-2">
