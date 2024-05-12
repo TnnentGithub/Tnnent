@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
+import OptionalsContext from './context/OptionalContext'; 
 
 const Analytics = lazy(() => import('./pages/Analytics'));
 const Storeprofile = lazy(() => import('./pages/Storeprofile'));
@@ -99,113 +100,120 @@ const Morecategory = lazy(() => import('./pages/Morecategory'));
 const Grocerycategory = lazy(() => import('./pages/Grocerycategory'));
 
 function App() {
+
+  
+const [selectedOptions, setSelectedOptions] = useState([]);
+const [ productType, setProductType ] = useState();
+
   return (
-    <div className='App'>
-      <Router>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Routes>
+    <OptionalsContext.Provider value={{ selectedOptions, setSelectedOptions, productType, setProductType }}>  
+      <div className='App'>
+        <Router>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
 
-    
+      
 
-          <Route path='/analytics' element={<Analytics/>}/>
-          <Route path='/storeprofile' element={<Storeprofile/>}/>
-          <Route path='/storeprofileview' element={<Storeprofileview/>}/>
-          <Route path='/userprofile' element={<Userprofile/>}/>
-          <Route path='/catalog' element={<Catalog/>}/>
-          <Route path='/deliverproduct' element={<Productdelivery/>}/>
-          <Route path='/deliveryfromme' element={<DeliveryStatus/>}/>
-          <Route path='/deliverytome' element={<DeliveryToMe/>}/>
-          <Route path='/electronics' element={<ElectronicsPage/>}/>
-          <Route path='/services' element={<ServicesPage/>}/>
-          <Route path='/pickupdetails' element={<PickupDetailsPage/>}/>
-          <Route path='/pickuptime' element={<PickupTimePage/>}/>
-          <Route path='/shipment' element={<ShipmentDetailsPage/>}/>
-          <Route path='/verification' element={<VerifyDetailsPage/>}/>
-          <Route path='/galleryins' element={<MiddlemanGroup/>}/>
+            <Route path='/analytics' element={<Analytics/>}/>
+            <Route path='/storeprofile' element={<Storeprofile/>}/>
+            <Route path='/storeprofileview' element={<Storeprofileview/>}/>
+            <Route path='/userprofile' element={<Userprofile/>}/>
+            <Route path='/catalog' element={<Catalog/>}/>
+            <Route path='/deliverproduct' element={<Productdelivery/>}/>
+            <Route path='/deliveryfromme' element={<DeliveryStatus/>}/>
+            <Route path='/deliverytome' element={<DeliveryToMe/>}/>
+            <Route path='/electronics' element={<ElectronicsPage/>}/>
+            <Route path='/services' element={<ServicesPage/>}/>
+            <Route path='/pickupdetails' element={<PickupDetailsPage/>}/>
+            <Route path='/pickuptime' element={<PickupTimePage/>}/>
+            <Route path='/shipment' element={<ShipmentDetailsPage/>}/>
+            <Route path='/verification' element={<VerifyDetailsPage/>}/>
+            <Route path='/galleryins' element={<MiddlemanGroup/>}/>
 
-          <Route path='/' element={<Store/>}/>
-          
-          <Route path='/gallery' element={<Gallery/>}/>
-          <Route path='/gallerymiddle' element={<Gallerymiddle/>}/>
-          <Route path='/registration' element={<RegistrationPage/>}/>
-          <Route path='/storeemail' element={<SelectEmailPage/>}/>
-          <Route path='/storedomain' element={<SelectStoreDomainPage/>}/>
-          <Route path='/storelocation' element={<SelectStoreLocation/>}/>
-          <Route path='/storename' element={<SelectStoreName/>}/>
-          <Route path='/storepayment' element={<StorePayment/>}/>
-          <Route path='/storeupi' element={<StoreUPI/>}/>
-          <Route path='/otpverify' element={<Otpverify/>}/>
-          <Route path='/selectcategory' element={<SelectCategory/>}/>
-          <Route path='/highlights' element={<Highlights/>}/>
-          
-          <Route path='/createpage' element={<CreateProductPage/>}/>
+            <Route path='/' element={<Store/>}/>
+            
+            <Route path='/gallery' element={<Gallery/>}/>
+            <Route path='/gallerymiddle' element={<Gallerymiddle/>}/>
+            <Route path='/registration' element={<RegistrationPage/>}/>
+            <Route path='/storeemail' element={<SelectEmailPage/>}/>
+            <Route path='/storedomain' element={<SelectStoreDomainPage/>}/>
+            <Route path='/storelocation' element={<SelectStoreLocation/>}/>
+            <Route path='/storename' element={<SelectStoreName/>}/>
+            <Route path='/storepayment' element={<StorePayment/>}/>
+            <Route path='/storeupi' element={<StoreUPI/>}/>
+            <Route path='/otpverify' element={<Otpverify/>}/>
+            <Route path='/selectcategory' element={<SelectCategory/>}/>
+            <Route path='/highlights' element={<Highlights/>}/>
+            
+            <Route path='/createpage' element={<CreateProductPage/>}/>
 
-          <Route path='/createcategory' element={<CreateProductPage2/>}/>
-          <Route path='/defaultoptional' element={<SelectDefaultOptional/>}/>
-          <Route path='/addprice' element={<AddPriceToOptionals/>}/>
-          <Route path='/community' element={<Community/>}/>
-          <Route path='/communitypost' element={<Communitypost/>}/>
-          <Route path='/aadhardetails' element={<UploadDocuments/>}/>
-          <Route path='/location' element={<LocationPage/>}/>
-          <Route path='/name' element={<Name/>}/>
-          <Route path='/profilepictureadded' element={<ProfilePictureadded/>}/>
-          <Route path='/addprofilepicture' element={<AddProfilePicture/>}/>
-          <Route path='/resetpass' element={<ResetPassword/>}/>
-          <Route path='/signin' element={<SignIn/>}/>
-          <Route path='/signup' element={<Signup/>}/>
-          <Route path='/verify' element={<Verify/>}/>
-          <Route path='/createpass' element={<Createpass/>}/>
-          <Route path='/passport' element={<Passport/>}/>
+            <Route path='/createcategory' element={<CreateProductPage2/>}/>
+            <Route path='/defaultoptional' element={<SelectDefaultOptional/>}/>
+            <Route path='/addprice' element={<AddPriceToOptionals/>}/>
+            <Route path='/community' element={<Community/>}/>
+            <Route path='/communitypost' element={<Communitypost/>}/>
+            <Route path='/aadhardetails' element={<UploadDocuments/>}/>
+            <Route path='/location' element={<LocationPage/>}/>
+            <Route path='/name' element={<Name/>}/>
+            <Route path='/profilepictureadded' element={<ProfilePictureadded/>}/>
+            <Route path='/addprofilepicture' element={<AddProfilePicture/>}/>
+            <Route path='/resetpass' element={<ResetPassword/>}/>
+            <Route path='/signin' element={<SignIn/>}/>
+            <Route path='/signup' element={<Signup/>}/>
+            <Route path='/verify' element={<Verify/>}/>
+            <Route path='/createpass' element={<Createpass/>}/>
+            <Route path='/passport' element={<Passport/>}/>
 
-          {/* <Route path='/optionalvolume' element={<OptionalsVolume/>}/> */}
-          <Route path='/optionalgrocery' element={<Optionalsweight/>}/>
-          <Route path='/optionalbakery' element={<Optionalsbakery/>}/>
-          <Route path='/optionalclothing' element={<Optionalssize/>}/>
-          <Route path='/optionalelectronics' element={<Optionalsstorage/>}/>
-          <Route path='/optionalfootwear' element={<Optionalfootwear/>}/>
-          
+            {/* <Route path='/optionalvolume' element={<OptionalsVolume/>}/> */}
+            <Route path='/optionalgrocery' element={<Optionalsweight/>}/>
+            <Route path='/optionalbakery' element={<Optionalsbakery/>}/>
+            <Route path='/optionalclothing' element={<Optionalssize/>}/>
+            <Route path='/optionalelectronics' element={<Optionalsstorage/>}/>
+            <Route path='/optionalfootwear' element={<Optionalfootwear/>}/>
+            
 
-          <Route path='/notification' element={<Notification/>}/>
+            <Route path='/notification' element={<Notification/>}/>
 
-          <Route path='/storenotification' element={<Storenotification/>}/>
-          <Route path='/orderandpays' element={<Orderandpays/>}/>
-          <Route path='/payments' element={<Payments/>}/>
-          <Route path='/ongoingorders' element={<Ongoingorders/>}/>
-          <Route path='/deliveredorders' element={<Deliveredorders/>}/>
-          <Route path='/cancelledorders' element={<Cancelledorders/>}/>
-          <Route path='/couponprice' element={<Couponprice/>}/>
-          <Route path='/couponpercent' element={<Couponpercent/>}/>
-          <Route path='/createcoupon' element={<CreateCoupon/>}/>
-          <Route path='/details' element={<Details/>}/>
-          <Route path='/checkoutaddress' element={<Checkoutaddress/>}/>
-          <Route path='/checkoutinfo' element={<Checkoutinfo/>}/>
-          <Route path='/checkoutmain1' element={<Checkoutmain1/>}/>
-          <Route path='/checkoutmain2' element={<Checkoutmain2/>}/>
-          <Route path='/receiptsuccess' element={<Receiptsuccess/>}/>
-          <Route path='/product' element={<Productpage/>}/>
-          <Route path='/purchases' element={<Purchases/>}/>
-          <Route path='/couponcreated' element={<Couponcreated/>}/>
-          <Route path='/storestarting' element={<Storeregistrationstarting/>}/>
-          <Route path='/settingslocation' element={<Settingslocation/>}/>
-          <Route path='/settingsupi' element={<Settingsupi/>}/>
-          <Route path='/mycommunity' element={<MyCommunity/>}/>
-          <Route path='/editcommunity' element={<Editcommunity/>}/>
-          <Route path='/storesettings' element={<Storesettings/>}/>
-          <Route path='/checkoutfinal' element={<Checkoutfinal/>}/>
-          <Route path='/createproductedit' element={<CreateProductedit/>}/>
-          <Route path='/viewallproducts' element={<Viewallproducts/>}/>
-          <Route path='/categoryview' element={<Categoryview/>}/>
-          <Route path='/electronicscategory' element={<Electronicscategory/>}/>
-          <Route path='/clothingcategory' element={<Clothingcategory/>}/>
-          <Route path='/morecategory' element={<Morecategory/>}/>
-          <Route path='/grocerycategory' element={<Grocerycategory/>}/>
-          <Route path='/accessoriescategory' element={<Accessoriescategory/>}/>
-          <Route path='/bookscategory' element={<Bookscategory/>}/>
-        </Routes>
+            <Route path='/storenotification' element={<Storenotification/>}/>
+            <Route path='/orderandpays' element={<Orderandpays/>}/>
+            <Route path='/payments' element={<Payments/>}/>
+            <Route path='/ongoingorders' element={<Ongoingorders/>}/>
+            <Route path='/deliveredorders' element={<Deliveredorders/>}/>
+            <Route path='/cancelledorders' element={<Cancelledorders/>}/>
+            <Route path='/couponprice' element={<Couponprice/>}/>
+            <Route path='/couponpercent' element={<Couponpercent/>}/>
+            <Route path='/createcoupon' element={<CreateCoupon/>}/>
+            <Route path='/details' element={<Details/>}/>
+            <Route path='/checkoutaddress' element={<Checkoutaddress/>}/>
+            <Route path='/checkoutinfo' element={<Checkoutinfo/>}/>
+            <Route path='/checkoutmain1' element={<Checkoutmain1/>}/>
+            <Route path='/checkoutmain2' element={<Checkoutmain2/>}/>
+            <Route path='/receiptsuccess' element={<Receiptsuccess/>}/>
+            <Route path='/product' element={<Productpage/>}/>
+            <Route path='/purchases' element={<Purchases/>}/>
+            <Route path='/couponcreated' element={<Couponcreated/>}/>
+            <Route path='/storestarting' element={<Storeregistrationstarting/>}/>
+            <Route path='/settingslocation' element={<Settingslocation/>}/>
+            <Route path='/settingsupi' element={<Settingsupi/>}/>
+            <Route path='/mycommunity' element={<MyCommunity/>}/>
+            <Route path='/editcommunity' element={<Editcommunity/>}/>
+            <Route path='/storesettings' element={<Storesettings/>}/>
+            <Route path='/checkoutfinal' element={<Checkoutfinal/>}/>
+            <Route path='/createproductedit' element={<CreateProductedit/>}/>
+            <Route path='/viewallproducts' element={<Viewallproducts/>}/>
+            <Route path='/categoryview' element={<Categoryview/>}/>
+            <Route path='/electronicscategory' element={<Electronicscategory/>}/>
+            <Route path='/clothingcategory' element={<Clothingcategory/>}/>
+            <Route path='/morecategory' element={<Morecategory/>}/>
+            <Route path='/grocerycategory' element={<Grocerycategory/>}/>
+            <Route path='/accessoriescategory' element={<Accessoriescategory/>}/>
+            <Route path='/bookscategory' element={<Bookscategory/>}/>
+          </Routes>
 
-        </Suspense>
-      </Router>
-    </div>
+          </Suspense>
+        </Router>
+      </div>
+    </OptionalsContext.Provider>  
   )
 }
 

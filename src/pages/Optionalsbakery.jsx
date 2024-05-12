@@ -1,14 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import backIcon from '../images/images3/back.png';
 import './style.css';
 import menudesktop from '../images/menu icon.png'
 import backdesktop from '../images/back desktop.png'
 import logo from '../images/Frame 397.png'
 import { Link } from 'react-router-dom';
+import OptionalsContext from '../context/OptionalContext';
+
 
 
 function Optionalsbakery() {
     const [selectedCategory, setSelectedCategory] = useState('p');
+    const { selectedOptions, setSelectedOptions } = useContext(OptionalsContext);
+
+    const handleCheckboxChange = (option, isChecked) => {
+        if (isChecked) {
+          setSelectedOptions([...selectedOptions, option]);
+        } else {
+          setSelectedOptions(selectedOptions.filter(o => o!== option));
+        }
+      };
 
     const showCategory = (category) => {
         setSelectedCategory(category);
@@ -86,7 +97,7 @@ function Optionalsbakery() {
                                     <div className='flex justify-between'>
                                     <p className="text-[4vw] text-[#094446] font-bold">{option.amount}</p>
                                     <div className="checkbox-wrapper-13">
-                                        <input type="checkbox" id={`agree-${index}`} className="form-checkbox accent-[#094446] h-5 w-5" />
+                                        <input type="checkbox" id={`agree-${index}`} onChange={(e) => handleCheckboxChange(option.amount, e.target.checked)} className="form-checkbox accent-[#094446] h-5 w-5" />
                                     </div>
                                     </div>
                                 </div>
@@ -101,7 +112,7 @@ function Optionalsbakery() {
                                     <div className='flex justify-between'>
                                     <p className="text-[4vw] text-[#094446] font-bold">{option.amount}</p>
                                     <div className="checkbox-wrapper-13">
-                                        <input type="checkbox" id={`agree-${index}`} className="form-checkbox accent-[#094446] h-5 w-5" />
+                                        <input type="checkbox" id={`agree-${index}`} onChange={(e) => handleCheckboxChange(option.amount, e.target.checked)} className="form-checkbox accent-[#094446] h-5 w-5" />
                                     </div>
                                 </div>
                                 </div>

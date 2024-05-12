@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import back from '../images/images3/back.png';
 import menudesktop from '../images/menu icon.png'
@@ -8,28 +8,65 @@ import frame404 from '../images/images3/Frame 404.png';
 import frame402 from '../images/images3/Frame 402.png';
 import frame403 from '../images/images3/Frame 403.png';
 import frame405 from '../images/images3/Frame 405.png';
-import frame407 from '../images/images3/Frame 407.png'
+import frame407 from '../images/images3/Frame 407.png';
+import OptionalsContext from '../context/OptionalContext';
+import { db } from "../../firebase.js";
+import { doc, setDoc, arrayUnion, getDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 function AddPriceToOptionals() {
-    const [pounds, setPounds] = useState([
-        { id: 1, name: '1 Pound', defaultOptional: 'Default Optional', showDetails: false },
-        { id: 2, name: '1.5 Pounds', defaultOptional: 'Default Optional', showDetails: false },
-    ]);
+    const storeID = "Store-0001";
+    const productID = "Store-0001-Product-0001";
+    const { selectedOptions, setSelectedOptions, productType } = useContext(OptionalsContext);
+    const [optionDetails, setOptionDetails] = useState([]);
+    const navigate = useNavigate();
+    const [showDetails, setShowDetails] = useState({});
 
-    const toggleDetails = (id) => {
-        setPounds(pounds.map(pound => {
-            if (pound.id === id) {
-                return { ...pound, showDetails: !pound.showDetails };
+    const updateOptionDetail = (index, detailType, value) => {
+        setOptionDetails(prevDetails => {
+            const newDetails = [...prevDetails];
+            if (!newDetails[index]) {
+                newDetails[index] = { discount: '', mrp: '', itemPrice: '' };
             }
-            return pound;
+            newDetails[index][detailType] = value;
+            return newDetails;
+        });
+    };
+
+    const toggleDetails = (index) => {
+        setShowDetails(prevState => ({
+           ...prevState,
+            [index]:!prevState[index]
         }));
     };
-    const removePound = (id) => {
-        setPounds(pounds.filter(pound => pound.id !== id));
+
+    const removePound = (index) => {
+        setSelectedOptions(prevOptions => prevOptions.filter((_, i) => i!== index));
     };
+
+    const sendData = async (e) => {
+        e.preventDefault();
+        console.log("Pushing Data ---->")
+        try {
+            const docRef = doc(db, "Store", storeID, "Products", productID, "Optionals", productType);
+            const optionsWithDetails = selectedOptions.map((option, index) => ({
+                option,
+               ...optionDetails[index]
+            }));
+            await setDoc(docRef, {
+                Optionals: optionsWithDetails,
+            });
+            console.log('Data Pushed Succesfully <----');
+            navigate("/createPage");
+        } catch (error) {
+            console.log("Error while sending data to firebase: ", error);
+        }
+    };
+
     return (
         <>
         <section className="lg:hidden">
+            <button onClick={()=>{console.log(selectedOptions)}}>TEST</button>
             <div className="w-full h-[12vh] flex p-[20px] justify-between">
                 <div className="flex justify-center items-center gap-4">
                     <img className="w-12" src={frame397} alt="" />
@@ -53,35 +90,37 @@ function AddPriceToOptionals() {
 
     
 
-            {pounds.map(pound => (
-                <div key={pound.id}>
+            {selectedOptions.map((option, index) => (
+                <div key={index}>
                     <div className="flex justify-between mx-5 my-5">
-                        <p className="text-[4vw] text-[#094446] font-bold">{pound.name}</p>
+                        <p className="text-[4vw] text-[#094446] font-bold">{option}</p>
                         <div className="flex justify-center items-center gap-9">
-                            <button className="px-5 py-1 bg-[#094446] text-[3.5vw] text-white border rounded-lg font-bold" onClick={() => toggleDetails(pound.id)}>{pound.showDetails ? 'Hide' : 'Price'}</button>
-                            <img className="w-6 h-7" src={frame404} alt="" onClick={() => removePound(pound.id)} />
+                            <button className="px-5 py-1 bg-[#094446] text-[3.5vw] text-white border rounded-lg font-bold" onClick={() => toggleDetails(index)}>
+                                {showDetails[index]? 'Hide' : 'Price'}
+                            </button>
+                            <img className="w-6 h-7" src={frame404} alt="" onClick={() => removePound(index)} />
                         </div>
                     </div>
-                    {pound.showDetails && (
-                        <div className="flex flex-row items-center justify-center gap-1 my-2" id={`myDIV${pound.id}`}>
+                    {showDetails[index] && (
+                        <div className="flex flex-row items-center justify-center gap-1 my-2">
                             <div className="my-3 px-3 py-2 border-dotted border-[2px] rounded-[10px] border-[#848484] flex justify-right mb-[30px] flex-row gap-1">
                                 <img className="h-5" src={frame403} alt="" />
-                                <input type="text" id="phone-input" className="text-[#989898] w-[60px] text-[11px] font-bold border-0 border-[#000000] outline-none bg-[#ffffff]" maxLength="6" placeholder="Discount" onInput={(e) => e.target.value = e.target.value.replace(/[^0-9]/g, '')} />
+                                <input type="text" id="phone-input" className="text-[#989898] w-[60px] text-[11px] font-bold border-0 border-[#000000] outline-none bg-[#ffffff]" maxLength="6" placeholder="Discount" onChange={(e) => updateOptionDetail(index, 'discount', e.target.value)} onInput={(e) => e.target.value = e.target.value.replace(/[^0-9]/g, '')} />
                             </div>
                             <div className="my-3 px-3 py-2 border-dotted border-[2px] rounded-[10px] border-[#848484] flex justify-right mb-[30px] flex-row gap-1">
                                 <img className="h-3" src={frame402} alt="" />
-                                <input type="text" id="phone-input" className="text-[#989898] w-[60px] text-[11px] font-bold border-0 border-[#000000] outline-none bg-[#ffffff]" maxLength="6" placeholder="MRP Price" onInput={(e) => e.target.value = e.target.value.replace(/[^0-9]/g, '')} />
+                                <input type="text" id="phone-input" className="text-[#989898] w-[60px] text-[11px] font-bold border-0 border-[#000000] outline-none bg-[#ffffff]" maxLength="6" placeholder="MRP Price" onChange={(e) => updateOptionDetail(index, 'mrp', e.target.value)} onInput={(e) => e.target.value = e.target.value.replace(/[^0-9]/g, '')} />
                             </div>
                             <div className="my-3 px-3 py-2 border-dotted border-[2px] rounded-[10px] border-[#848484] flex mb-[30px] flex-row gap-1 items-center justify-center">
                                 <img className="h-5" src={frame405} alt="" />
-                                <input type="text" id="phone-input" className="text-[#989898] w-[60px] text-[11px] font-bold border-0 border-[#000000] outline-none bg-[#ffffff]" maxLength="6" placeholder="Item Price" onInput={(e) => e.target.value = e.target.value.replace(/[^0-9]/g, '')} />
+                                <input type="text" id="phone-input" className="text-[#989898] w-[60px] text-[11px] font-bold border-0 border-[#000000] outline-none bg-[#ffffff]" maxLength="6" placeholder="Item Price" onChange={(e) => updateOptionDetail(index, 'itemPrice', e.target.value)} onInput={(e) => e.target.value = e.target.value.replace(/[^0-9]/g, '')} />
                             </div>
                         </div>
                     )}
                 </div>
             ))}
 <Link to='/createpage'>
-<button className="text-[#ffffff] text-[4vw] py-3 px-20 bg-[#000000]  rounded-full font-bold fixed bottom-4 left-[23%]">
+<button className="text-[#ffffff] text-[4vw] py-3 px-20 bg-[#000000]  rounded-full font-bold fixed bottom-4 left-[23%]" onClick={sendData}>
         Confirm
     </button>
     </Link>
@@ -126,28 +165,30 @@ function AddPriceToOptionals() {
                      <p className="text-[#000] text-[15px] font-bold">Add Optional</p>
                  </div>
 
-                 {pounds.map(pound => (
-                <div key={pound.id}>
-                    <div className="flex justify-between mx-5 my-5  w-[80%]">
-                        <p className="text-[22px] text-[#094446] font-bold">{pound.name}</p>
+                 {selectedOptions.map((option, index) => (
+                <div key={index}>
+                    <div className="flex justify-between mx-5 my-5">
+                        <p className="text-[4vw] text-[#094446] font-bold">{option}</p>
                         <div className="flex justify-center items-center gap-9">
-                            <button className="px-5 py-1 bg-[#094446] text-[20px] text-white border rounded-lg font-bold" onClick={() => toggleDetails(pound.id)}>{pound.showDetails ? 'Hide' : 'Price'}</button>
-                            <img className="w-6 h-7" src={frame404} alt="" onClick={() => removePound(pound.id)} />
+                            <button className="px-5 py-1 bg-[#094446] text-[3.5vw] text-white border rounded-lg font-bold" onClick={() => toggleDetails(index)}>
+                                {showDetails[index]? 'Hide' : 'Price'}
+                            </button>
+                            <img className="w-6 h-7" src={frame404} alt="" onClick={() => removePound(index)} />
                         </div>
                     </div>
-                    {pound.showDetails && (
-                        <div className="flex flex-row justify-center gap-1 my-2" id={`myDIV${pound.id}`}>
-                            <div className="my-3 px-3 py-2  border-dotted border-[2px] rounded-[10px] border-[#848484] flex justify-right mb-[30px]  flex-row gap-1">
+                    {showDetails[index] && (
+                        <div className="flex flex-row items-center justify-center gap-1 my-2">
+                            <div className="my-3 px-3 py-2 border-dotted border-[2px] rounded-[10px] border-[#848484] flex justify-right mb-[30px] flex-row gap-1">
                                 <img className="h-5" src={frame403} alt="" />
-                                <input type="text" id="phone-input" className="text-[#989898] w-[80px] text-[12px] font-bold border-0 border-[#000000]  outline-none bg-[#ffffff]" maxLength="6" placeholder="Discount" onInput={(e) => e.target.value = e.target.value.replace(/[^0-9]/g, '')} />
+                                <input type="text" id="phone-input" className="text-[#989898] w-[60px] text-[11px] font-bold border-0 border-[#000000] outline-none bg-[#ffffff]" maxLength="6" placeholder="Discount" onInput={(e) => e.target.value = e.target.value.replace(/[^0-9]/g, '')} />
                             </div>
-                            <div className="my-3 px-3 py-3  border-dotted border-[2px] rounded-[10px] border-[#848484] flex justify-right mb-[30px]  flex-row gap-1">
+                            <div className="my-3 px-3 py-2 border-dotted border-[2px] rounded-[10px] border-[#848484] flex justify-right mb-[30px] flex-row gap-1">
                                 <img className="h-3" src={frame402} alt="" />
-                                <input type="text" id="phone-input" className="text-[#989898] w-[80px] text-[12px] font-bold border-0 border-[#000000]  outline-none bg-[#ffffff]" maxLength="6" placeholder="MRP Price" onInput={(e) => e.target.value = e.target.value.replace(/[^0-9]/g, '')} />
+                                <input type="text" id="phone-input" className="text-[#989898] w-[60px] text-[11px] font-bold border-0 border-[#000000] outline-none bg-[#ffffff]" maxLength="6" placeholder="MRP Price" onInput={(e) => e.target.value = e.target.value.replace(/[^0-9]/g, '')} />
                             </div>
-                            <div className="my-3 px-3 py-2 border-dotted border-[2px] rounded-[10px] border-[#848484] mb-[30px] flex flex-row gap-1 items-center justify-center">
+                            <div className="my-3 px-3 py-2 border-dotted border-[2px] rounded-[10px] border-[#848484] flex mb-[30px] flex-row gap-1 items-center justify-center">
                                 <img className="h-5" src={frame405} alt="" />
-                                <input type="text" id="phone-input" className="text-[#989898] w-[80px] text-[12px] font-bold border-0 border-[#000000]  outline-none bg-[#ffffff]" maxLength="6" placeholder="Item Price" onInput={(e) => e.target.value = e.target.value.replace(/[^0-9]/g, '')} />
+                                <input type="text" id="phone-input" className="text-[#989898] w-[60px] text-[11px] font-bold border-0 border-[#000000] outline-none bg-[#ffffff]" maxLength="6" placeholder="Item Price" onInput={(e) => e.target.value = e.target.value.replace(/[^0-9]/g, '')} />
                             </div>
                         </div>
                     )}

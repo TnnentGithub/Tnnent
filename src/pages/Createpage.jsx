@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useContext } from 'react';
 import backIcon from '../images/images3/back.png';
 import frame401 from '../images/images3/Frame 401.png';
 import frame402 from '../images/images3/Frame 402.png';
@@ -30,6 +30,7 @@ import { db } from "../../firebase.js";
 import { doc, setDoc, arrayUnion } from "firebase/firestore";
 import Optionalsweight from './Optionalsweight';
 import { Link, useNavigate } from 'react-router-dom';
+import OptionalsContext from '../context/OptionalContext';
 
 
 
@@ -45,12 +46,15 @@ const [ProductPrice, setProductPrice] = useState('')
 const [ProductDesc, setProductDesc] = useState('')
 const [ProductStockQuantity, setProductStockQuantity] = useState('')
 const [showHello, setShowHello] = useState(false);
-const [ProductType, setProductType] = useState('Product Type');
+const [ProductType, setProductTypes ] = useState('Product Type');
 const [menuOpen, setMenuOpen] = useState(false);
 const [Images, setImages] = useState([]);
 const [selectedParcel, setSelectedParcel] = useState(null);
-
+const { productType,setProductType } = useContext(OptionalsContext);
 const [optional,setOptional]=useState(false);
+
+const storeID = "Store-0001";
+const productID = "Store-0001-Product-0001";
 
 useEffect(() => {
     const timerid = setTimeout(() => {
@@ -87,9 +91,32 @@ const handleDeleteImage = (id) => {
 
 
 const handleProductType = (option) => {
+    setProductTypes(option);
     setProductType(option);
     setMenuOpen(false);
 };
+
+const sendData = async() => {
+    try {
+        console.log("Pushing Data to firebase --->");
+        const docRef = doc(db,"Store", storeID, "Products", productID);
+
+        await setDoc(docRef,{
+            ProductName: ProductName,
+            ProductType: ProductType,
+            ProductPrice: ProductPrice,
+            ProductDescription: ProductDesc,
+            ProductStockQuantity: ProductStockQuantity,
+            ProductMrpPrice: ProductMrpPrice,
+            ProductDiscount: Discount
+        });
+
+        console.log("Succesfull Data Push <----")
+        
+    } catch (error) {
+        console.log("Firebase Error: ",error);     
+    }
+}
 
 
     useEffect(()=>{
@@ -266,7 +293,7 @@ const handleProductType = (option) => {
 
    <div className='justify-center flex mb-2 mt-7'>
     <Link to='/'>
-    <button className="text-[#ffffff] z-[999] text-[4vw] py-3 px-20 bg-[#000000] border rounded-full font-bold ">
+    <button onClick={sendData} className="text-[#ffffff] z-[999] text-[4vw] py-3 px-20 bg-[#000000] border rounded-full font-bold ">
         List Item
     </button>
     </Link>
