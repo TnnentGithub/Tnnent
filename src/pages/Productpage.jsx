@@ -24,7 +24,7 @@ import { Link } from 'react-router-dom';
 import './style.css';
 
 import 'swiper/css';
-import ThingCards from '../components/ThingCards.jsx';
+import ThingCards from '../components/StaticThingCards.jsx';
 import {
   Drawer,
   DrawerClose,
@@ -36,8 +36,10 @@ import {
   DrawerTrigger,
 } from "../components/ui/drawer.jsx";
 import { db } from "../../firebase.js";
-import { doc, setDoc, arrayUnion, getDoc } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { useParams } from 'react-router-dom';
+import {  ref, getDownloadURL, listAll } from "firebase/storage";
+import { storage } from '../../firebase';
 
 
 function Productpage() {
@@ -46,6 +48,8 @@ function Productpage() {
   const { id } = useParams();
 
   const parts = id.split('-');
+
+  const productID = id;
 
   const storeID = parts[0] + '-' + parts[1];
 
@@ -56,6 +60,7 @@ function Productpage() {
   };
   const [reviewText, setReviewText] = useState('');
   const [product, setProduct] = useState([]);
+  const [imageUrls, setImageUrls] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [displayedReviews, setDisplayedReviews] = useState(5);
     const [showAll, setShowAll] = useState(false);
@@ -79,8 +84,25 @@ function Productpage() {
   };
 
   useEffect(()=>{
-    fetch;
+    fetch();
   },[]);
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      console.log("fetching images -->")
+      try {
+        const storageRef = ref(storage, `${storeID}/products/${productID}`);
+        const result = await listAll(storageRef);
+        const urls = await Promise.all(result.items.map(itemRef => getDownloadURL(itemRef)));
+        setImageUrls(urls);
+      } catch (error) {
+        console.error('Failed to fetch images:', error);
+      }
+    };
+
+    fetchImages();
+    console.log(imageUrls);
+  }, []);
 
   const displayReview = () => {
     const text = reviewText.trim();
@@ -101,6 +123,8 @@ function Productpage() {
   const seeLessReviews = () => {
     setDisplayedReviews(reviews.length);
   };
+
+  const crazyURL = "https://firebasestorage.googleapis.com/v0/b/tnennt-1e1f2.appspot.com/o/Store-0001%2Fproducts%2FStore-0001-Product-0001%2Fimage%20(3).png?alt=media&token=d637bb95-f172-4105-be19-30bf57539b35";
   return (
    <>
    <div className='forscroll'>
@@ -126,40 +150,21 @@ function Productpage() {
                 </div>
                 <div className='mt-[23%]'>
                 <Swiper
-          className="mySwiper mr-2 ml-4"
-          spaceBetween={10}
-          slidesPerView={1}
-          centeredSlides={true}
-         
-        >
-        <SwiperSlide>
-          <div className='flex justify-center'>
-          <div className='h-[65vw] w-[90vw] bg-red-400 bg-cover bg-center bg-no-repeat'           style={{ backgroundImage: `url(${camera})` }}></div>
-          </div>  
-        </SwiperSlide> 
-        <SwiperSlide>
-          <div className='flex justify-center'>
-          <div className='h-[65vw] w-[90vw] bg-red-400 bg-cover bg-center bg-no-repeat'           style={{ backgroundImage: `url(${camera})` }}></div>
-          </div>  
-        </SwiperSlide> 
-        <SwiperSlide>
-          <div className='flex justify-center'>
-          <div className='h-[65vw] w-[90vw] bg-red-400 bg-cover bg-center bg-no-repeat'           style={{ backgroundImage: `url(${camera})` }}></div>
-          </div>  
-        </SwiperSlide> 
-        <SwiperSlide>
-          <div className='flex justify-center'>
-          <div className='h-[65vw] w-[90vw] bg-red-400 bg-cover bg-center bg-no-repeat'           style={{ backgroundImage: `url(${camera})` }}></div>
-          </div>  
-        </SwiperSlide> 
-        <SwiperSlide>
-          <div className='flex justify-center'>
-          <div className='h-[65vw] w-[90vw] bg-red-400 bg-cover bg-center bg-no-repeat'           style={{ backgroundImage: `url(${camera})` }}></div>
-          </div>  
-        </SwiperSlide> 
-       
-
-        </Swiper>
+              className="mySwiper mr-2 ml-4"
+              spaceBetween={10}
+              slidesPerView={1}
+              centeredSlides={true}
+            >
+              {imageUrls.map((url, index) => (      
+                <SwiperSlide key={index}>
+                  <div className='flex justify-center'>
+                    <div className='h-[65vw] w-[90vw] bg-red-400 flex justify-center items-center  bg-cover bg-center bg-no-repeat'>
+                      <img src={url} className='' alt="product images" />
+                    </div>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
         </div>
         <div className="flex justify-between items-center mt-6">
             <div className="flex gap-2 ml-4 items-center ">

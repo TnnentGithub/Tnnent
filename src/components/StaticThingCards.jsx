@@ -2,7 +2,7 @@ import React from 'react'
 import camera from '../images/Rectangle 2267.svg';
 import '../pages/style.css';
 
-function ThingCards({ marginTop, width, height, product }) {
+function ThingCards({ marginTop, width, height }) {
   const cardStyle = {
     marginTop: marginTop,
     width: width,
@@ -42,8 +42,8 @@ function ThingCards({ marginTop, width, height, product }) {
                       
                     </div>
                     <div className="flex flex-col gap-4 ml-2">
-                      <h1 className="font-extrabold text-[3vw] mt-2">{product.ProductName}</h1>
-                      <p className="text-left font-extrabold text-[3vw] mb-2">&#8377; {product.ProductPrice}</p>
+                      <h1 className="font-extrabold text-[3vw] mt-2">Canon xyz Camera</h1>
+                      <p className="text-left font-extrabold text-[3vw] mb-2">&#8377; 200</p>
                     </div>
                   </div>
     </>

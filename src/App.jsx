@@ -200,7 +200,7 @@ const [ productType, setProductType ] = useState();
             <Route path='/storesettings' element={<Storesettings/>}/>
             <Route path='/checkoutfinal' element={<Checkoutfinal/>}/>
             <Route path='/createproductedit' element={<CreateProductedit/>}/>
-            <Route path='/viewallproducts' element={<Viewallproducts/>}/>
+            <Route path='/viewallproducts/:id' element={<Viewallproducts/>}/>
             <Route path='/categoryview' element={<Categoryview/>}/>
             <Route path='/electronicscategory' element={<Electronicscategory/>}/>
             <Route path='/clothingcategory' element={<Clothingcategory/>}/>

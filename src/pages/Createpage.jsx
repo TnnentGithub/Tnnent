@@ -25,7 +25,7 @@ import {
     AlertDialogTrigger,
   } from "@/components/ui/alert-dialog";
 import { storage } from '../../firebase';
-import { ref, uploadBytes } from 'firebase/storage';
+import { ref, uploadBytes, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { db } from "../../firebase.js";
 import { doc, setDoc, arrayUnion } from "firebase/firestore";
 import Optionalsweight from './Optionalsweight';
@@ -74,16 +74,23 @@ useEffect(() => {
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            const imageData = e.target.result;
+        if (file) {
             const uniqueKey = Date.now();
-            setImages(prevImages => [...prevImages, { id: uniqueKey, data: imageData }]);
-        };
-        reader.readAsDataURL(file);
-    }
-};
+            setImages(prevImages => [...prevImages, { id: uniqueKey, file }]);
+        }
+    };
+
+   const uploadImage = async()  =>{
+    console.log(Images);
+    console.log("uploading files");
+
+    for (let i = 0; i < Images.length; i++) {
+        const { file } = Images[i];
+        const storageRef = ref(storage, `${storeID}/products/${productID}/${file.name}`);
+        await uploadBytes(storageRef, file);
+        console.log(`File ${i + 1} uploaded successfully`);
+        }
+   }
 
 const handleDeleteImage = (id) => {
     setImages(prevImages => prevImages.filter(image => image.id !== id));
@@ -141,7 +148,7 @@ const sendData = async() => {
         <section className="lg:hidden">
             <div className="w-full h-[12vh] flex p-[20px] justify-between">
                 <div className="flex justify-center items-center gap-2">
-                    <h2 className="text-2xl font-black">ADD PRODUCT</h2>
+                    <h2 className="text-2xl font-black">ADD PRODUCT <button onClick={uploadImage}>TeST</button></h2>
                     <div className="bg-red-400 h-[1vh] w-[1vh] rounded-full"></div>
                 </div>
                 <div className="flex justify-center items-center gap-4">

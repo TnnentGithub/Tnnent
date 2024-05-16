@@ -1,7 +1,42 @@
 import ThingCards from '@/components/ThingCards.jsx'
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { db } from "../../firebase.js";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+
 
 function Viewallproducts() {
+
+   const [products, setProducts] = useState([]);
+
+  const { id } = useParams();
+
+  const storeID = id;
+
+  const fetch = async() => {
+    console.log('fetching all products ->');
+
+    try {
+      const docRef = collection(db,"Store",storeID,"Products");
+      const querySnapshot = await getDocs(docRef);
+      const productsData = [];
+      querySnapshot.forEach((doc) => {
+        console.log(doc.id, " => ", doc.data());
+        productsData.push(doc.data());
+        });
+
+        setProducts(productsData);
+
+    } catch (error) {
+      console.log("Error while fetching from firebase: ", error);
+    }
+
+  }
+
+  useEffect(()=>{
+    fetch();
+  },[])
+
   return (
     <>
     <div className='forscroll'>
@@ -23,11 +58,10 @@ function Viewallproducts() {
                 </div>
                 </div>
                 <div className='flex w-[100vw] gap-12 flex-wrap mt-[27%] ml-4'>
-                <ThingCards marginTop="6" width="40vw" height="52vw" />
-                <ThingCards marginTop="6" width="40vw" height="52vw" />
-                <ThingCards marginTop="6" width="40vw" height="52vw" />
-                <ThingCards marginTop="6" width="40vw" height="52vw" />
-    </div>
+                {products.map((product, index) => (
+                  <ThingCards key={index} marginTop="6" width="40vw" height="52vw" product={product} />
+                ))}
+                </div>
     </div>
     
     </>
