@@ -29,7 +29,7 @@ import more from '../images/luca-florio-QLmBiJ9GYpU-unsplash.jpg'
 import Navbar from '../components/Navbar.jsx';
 import { db } from "../../firebase.js";
 import { doc, setDoc, arrayUnion, getDoc } from "firebase/firestore";
-import ThingCards from '@/components/ThingCards.jsx';
+import ThingCards from '@/components/StaticThingCards.jsx';
 import store1 from '../images/damian-barczak-U9E423m3Hd8-unsplash.jpg'
 import store2 from '../images/adam-kolmacka-DQiJZa3LKwY-unsplash.jpg'
 import store3 from '../images/arno-senoner-MRjjcDIk3Gw-unsplash.jpg'

@@ -1,18 +1,53 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import camera from '../images/Rectangle 2267.svg';
 import '../pages/style.css';
+import { db } from "../../firebase.js";
+import { doc, getDoc } from "firebase/firestore";
+import { useParams } from 'react-router-dom';
+import {  ref, getDownloadURL, listAll } from "firebase/storage";
+import { storage } from '../../firebase';
 
-function ThingCards({ marginTop, width, height, product }) {
+function ThingCards({ marginTop, width, height, product, onClick }) {
   const cardStyle = {
     marginTop: marginTop,
     width: width,
     height: height,
-};
+  };
+
+  const [imgURL, setImgURL] = useState();
+
+  console.log(product)
+
+  const productID = product.ProductID;
+  const storeID = product.StoreID;
+
+  useEffect(()=>{
+    const fetchImage = async()=>{
+      console.log('Fetching image');
+      try {
+        const storageRef = ref(storage,`${storeID}/products/${productID}`);
+        const result = await listAll(storageRef);
+        const profileImageRef = result.items[0];
+
+        if(!profileImageRef){
+          console.log('No Image Found Error');
+        }
+
+        const firstImageUrl = await getDownloadURL(profileImageRef);
+        setImgURL(firstImageUrl);
+      } catch (error) {
+        console.log('Error fetching image: ',error);
+      }
+    };
+    
+    fetchImage();
+  },[])
+
   return (
     <>
-    <div className="bg-[#F5F5F5]  flex flex-col rounded-lg " style={cardStyle}>
+    <div onClick={onClick} className="bg-[#F5F5F5]  flex flex-col rounded-lg " style={cardStyle}>
                     <div className="w-full h-[70%] rounded-lg bg-cover bg-center bg-no-repeat relative"
-                      style={{ backgroundImage: `url(${camera})` }}>
+                      style={{ backgroundImage: `url(${imgURL})` }}>
                       <div className="bg-white rounded-full w-[6vw] h-[6vw] absolute top-2 right-2  flex justify-center items-center">
                         <div className="heart-container " title="Like">
                           <input type="checkbox" className="checkbox w-[1vw]" id="Give-It-An-Id"/>

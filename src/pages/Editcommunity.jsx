@@ -80,6 +80,9 @@ function Editcommunity() {
     
         // Use setDoc to write the document data, including the PostID as a field
         await setDoc(postRef, {
+            StoreName: 'Watch Party',
+            StoreOwnerName: 'Kunal Deb',
+            StoreID: storeID,
             PostID: newPostID, // Store the PostID within the document
             description: description,
             productLink: productLink,

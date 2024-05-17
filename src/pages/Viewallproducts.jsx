@@ -1,8 +1,9 @@
 import ThingCards from '@/components/ThingCards.jsx'
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { db } from "../../firebase.js";
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+
 
 
 function Viewallproducts() {
@@ -10,6 +11,8 @@ function Viewallproducts() {
    const [products, setProducts] = useState([]);
 
   const { id } = useParams();
+
+  const router = useNavigate();
 
   const storeID = id;
 
@@ -59,7 +62,7 @@ function Viewallproducts() {
                 </div>
                 <div className='flex w-[100vw] gap-12 flex-wrap mt-[27%] ml-4'>
                 {products.map((product, index) => (
-                  <ThingCards key={index} marginTop="6" width="40vw" height="52vw" product={product} />
+                  <ThingCards key={index} marginTop="6" width="40vw" height="52vw" product={product} onClick={()=>{ router(`/product/${product.ProductID}`)}} />
                 ))}
                 </div>
     </div>

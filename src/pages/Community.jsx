@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import movieEditIcon from '../images/movie_edit.svg';
 import profileImage from '../images/kate-trysh-Dnkr_lmdKi8-unsplash 1.png';
 import iosshare from '../images/ios_share (1).svg'
@@ -7,12 +7,39 @@ import profilepic from '../images/05ebdc349a885d1104456e5d51b082b7.jpeg'
 import './Heart.css';
 import post1 from '../images/kate-trysh-Dnkr_lmdKi8-unsplash 1.png'
 import post2 from '../images/Rectangle 2269.png'
-import Communitypostcard from '@/components/Communitypostcard.jsx';
+import Communitypostcard from '../components/Communitypostcard';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from "../../firebase";
 
 function Community() {
 
   const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
+
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const storeCollectionRef = collection(db, "Store");
+      const storeQuerySnapshot = await getDocs(storeCollectionRef);
+      const combinedPosts = [];
+
+      for (const storeDoc of storeQuerySnapshot.docs) {
+        const postCollectionRef = collection(db, "Store", storeDoc.id, "CommunityPost");
+        const postQuerySnapshot = await getDocs(postCollectionRef);
+        postQuerySnapshot.forEach((postDoc) => {
+          combinedPosts.push({
+            ...postDoc.data(),
+            storeId: storeDoc.id,
+          });
+        });
+      }
+
+      setPosts(combinedPosts);
+    };
+
+    fetchPosts();
+  }, []);
 
   const toggleLike = () => {
     if (!liked) {
@@ -42,16 +69,13 @@ function Community() {
                 </div>
     </div>
     <div className=" mt-[29%] mb-32">
-    <Communitypostcard 
-        profilePicSrc={profilepic} // Provide the path to the profile picture
-        profileImgSrc={post1} // Provide the path to the profile image
-        name="Kunal Deb" // Provide the name
-      />
-   <Communitypostcard 
-        profilePicSrc={profilepic} // Provide the path to the profile picture
-        profileImgSrc={post2} // Provide the path to the profile image
-        name="Barnik Deb" // Provide the name
-      />
+      {posts.length > 0 ? (
+            posts.map((post, index) => (
+              <Communitypostcard key={index} post={post} />
+            ))
+          ) : (
+            <p>No posts available</p>
+          )}
     </div>
     
     <Navbar color="#2D332F" color2= "white" color3= "#2D332F" color4= "#2D332F"/>

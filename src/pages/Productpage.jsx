@@ -124,7 +124,7 @@ function Productpage() {
     setDisplayedReviews(reviews.length);
   };
 
-  const crazyURL = "https://firebasestorage.googleapis.com/v0/b/tnennt-1e1f2.appspot.com/o/Store-0001%2Fproducts%2FStore-0001-Product-0001%2Fimage%20(3).png?alt=media&token=d637bb95-f172-4105-be19-30bf57539b35";
+  
   return (
    <>
    <div className='forscroll'>
@@ -159,7 +159,7 @@ function Productpage() {
                 <SwiperSlide key={index}>
                   <div className='flex justify-center'>
                     <div className='h-[65vw] w-[90vw] bg-red-400 flex justify-center items-center  bg-cover bg-center bg-no-repeat'>
-                      <img src={url} className='' alt="product images" />
+                      <img src={url} alt="product images" />
                     </div>
                   </div>
                 </SwiperSlide>

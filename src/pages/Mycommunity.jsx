@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import movieEditIcon from '../images/movie_edit.svg';
 import profileImage from '../images/kate-trysh-Dnkr_lmdKi8-unsplash 1.png';
 import iosshare from '../images/ios_share (1).svg'
@@ -10,6 +10,7 @@ import profilepic from '../images/05ebdc349a885d1104456e5d51b082b7.jpeg'
 import post1 from '../images/kate-trysh-Dnkr_lmdKi8-unsplash 1.png'
 import post2 from '../images/Rectangle 2269.png'
 import './Heart.css';
+import { db } from "../../firebase";
 import {
   Drawer,
   DrawerClose,
@@ -33,6 +34,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button"
 import Mycommunitycard from '@/components/Mycommunitycard';
+import { collection, getDocs } from 'firebase/firestore';
 
 
 
@@ -50,6 +52,32 @@ function MyCommunity() {
       setLikeCount(likeCount - 1);
     }
   };
+
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const storeCollectionRef = collection(db, "Store");
+      const storeQuerySnapshot = await getDocs(storeCollectionRef);
+      const combinedPosts = [];
+
+      storeQuerySnapshot.forEach(async (storeDoc) => {
+        const postCollectionRef = collection(db, "Store", storeDoc.id, "community post");
+        const postQuerySnapshot = await getDocs(postCollectionRef);
+        postQuerySnapshot.forEach((postDoc) => {
+          combinedPosts.push({
+           ...postDoc.data(),
+            storeId: storeDoc.id,
+          });
+        });
+      });
+
+      setPosts(combinedPosts);
+    };
+
+    fetchPosts();
+  }, []);
+
 
   return (
     <>
@@ -74,16 +102,9 @@ function MyCommunity() {
       
     </div>
     <div className=" mt-[29%] mb-32">
-    <Mycommunitycard 
-        profilePicSrc={profilepic} // Provide the path to the profile picture
-        profileImgSrc={post1} // Provide the path to the profile image
-        name="Kunal Deb" // Provide the name
-      />
-   <Mycommunitycard 
-        profilePicSrc={profilepic} // Provide the path to the profile picture
-        profileImgSrc={post2} // Provide the path to the profile image
-        name="Barnik Deb" // Provide the name
-      />
+    {posts.map((post, index) => (
+                  <MyCommunity key={index}  post={post} />
+                ))}
     </div>
     
 

@@ -54,7 +54,7 @@ const { productType,setProductType } = useContext(OptionalsContext);
 const [optional,setOptional]=useState(false);
 
 const storeID = "Store-0001";
-const productID = "Store-0001-Product-0001";
+const productID = "Store-0001-Product-0002";
 
 useEffect(() => {
     const timerid = setTimeout(() => {
@@ -115,8 +115,12 @@ const sendData = async() => {
             ProductDescription: ProductDesc,
             ProductStockQuantity: ProductStockQuantity,
             ProductMrpPrice: ProductMrpPrice,
-            ProductDiscount: Discount
+            ProductDiscount: Discount,
+            ProductID: productID,
+            StoreID: storeID
         });
+
+        uploadImage();
 
         console.log("Succesfull Data Push <----")
         

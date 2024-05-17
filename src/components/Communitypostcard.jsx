@@ -1,15 +1,21 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import movieEditIcon from '../images/movie_edit.svg';
 import profileImage from '../images/kate-trysh-Dnkr_lmdKi8-unsplash 1.png';
 import iosshare from '../images/ios_share (1).svg'
 import Navbar from '../components/Navbar';
 import profilepic from '../images/05ebdc349a885d1104456e5d51b082b7.jpeg'
 import '@/pages/Heart.css';
+import {  ref, getDownloadURL, listAll } from "firebase/storage";
+import { storage } from '../../firebase';
 
-function Communitypostcard({ profilePicSrc, profileImgSrc, name }) {
+function Communitypostcard({ post }) {
     
   const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
+  const [imgURL, setImgURL] = useState();
+
+  const postID = post.PostID;
+  const storeID = post.StoreID;
 
   const toggleLike = () => {
     if (!liked) {
@@ -20,23 +26,47 @@ function Communitypostcard({ profilePicSrc, profileImgSrc, name }) {
       setLikeCount(likeCount - 1);
     }
   };
+  console.log("in component! : ",post);
+
+  useEffect(()=>{
+    const fetchImage = async()=>{
+      console.log('Fetching image');
+      try {
+        const storageRef = ref(storage,`${storeID}/community-post/${postID}`);
+        const result = await listAll(storageRef);
+        const profileImageRef = result.items[0];
+
+        if(!profileImageRef){
+          console.log('No Image Found Error');
+        }
+
+        const firstImageUrl = await getDownloadURL(profileImageRef);
+        setImgURL(firstImageUrl);
+      } catch (error) {
+        console.log('Error fetching image: ',error);
+      }
+    };
+    
+    fetchImage();
+  },[])
+ 
   return (
     <>
     <div className='flex justify-center mb-5'>
     <div className="w-[93vw] flex flex-col gap-3">
         <div className="flex justify-between">
           <div className="flex gap-2">
-            <div className="w-[5vh] h-[5vh] rounded-full bg-[#343434] bg-cover bg-center bg-no-repeat" style={{backgroundImage: `url(${profilePicSrc})`}}></div>
-            <h2 className="font-bold text-[5vw] mt-2">{name}</h2>
+            <div className="w-[5vh] h-[5vh] rounded-full bg-[#343434] bg-cover bg-center bg-no-repeat" style={{backgroundImage: `url(${profileImage})`}}></div>
+            <h2 className="font-bold text-[5vw] mt-2">{post.StoreName} by {post.StoreOwnerName}</h2>
           </div>
           <h2 className="mt-4 text-[3.4vw] font-bold opacity-50">8 h ago</h2>
         </div>
         <div className="flex justify-center mt-4 px-2">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p>{post.description}</p>
         </div>
         <div className="flex justify-center">
           <div className="bg-slate-400 w-[99%] h-[62vw] rounded-sm mt-4 bg-cover bg-no-repeat bg-center"
-            style={{ backgroundImage: `url(${profileImgSrc})` }}>
+            style={{ backgroundImage: `url(${imgURL})` }}>
           </div>
         </div>
         <div className='flex justify-between mb-4'>
@@ -67,7 +97,7 @@ function Communitypostcard({ profilePicSrc, profileImgSrc, name }) {
     <p className="font-bold opacity-70 text-[4vw]" >{likeCount}</p>
                 </div>
                 <div className="p-4 h-[4.4vh] border-2 border-[#BEBEBE] rounded-3xl flex justify-center items-center">
-                <a href="https://uiverse.io/" target="_blank" rel="noopener noreferrer" className="text-[3.5vw] text-[#989797]">link: https://uiverse.io/</a>
+                <a href={post.productLink} target="_blank" rel="noopener noreferrer" className="text-[3.5vw] text-[#989797]">link: {post.productLink}</a>
 
 
                </div>

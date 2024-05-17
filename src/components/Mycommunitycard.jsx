@@ -30,7 +30,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button"
 
-function Mycommunitycard({ profilePicSrc, profileImgSrc, name }) {
+function Mycommunitycard({ post }) {
     
   const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
@@ -50,8 +50,8 @@ function Mycommunitycard({ profilePicSrc, profileImgSrc, name }) {
     <div className="w-[93vw] flex flex-col gap-3">
         <div className="flex justify-between">
           <div className="flex gap-2">
-            <div className="w-[5vh] h-[5vh] rounded-full bg-[#343434] bg-cover bg-center bg-no-repeat" style={{backgroundImage: `url(${profilePicSrc})`}}></div>
-            <h2 className="font-bold text-[5vw] mt-2">{name}</h2>
+            <div className="w-[5vh] h-[5vh] rounded-full bg-[#343434] bg-cover bg-center bg-no-repeat" style={{backgroundImage: `url(${profileImage})`}}></div>
+            <h2 className="font-bold text-[5vw] mt-2">{post.StoreName} by {post.StoreOwnerName}</h2>
           </div>
           <div>
           <Drawer>
@@ -105,11 +105,11 @@ function Mycommunitycard({ profilePicSrc, profileImgSrc, name }) {
                 </div>
         </div>
         <div className="flex justify-center mt-4 px-2">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p>{post.PostContent}</p>
         </div>
         <div className="flex justify-center">
           <div className="bg-slate-400 w-[99%] h-[62vw] rounded-sm mt-4 bg-cover bg-no-repeat bg-center"
-            style={{ backgroundImage: `url(${profileImgSrc})` }}>
+            style={{ backgroundImage: `url(${profileImage})` }}>
           </div>
         </div>
         <div className='flex justify-between mb-4'>
