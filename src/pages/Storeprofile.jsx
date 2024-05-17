@@ -14,12 +14,14 @@ import { storage } from '../../firebase';
 import { ref, uploadBytes } from 'firebase/storage';
 import ThingCards from '@/components/ThingCards';
 import Featuredthingcard from '@/components/Featuredthingcard';
-import xyzstore from '../images/damian-barczak-U9E423m3Hd8-unsplash.jpg'
+import xyzstore from '../images/damian-barczak-U9E423m3Hd8-unsplash.jpg';
+import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { db } from '../../firebase'; 
 
 
 const Storeprofile = () => {
   // Define state variables for dynamic content
-  const storeID = 'STORE0001';
+  const storeID = 'Store-0001';
   const [Toggled, setToggled] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   
@@ -33,6 +35,28 @@ const Storeprofile = () => {
     const storageRef = ref(storage, `${storeID}/story/${selectedFile.name}`);
     await uploadBytes(storageRef,selectedFile);
     console.log('File uploaded succesfully');
+  };
+
+  const changeStoreStatus = async() =>{
+    setToggled(!Toggled)
+    const newstoreStatus = !Toggled;
+
+    console.log("NEW STORE STATUS: ", newstoreStatus);
+
+    const docRef = doc(db,"Store", storeID);
+
+    try {
+      console.log('Updating Status on firebase -->');
+      await updateDoc(docRef,{
+        StoreStatus: newstoreStatus
+      });
+      console.log('updated!');
+    } catch (error) {
+      console.log("Error changing status on firebase: ",error);
+    }
+
+
+
   };
   
   return (
@@ -81,7 +105,7 @@ const Storeprofile = () => {
         className={`toggle w-[15vw] h-[8vw] bg-transparent border-2 border-white rounded-[30px] flex items-center px-1 mr-2 ${
           Toggled ? "Toggled" : ""
         }`}
-        onClick={() => setToggled(!Toggled)}
+        onClick={changeStoreStatus}
       >
         <div
           className="toggle-btn rounded-full w-[5vw] h-[5vw] bg-red-500 ease-in duration-300"
